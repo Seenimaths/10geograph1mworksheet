@@ -1,0 +1,30 @@
+{
+  "name": "10th Maths Geo Graph One Mark Worksheet Builder",
+  "short_name": "10th Maths Builder",
+  "description": "10th Standard Maths Student Evaluation Worksheet Generator (125 One Mark, 24 Geometry, 30 Graph \u2014 EM & TM) with Red Millimeter Graph Sheet & MathJax.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

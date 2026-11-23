@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10th Maths Geo Graph One Mark Worksheet Builder</title>
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="10th Maths Builder" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'none'
+      },
+      startup: {
+        typeset: false,
+        ready: () => {
+          MathJax.startup.defaultReady();
+          if (typeof window._triggerMathTypeset === 'function') {
+            window._triggerMathTypeset();
+          }
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    :root {
+      --ink: #000000;
+      --border: #1e293b;
+      --muted: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #000000;
+      background: #e2e8f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* EM uses Times New Roman / Cambria Math; TM uses Google Noto Serif Tamil */
+    .worksheet-shell {
+      font-family: 'Times New Roman', 'Cambria Math', Georgia, serif;
+      color: #000000;
+      max-width: 210mm;
+      margin: 14px auto 40px auto;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.14);
+      padding: 10mm 10mm 12mm 10mm;
+      border-radius: 6px;
+    }
+
+    .tamil-font {
+      font-family: 'Noto Serif Tamil', 'Times New Roman', serif;
+    }
+
+    /* Normal clean MathJax equations (no forced stroke/fill override) */
+    mjx-container {
+      display: inline-block !important;
+      margin: 0 !important;
+      vertical-align: middle;
+      color: #000000;
+      font-weight: 400;
+      max-width: 100%;
+    }
+
+    mjx-container svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Borderless A4 print margin frame (invisible on screen, guarantees exact 1cm margins on every printed page) */
+    table.print-a4-frame {
+      width: 100%;
+      border-collapse: collapse;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    table.print-a4-frame > thead.print-margin-thead,
+    table.print-a4-frame > tfoot.print-margin-tfoot {
+      display: none;
+    }
+
+    table.print-a4-frame > tbody > tr > td.print-a4-body {
+      padding: 0;
+      border: none;
+      vertical-align: top;
+    }
+
+    .student-info-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 1.15fr 0.95fr 0.9fr;
+    }
+
+    .student-info-grid.two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .student-info-grid.two-col > div:nth-child(n+3) {
+      border-top: 1px solid #000000;
+    }
+
+    .student-info-grid.two-col > div:nth-child(odd) {
+      border-left: none !important;
+    }
+
+    /* Responsive horizontal wrapper on narrow phones; disabled on print */
+    .table-scroll-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Neatly aligned tables */
+    table.ws-table {
+      width: 100%;
+      min-width: 540px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13.5px;
+      line-height: 1.48;
+      color: #000000;
+    }
+
+    table.ws-table th,
+    table.ws-table td {
+      border: 1px solid #000000;
+      padding: 6px 7px;
+      vertical-align: top;
+      word-wrap: break-word;
+      color: #000000;
+    }
+
+    table.ws-table thead th {
+      background: #f1f5f9;
+      font-weight: 700;
+      text-align: center;
+      color: #000000;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .chapter-banner td {
+      background: #e2e8f0 !important;
+      font-weight: 700;
+      text-align: left;
+      padding: 5px 8px !important;
+      font-size: 13px;
+      color: #000000;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .opt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3px 10px;
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    .opt-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 3px 8px;
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    .opt-grid > div,
+    .opt-grid-4 > div {
+      min-width: 0;
+      overflow-wrap: break-word;
+      line-height: 1.5;
+    }
+
+    .q-with-svg .opt-grid-4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .q-with-svg {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .q-with-svg .q-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .q-with-svg .q-svg-box {
+      flex-shrink: 0;
+      width: 128px;
+      border: 1px solid #64748b;
+      border-radius: 3px;
+      padding: 3px;
+      background: #ffffff;
+    }
+
+    .year-pill {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      background: #000000;
+      color: #ffffff;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Pair page wrapper for Geometry & Graph */
+    .print-pair-page {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6mm;
+    }
+
+    .section-page-break {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 2px dashed #94a3b8;
+    }
+
+    /* Geometry Workout Box (2 per page or 1 per page) */
+    .geo-card {
+      border: 1.5px solid #000000;
+      border-radius: 2px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 126mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .geo-card.single-mode {
+      min-height: 252mm;
+    }
+
+    .geo-q-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      line-height: 1.44;
+      color: #000000;
+    }
+
+    .geo-q-table td {
+      border-bottom: 1.2px solid #000000;
+      padding: 5px 8px;
+      vertical-align: top;
+      color: #000000;
+    }
+
+    .geo-q-num {
+      width: 52px;
+      border-right: 1.2px solid #000000;
+      font-weight: 700;
+      text-align: center;
+      background: #f1f5f9;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .geo-work-grid {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      flex: 1;
+      min-height: 98mm;
+    }
+
+    .geo-card.single-mode .geo-work-grid {
+      min-height: 215mm;
+    }
+
+    .geo-fair-box {
+      border-right: 1.2px solid #000000;
+      padding: 5px 8px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .geo-side-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .geo-rough-box {
+      border-bottom: 1.2px solid #000000;
+      padding: 5px 7px;
+      flex: 1.15;
+      min-height: 44mm;
+    }
+
+    .geo-steps-box {
+      padding: 5px 7px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ws-sublabel {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #000000;
+      margin-bottom: 3px;
+    }
+
+    .ruled-line {
+      border-bottom: 1px dotted #475569;
+      height: 17px;
+      width: 100%;
+    }
+
+    /* Graph Workout Box (2 per page or 1 per page) */
+    .graph-card {
+      border: 1.5px solid #000000;
+      border-radius: 2px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 128mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .graph-card.single-mode {
+      min-height: 256mm;
+    }
+
+    .graph-work-grid {
+      display: grid;
+      grid-template-columns: 34% 66%;
+      flex: 1;
+    }
+
+    .graph-card.single-mode .graph-work-grid {
+      grid-template-columns: 100%;
+      grid-template-rows: auto 1fr;
+    }
+
+    .graph-sol-col {
+      border-right: 1.2px solid #000000;
+      padding: 5px 7px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 11.5px;
+    }
+
+    .graph-card.single-mode .graph-sol-col {
+      border-right: none;
+      border-bottom: 1.2px solid #000000;
+    }
+
+    .graph-sheet-col {
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+    }
+
+    .mini-val-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .mini-val-table th,
+    .mini-val-table td {
+      border: 1px solid #000000;
+      padding: 2px 3px;
+      text-align: center;
+      height: 18px;
+    }
+
+    .mini-val-table th {
+      background: #f1f5f9;
+      font-weight: 700;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .given-data-table {
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .given-data-table th,
+    .given-data-table td {
+      border: 1px solid #000000;
+      padding: 2px 7px;
+      text-align: center;
+    }
+
+    .given-data-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      text-align: left;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .graph-svg-wrap {
+      flex: 1 1 0%;
+      min-height: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .exact-graph-svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Mobile / Smart Board screen responsiveness */
+    @media screen and (max-width: 768px) {
+      .worksheet-shell {
+        margin: 8px;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .geo-work-grid,
+      .graph-work-grid {
+        grid-template-columns: 1fr;
+      }
+      .geo-fair-box,
+      .graph-sol-col {
+        border-right: none;
+        border-bottom: 1.2px solid #000000;
+      }
+      .opt-grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .student-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .student-info-grid > div:nth-child(n+3) {
+        border-top: 1px solid #000000;
+      }
+      .student-info-grid > div:nth-child(odd) {
+        border-left: none !important;
+      }
+    }
+
+    /* Touch-friendly tap targets for Mobile & Smart Board */
+    .touch-btn {
+      min-height: 40px;
+      touch-action: manipulation;
+    }
+
+    /* Print Styling: Exact A4 Portrait with Built-In 1cm (10mm) Margin on All 4 Sides
+       Works identically in Desktop Chrome (whether Margins is Default OR None) and Mobile Chrome! */
+    @page {
+      size: A4 portrait;
+      margin: 0 !important;
+    }
+
+    @media print {
+      html,
+      body {
+        width: 210mm !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-width: 0 !important;
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: #000000 !important;
+        overflow: visible !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .worksheet-shell {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background: #ffffff !important;
+        overflow: visible !important;
+      }
+
+      /* Built-in 1cm (10mm) margins on ALL 4 sides of every flowing One-Mark page */
+      table.print-a4-frame {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      table.print-a4-frame > thead.print-margin-thead {
+        display: table-header-group !important;
+      }
+
+      table.print-a4-frame > tfoot.print-margin-tfoot {
+        display: table-footer-group !important;
+      }
+
+      table.print-a4-frame > thead.print-margin-thead > tr > td,
+      table.print-a4-frame > tfoot.print-margin-tfoot > tr > td {
+        height: 10mm !important;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+      }
+
+      table.print-a4-frame > tbody > tr > td.print-a4-body {
+        padding: 0 10mm !important;
+        border: none !important;
+        vertical-align: top !important;
+      }
+
+      .table-scroll-wrap {
+        width: 100% !important;
+        overflow: visible !important;
+      }
+
+      table.ws-table {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        table-layout: fixed !important;
+        font-size: 12px !important;
+        line-height: 1.42 !important;
+      }
+
+      table.ws-table th,
+      table.ws-table td {
+        padding: 5px 6px !important;
+        overflow-wrap: break-word !important;
+      }
+
+      .opt-grid {
+        font-size: 11.5px !important;
+        gap: 6px 10px !important;
+        margin-top: 5px !important;
+      }
+
+      .opt-grid-4 {
+        font-size: 11.5px !important;
+        gap: 4px 8px !important;
+        margin-top: 5px !important;
+      }
+
+      .opt-grid > div,
+      .opt-grid-4 > div {
+        line-height: 1.55 !important;
+      }
+
+      .q-with-svg .q-svg-box {
+        width: 112px !important;
+      }
+
+      mjx-container {
+        color: #000000 !important;
+        max-width: 100% !important;
+      }
+
+      mjx-container svg {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      .section-page-break {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        border-top: none !important;
+        page-break-before: always;
+        break-before: page;
+      }
+
+      /* Self-contained A4 page for Geometry & Graph with exact 1cm (10mm) margin on all 4 sides */
+      .print-pair-page {
+        display: block !important;
+        width: 210mm !important;
+        max-width: 100% !important;
+        height: 296mm !important;
+        padding: 10mm 10mm 10mm 10mm !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .print-pair-page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .print-pair-page > .section-banner {
+        margin-bottom: 3mm !important;
+      }
+
+      .print-pair-page > .geo-card,
+      .print-pair-page > .graph-card {
+        margin-bottom: 3.5mm !important;
+      }
+
+      .print-pair-page > .geo-card:last-child,
+      .print-pair-page > .graph-card:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      table.ws-table thead {
+        display: table-header-group;
+      }
+
+      table.ws-table tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Inner usable area inside 10mm padded A4 = 190mm x 276mm */
+      /* 2 per page: banner(~7mm) + 3mm + 125mm + 3.5mm + 125mm = 263.5mm */
+      .geo-card,
+      .graph-card {
+        height: 125mm !important;
+        max-height: 125mm !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      /* 1 per page: banner(~7mm) + 3mm + 252mm = 262mm */
+      .geo-card.single-mode,
+      .graph-card.single-mode {
+        height: 252mm !important;
+        max-height: 252mm !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      /* When One Mark count is 0 and School Header (~30mm) shares Page 1 */
+      .print-pair-page.has-top-header > .geo-card,
+      .print-pair-page.has-top-header > .graph-card {
+        height: 110mm !important;
+        max-height: 110mm !important;
+      }
+
+      .print-pair-page.has-top-header > .geo-card.single-mode,
+      .print-pair-page.has-top-header > .graph-card.single-mode {
+        height: 220mm !important;
+        max-height: 220mm !important;
+      }
+
+      .geo-q-table {
+        flex: 0 0 auto !important;
+        font-size: 12px !important;
+        line-height: 1.32 !important;
+      }
+
+      .geo-q-table td {
+        padding: 3.5px 6px !important;
+      }
+
+      .given-data-table {
+        font-size: 11px !important;
+        margin-top: 2px !important;
+      }
+
+      .given-data-table th,
+      .given-data-table td {
+        padding: 1px 5px !important;
+      }
+
+      .geo-work-grid {
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .geo-card.single-mode .geo-work-grid {
+        min-height: 0 !important;
+      }
+
+      .geo-fair-box {
+        padding: 4px 6px !important;
+        min-height: 0 !important;
+      }
+
+      .geo-side-col {
+        min-height: 0 !important;
+        height: 100% !important;
+      }
+
+      .geo-rough-box {
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        padding: 4px 6px !important;
+      }
+
+      .geo-steps-box {
+        flex: 0 0 auto !important;
+        padding: 4px 6px !important;
+      }
+
+      .graph-work-grid {
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .graph-sol-col {
+        padding: 3px 6px !important;
+        gap: 2px !important;
+        font-size: 10.5px !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .graph-sheet-col {
+        padding: 3px 4px !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        justify-content: flex-start !important;
+      }
+
+      .ws-sublabel {
+        font-size: 9.5px !important;
+        margin-bottom: 1.5px !important;
+      }
+
+      .ruled-line {
+        height: 13px !important;
+      }
+
+      .geo-card.single-mode .ruled-line,
+      .graph-card.single-mode .ruled-line {
+        height: 17px !important;
+      }
+
+      .mini-val-table {
+        font-size: 10px !important;
+        margin-top: 1px !important;
+      }
+
+      .mini-val-table th,
+      .mini-val-table td {
+        height: 14px !important;
+        padding: 1px 2px !important;
+      }
+
+      .graph-card.single-mode .mini-val-table td {
+        height: 18px !important;
+      }
+
+      .graph-card.single-mode .graph-sol-col {
+        padding: 3px 6px !important;
+        gap: 2px !important;
+      }
+
+      .graph-card.single-mode .ruled-line {
+        height: 13px !important;
+      }
+
+      .graph-svg-wrap {
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+      }
+
+      .exact-graph-svg {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        display: block !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .exact-graph-svg path,
+      .exact-graph-svg rect,
+      .exact-graph-svg line,
+      .exact-graph-svg text {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= MODERN TOP ACTION BAR WITH CUSTOM LOGO ================= -->
+  <header class="no-print sticky top-0 z-40 text-white shadow-xl border-b border-indigo-500/30" style="background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 55%, #312e81 100%);">
+    <div class="max-w-7xl mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="w-11 h-11 rounded-xl shadow-lg shrink-0 ring-2 ring-indigo-400/40 overflow-hidden bg-slate-950 flex items-center justify-center">
+          <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" aria-label="10th Maths Builder Logo">
+            <defs>
+              <linearGradient id="logoBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0f172a"/>
+                <stop offset="100%" stop-color="#1e1b4b"/>
+              </linearGradient>
+              <linearGradient id="logoAccent" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#fb923c"/>
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="14" fill="url(#logoBg)"/>
+            <path d="M12 16 H52 M12 28 H52 M12 40 H52 M12 52 H52 M16 12 V52 M28 12 V52 M40 12 V52 M52 12 V52" stroke="#ef4444" stroke-opacity="0.32" stroke-width="1"/>
+            <polygon points="10,50 26,18 42,50" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M22,48 Q38,14 54,44" fill="none" stroke="url(#logoAccent)" stroke-width="2.6" stroke-linecap="round"/>
+            <rect x="31" y="8" width="25" height="18" rx="5" fill="#dc2626"/>
+            <text x="43.5" y="21" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="12" fill="#ffffff">10</text>
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-sm sm:text-base font-extrabold tracking-tight leading-tight text-white truncate">10th Maths Geo Graph One Mark Worksheet Builder</h1>
+          <div id="summaryBar" class="mt-0.5 text-[11px] flex flex-wrap items-center gap-1.5">
+            <span class="px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30 font-semibold"><strong id="sumOm">125</strong> 1M</span>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 font-semibold"><strong id="sumGeo">24</strong> Geo</span>
+            <span class="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-200 border border-rose-400/30 font-semibold"><strong id="sumGraph">30</strong> Graph</span>
+            <span class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-200 border border-amber-400/30 font-semibold"><strong id="sumMarks">557</strong> Marks</span>
+            <span id="mathStatus" class="px-2 py-0.5 rounded-full bg-emerald-600/30 text-emerald-200 border border-emerald-500/40 font-medium text-[10px]">Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <button id="btnOpenSettings" type="button" class="touch-btn px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 text-xs sm:text-sm font-bold shadow-md shadow-indigo-950/50 transition cursor-pointer flex items-center gap-1.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Change Header &amp; Settings
+        </button>
+        <button id="btnShuffle" type="button" class="touch-btn px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold shadow transition cursor-pointer">
+          Shuffle Random
+        </button>
+        <button id="btnInstallPwa" type="button" class="touch-btn px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-semibold shadow transition cursor-pointer flex items-center gap-1">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Install App
+        </button>
+        <button id="btnPrint" type="button" class="touch-btn px-4 py-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white text-xs sm:text-sm font-bold shadow-md transition cursor-pointer flex items-center gap-1.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print / Save PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SETTINGS & HEADER DRAWER MODAL (OPENED BY SEPARATE BUTTON) ================= -->
+  <div id="settingsModal" class="no-print fixed inset-0 z-50 hidden">
+    <div id="settingsBackdrop" class="absolute inset-0 bg-slate-950/60 backdrop-blur-xs"></div>
+    <div class="relative z-10 max-w-4xl mx-auto my-4 sm:my-8 bg-slate-900 text-white rounded-xl shadow-2xl border border-slate-700 overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between px-4 py-3 bg-slate-800 border-b border-slate-700">
+        <div>
+          <h2 class="text-base font-bold">Change Header &amp; Worksheet Settings</h2>
+          <p class="text-xs text-slate-300">Customize Medium, School Header, Question Counts, Shuffled Options &amp; Print Layout</p>
+        </div>
+        <button id="btnCloseSettings" type="button" class="touch-btn px-3 py-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-xs font-bold cursor-pointer">
+          Done &times;
+        </button>
+      </div>
+
+      <div class="p-4 overflow-y-auto space-y-4 text-xs">
+        <!-- Row 1: Medium & School Header -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-slate-800/80 p-3 rounded-lg border border-slate-700">
+          <div class="space-y-1">
+            <label for="selMedium" class="block font-semibold text-slate-200">Medium / Language</label>
+            <select id="selMedium" class="touch-btn w-full bg-slate-950 border border-slate-600 rounded-md px-2.5 py-2 text-white text-sm focus:outline-none focus:border-blue-400">
+              <option value="em">English Medium (EM — Times New Roman)</option>
+              <option value="tm">Tamil Medium (TM — Noto Serif Tamil)</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label for="inpSchool" class="block font-semibold text-slate-200">School / Institution Header</label>
+            <input id="inpSchool" type="text" value="GOVERNMENT HIGHER SECONDARY SCHOOL" placeholder="School Name" class="touch-btn w-full bg-slate-950 border border-slate-600 rounded-md px-2.5 py-2 text-white text-sm" />
+          </div>
+          <div class="space-y-1">
+            <label for="inpTitle" class="block font-semibold text-slate-200">Worksheet / Exam Title</label>
+            <input id="inpTitle" type="text" value="10th MATHS EVALUATION WORKSHEET" placeholder="Worksheet Title" class="touch-btn w-full bg-slate-950 border border-slate-600 rounded-md px-2.5 py-2 text-white text-sm" />
+          </div>
+        </div>
+
+        <!-- Row 2: Counts & Filters -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <!-- One Mark -->
+          <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <label for="inpOneMarkCount" class="font-bold text-blue-300 text-sm">One Mark (0–125)</label>
+              <div class="flex gap-1">
+                <button type="button" data-om-preset="14" class="om-preset px-2 py-1 rounded bg-slate-700 hover:bg-blue-600 text-xs cursor-pointer">14</button>
+                <button type="button" data-om-preset="25" class="om-preset px-2 py-1 rounded bg-slate-700 hover:bg-blue-600 text-xs cursor-pointer">25</button>
+                <button type="button" data-om-preset="50" class="om-preset px-2 py-1 rounded bg-slate-700 hover:bg-blue-600 text-xs cursor-pointer">50</button>
+                <button type="button" data-om-preset="125" class="om-preset px-2 py-1 rounded bg-blue-700 hover:bg-blue-600 text-xs font-bold cursor-pointer">All 125</button>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <input id="inpOneMarkCount" type="number" min="0" max="125" value="125" class="touch-btn w-20 bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white font-bold text-center text-sm" />
+              <select id="selOmChapter" class="touch-btn flex-1 bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white text-xs">
+                <option value="all">All Chapters (125 Qs)</option>
+                <option value="1">Ch 1: Relations &amp; Functions (15)</option>
+                <option value="2">Ch 2: Numbers &amp; Sequences (15)</option>
+                <option value="3">Ch 3: Algebra (20)</option>
+                <option value="4">Ch 4: Geometry (15)</option>
+                <option value="5">Ch 5: Coordinate Geometry (15)</option>
+                <option value="6">Ch 6: Trigonometry (15)</option>
+                <option value="7">Ch 7: Mensuration (15)</option>
+                <option value="8">Ch 8: Statistics &amp; Prob. (15)</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-1.5 pt-1">
+              <label class="inline-flex items-center gap-2 text-xs text-slate-200 cursor-pointer">
+                <input id="chkShuffleOptions" type="checkbox" class="w-4 h-4 accent-amber-500" />
+                <span><strong>Shuffle Options</strong> (a / b / c / d order)</span>
+              </label>
+              <label class="inline-flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+                <input id="chkChapterHeadings" type="checkbox" checked class="w-4 h-4 accent-blue-500" />
+                <span>Show Chapter Headings</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Geometry -->
+          <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <label for="inpGeoCount" class="font-bold text-emerald-300 text-sm">Geometry (0–24)</label>
+              <div class="flex gap-1">
+                <button type="button" data-geo-preset="2" class="geo-preset px-2 py-1 rounded bg-slate-700 hover:bg-emerald-600 text-xs cursor-pointer">2</button>
+                <button type="button" data-geo-preset="4" class="geo-preset px-2 py-1 rounded bg-slate-700 hover:bg-emerald-600 text-xs cursor-pointer">4</button>
+                <button type="button" data-geo-preset="8" class="geo-preset px-2 py-1 rounded bg-slate-700 hover:bg-emerald-600 text-xs cursor-pointer">8</button>
+                <button type="button" data-geo-preset="24" class="geo-preset px-2 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-xs font-bold cursor-pointer">All 24</button>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <input id="inpGeoCount" type="number" min="0" max="24" value="24" class="touch-btn w-20 bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white font-bold text-center text-sm" />
+              <select id="selGeoCat" class="touch-btn flex-1 bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white text-xs">
+                <option value="all">All Geometry (24 Qs)</option>
+                <option value="similar_tangent">Similar Triangle + All Tangents (15)</option>
+                <option value="similar_tri">Similar Triangle + Construction of Triangle (15)</option>
+                <option value="tangent_tri">All Tangents + Construction of Triangle (18)</option>
+                <option value="similar_all">Similar Triangles (&lt; 1 + &gt; 1) (6)</option>
+                <option value="similar_lt1">Similar Triangle (&lt; 1) (3)</option>
+                <option value="similar_gt1">Similar Triangle (&gt; 1) (3)</option>
+                <option value="tangent_all">All Tangents (Single + Alt + Two) (9)</option>
+                <option value="tangent_one">Single Tangent (2)</option>
+                <option value="tangent_alt">Alternate Segment (2)</option>
+                <option value="tangent_two">Two Tangents (5)</option>
+                <option value="tri_all">All Triangles (Median + Alt + Bisector) (9)</option>
+                <option value="tri_median">Triangle - Median (3)</option>
+                <option value="tri_altitude">Triangle - Altitude (3)</option>
+                <option value="tri_bisector">Triangle - Bisector (3)</option>
+              </select>
+            </div>
+            <div class="pt-1">
+              <label for="selGeoPerPage" class="block text-xs text-slate-300 mb-1">Geometry Layout per A4 Page:</label>
+              <select id="selGeoPerPage" class="touch-btn w-full bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white text-xs">
+                <option value="2" selected>2 Geometry / Page (Standard)</option>
+                <option value="1">1 Geometry / Page (Full Space)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Graph -->
+          <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <label for="inpGraphCount" class="font-bold text-red-300 text-sm">Graph (0–30)</label>
+              <div class="flex gap-1">
+                <button type="button" data-gr-preset="2" class="gr-preset px-2 py-1 rounded bg-slate-700 hover:bg-red-600 text-xs cursor-pointer">2</button>
+                <button type="button" data-gr-preset="4" class="gr-preset px-2 py-1 rounded bg-slate-700 hover:bg-red-600 text-xs cursor-pointer">4</button>
+                <button type="button" data-gr-preset="10" class="gr-preset px-2 py-1 rounded bg-slate-700 hover:bg-red-600 text-xs cursor-pointer">10</button>
+                <button type="button" data-gr-preset="30" class="gr-preset px-2 py-1 rounded bg-red-700 hover:bg-red-600 text-xs font-bold cursor-pointer">All 30</button>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <input id="inpGraphCount" type="number" min="0" max="30" value="30" class="touch-btn w-20 bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white font-bold text-center text-sm" />
+              <select id="selGraphCat" class="touch-btn flex-1 bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white text-xs">
+                <option value="all">All Graphs (30 Qs)</option>
+                <option value="variation_all">Direct + Indirect Variation (10)</option>
+                <option value="direct">Direct Variation Only (5)</option>
+                <option value="inverse">Indirect Variation Only (5)</option>
+                <option value="quad_all">Solve + Nature of Roots (20)</option>
+                <option value="quad_nature">Nature of Roots Only (9)</option>
+                <option value="quad_solve">Graphically Solve Only (11)</option>
+              </select>
+            </div>
+            <div class="pt-1 space-y-1.5">
+              <div>
+                <label for="selGraphPerPage" class="block text-xs text-slate-300 mb-1">Graph Layout per A4 Page:</label>
+                <select id="selGraphPerPage" class="touch-btn w-full bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white text-xs">
+                  <option value="2" selected>2 Graph / Page (12 cm &times; 9 cm)</option>
+                  <option value="1">1 Graph / Page (17 cm &times; 14 cm)</option>
+                </select>
+              </div>
+              <div>
+                <label for="selGraphStyle" class="block text-xs text-slate-300 mb-1">Graph Sheet Print Style (1cm / 5mm / 1mm):</label>
+                <select id="selGraphStyle" class="touch-btn w-full bg-slate-950 border border-slate-600 rounded-md px-2 py-1.5 text-white text-xs">
+                  <option value="red" selected>Exact Red Millimeter Graph (Print-Ready)</option>
+                  <option value="green">Exact Green Millimeter Graph (Classic School)</option>
+                  <option value="bw">High-Contrast B&amp;W / Xerox Graph (Black)</option>
+                </select>
+              </div>
+              <label class="inline-flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+                <input id="chkYearTags" type="checkbox" class="w-4 h-4 accent-red-500" />
+                <span>Show Public Exam Year Tags</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Actions inside Settings -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-700">
+          <div class="flex flex-wrap gap-2">
+            <button id="btnLoadAll" type="button" class="touch-btn px-3.5 py-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-xs font-bold cursor-pointer">
+              Load All (125+24+30)
+            </button>
+            <button id="btnShuffleOptsNow" type="button" class="touch-btn px-3.5 py-1.5 rounded-lg bg-amber-700 hover:bg-amber-600 text-xs font-bold cursor-pointer">
+              Shuffle Options Only
+            </button>
+          </div>
+          <button id="btnApplyClose" type="button" class="touch-btn px-5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs sm:text-sm font-bold cursor-pointer">
+            Apply &amp; View Worksheet
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PWA INSTALL INFO MODAL ================= -->
+  <div id="pwaModal" class="no-print fixed inset-0 z-50 hidden">
+    <div id="pwaBackdrop" class="absolute inset-0 bg-slate-950/60"></div>
+    <div class="relative z-10 max-w-md mx-auto mt-20 bg-white text-slate-900 rounded-xl shadow-2xl border border-slate-300 p-5">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-base font-bold">Install as PWA Web App</h3>
+        <button id="btnClosePwa" type="button" class="px-2.5 py-1 rounded bg-slate-200 hover:bg-slate-300 text-xs font-bold cursor-pointer">&times;</button>
+      </div>
+      <p id="pwaMessage" class="text-xs text-slate-700 leading-relaxed">
+        Upload the included GitHub Pages PWA ZIP files (<code>index.html</code>, <code>manifest.json</code>, <code>sw.js</code>, and icon PNGs) to your GitHub repository and enable <strong>Settings &rarr; Pages</strong>. When opened on Chrome, Edge, Mobile, or Smart Board, the <strong>Install App</strong> icon will appear directly in the browser address bar!
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= PRINTABLE WORKSHEET SHEET (SHOWN IMMEDIATELY ON OPEN) ================= -->
+  <main id="worksheetRoot" class="worksheet-shell"></main>
+
+  <script>
+    const QUESTION_BANK = {"onemark": [{"id": 1, "ch": 1, "ch_q": 1, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If \\(n(A \\times B) = 6\\) and \\(A = \\{1, 3\\}\\), then \\(n(B)\\) is", "opt_em": ["\\(1\\)", "\\(2\\)", "\\(3\\)", "\\(6\\)"], "q_tm": "\\(n(A \\times B) = 6\\) மற்றும் \\(A = \\{1, 3\\}\\) எனில், \\(n(B)\\) ஆனது", "opt_tm": ["\\(1\\)", "\\(2\\)", "\\(3\\)", "\\(6\\)"]}, {"id": 2, "ch": 1, "ch_q": 2, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "\\(A = \\{a, b, p\\}\\), \\(B = \\{2, 3\\}\\), \\(C = \\{p, q, r, s\\}\\) then \\(n[(A \\cup C) \\times B]\\) is", "opt_em": ["\\(8\\)", "\\(20\\)", "\\(12\\)", "\\(16\\)"], "q_tm": "\\(A = \\{a, b, p\\}; B = \\{2, 3\\}; C = \\{p, q, r, s\\}\\) எனில், \\(n[(A \\cup C) \\times B]\\) ஆனது", "opt_tm": ["\\(8\\)", "\\(20\\)", "\\(12\\)", "\\(16\\)"]}, {"id": 3, "ch": 1, "ch_q": 3, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If \\(A = \\{1, 2\\}\\), \\(B = \\{1, 2, 3, 4\\}\\), \\(C = \\{5, 6\\}\\) and \\(D = \\{5, 6, 7, 8\\}\\) then state which of the following statement is true.", "opt_em": ["\\((A \\times C) \\subset (B \\times D)\\)", "\\((B \\times D) \\subset (A \\times C)\\)", "\\((A \\times B) \\subset (A \\times D)\\)", "\\((D \\times A) \\subset (B \\times A)\\)"], "q_tm": "\\(A = \\{1, 2\\}\\), \\(B = \\{1, 2, 3, 4\\}\\), \\(C = \\{5, 6\\}\\) மற்றும் \\(D = \\{5, 6, 7, 8\\}\\) எனில் கீழே கொடுக்கப்பட்டவைகளில் எது சரியான கூற்று?", "opt_tm": ["\\((A \\times C) \\subset (B \\times D)\\)", "\\((B \\times D) \\subset (A \\times C)\\)", "\\((A \\times B) \\subset (A \\times D)\\)", "\\((D \\times A) \\subset (B \\times A)\\)"]}, {"id": 4, "ch": 1, "ch_q": 4, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If there are \\(1024\\) relations from a set \\(A = \\{1, 2, 3, 4, 5\\}\\) to a set \\(B\\), then the number of elements in \\(B\\) is", "opt_em": ["\\(3\\)", "\\(2\\)", "\\(4\\)", "\\(8\\)"], "q_tm": "\\(A = \\{1, 2, 3, 4, 5\\}\\)-லிருந்து, \\(B\\) என்ற கணத்திற்கு \\(1024\\) உறவுகள் உள்ளது எனில் \\(B\\)-ல் உள்ள உறுப்புகளின் எண்ணிக்கை", "opt_tm": ["\\(3\\)", "\\(2\\)", "\\(4\\)", "\\(8\\)"]}, {"id": 5, "ch": 1, "ch_q": 5, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "The range of the relation \\(R = \\{(x, x^2) \\mid x \\text{ is a prime number less than } 13\\}\\) is", "opt_em": ["\\(\\{2, 3, 5, 7\\}\\)", "\\(\\{2, 3, 5, 7, 11\\}\\)", "\\(\\{4, 9, 25, 49, 121\\}\\)", "\\(\\{1, 4, 9, 25, 49, 121\\}\\)"], "q_tm": "\\(R = \\{(x, x^2) \\mid x\\) ஆனது \\(13\\)-ஐ விடக் குறைவான பகா எண்கள்\\(\\}\\) என்ற உறவின் வீச்சகமானது", "opt_tm": ["\\(\\{2, 3, 5, 7\\}\\)", "\\(\\{2, 3, 5, 7, 11\\}\\)", "\\(\\{4, 9, 25, 49, 121\\}\\)", "\\(\\{1, 4, 9, 25, 49, 121\\}\\)"]}, {"id": 6, "ch": 1, "ch_q": 6, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If the ordered pairs \\((a+2, 4)\\) and \\((5, 2a+b)\\) are equal then \\((a, b)\\) is", "opt_em": ["\\((2, -2)\\)", "\\((5, 1)\\)", "\\((2, 3)\\)", "\\((3, -2)\\)"], "q_tm": "\\((a+2, 4)\\) மற்றும் \\((5, 2a+b)\\) ஆகிய வரிசைச் சோடிகள் சமம் எனில், \\((a, b)\\) என்பது", "opt_tm": ["\\((2, -2)\\)", "\\((5, 1)\\)", "\\((2, 3)\\)", "\\((3, -2)\\)"]}, {"id": 7, "ch": 1, "ch_q": 7, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "Let \\(n(A) = m\\) and \\(n(B) = n\\) then the total number of non-empty relations that can be defined from \\(A\\) to \\(B\\) is", "opt_em": ["\\(m^n\\)", "\\(n^m\\)", "\\(2^{mn}-1\\)", "\\(2^{mn}\\)"], "q_tm": "\\(n(A) = m\\) மற்றும் \\(n(B) = n\\) என்க. \\(A\\)-லிருந்து \\(B\\)-க்கு வரையறுக்கப்பட்ட வெற்று கணமில்லாத உறவுகளின் மொத்த எண்ணிக்கை.", "opt_tm": ["\\(m^n\\)", "\\(n^m\\)", "\\(2^{mn}-1\\)", "\\(2^{mn}\\)"]}, {"id": 8, "ch": 1, "ch_q": 8, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If \\(\\{(a, 8), (6, b)\\}\\) represents an identity function, then the value of \\(a\\) and \\(b\\) are respectively", "opt_em": ["\\((8, 6)\\)", "\\((8, 8)\\)", "\\((6, 8)\\)", "\\((6, 6)\\)"], "q_tm": "\\(\\{(a, 8), (6, b)\\}\\) ஆனது ஒரு சமனிச் சார்பு எனில், \\(a\\) மற்றும் \\(b\\) மதிப்புகளாவன முறையே", "opt_tm": ["\\((8, 6)\\)", "\\((8, 8)\\)", "\\((6, 8)\\)", "\\((6, 6)\\)"]}, {"id": 9, "ch": 1, "ch_q": 9, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "Let \\(A = \\{1, 2, 3, 4\\}\\) and \\(B = \\{4, 8, 9, 10\\}\\). A function \\(f : A \\to B\\) given by \\(f = \\{(1, 4), (2, 8), (3, 9), (4, 10)\\}\\) is a", "opt_em": ["Many-One Function", "Identity Function", "One-to-One Function", "Into Function"], "q_tm": "\\(A = \\{1, 2, 3, 4\\}; B = \\{4, 8, 9, 10\\}\\) என்க. சார்பு \\(f : A \\to B\\) ஆனது \\(f = \\{(1, 4), (2, 8), (3, 9), (4, 10)\\}\\) எனக் கொடுக்கப்பட்டால் \\(f\\)-என்பது", "opt_tm": ["பலவற்றிலிருந்து ஒன்றுக்கான சார்பு", "சமனிச் சார்பு", "ஒன்றுக்கொன்றான சார்பு", "உட்சார்பு"]}, {"id": 10, "ch": 1, "ch_q": 10, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If \\(f(x) = 2x^2\\) and \\(g(x) = \\dfrac{1}{3x}\\), then \\(f \\circ g\\) is", "opt_em": ["\\(\\dfrac{3}{2x^2}\\)", "\\(\\dfrac{2}{3x^2}\\)", "\\(\\dfrac{2}{9x^2}\\)", "\\(\\dfrac{1}{6x^2}\\)"], "q_tm": "\\(f(x) = 2x^2\\) மற்றும் \\(g(x) = \\dfrac{1}{3x}\\) எனில் \\(f \\circ g\\) ஆனது", "opt_tm": ["\\(\\dfrac{3}{2x^2}\\)", "\\(\\dfrac{2}{3x^2}\\)", "\\(\\dfrac{2}{9x^2}\\)", "\\(\\dfrac{1}{6x^2}\\)"]}, {"id": 11, "ch": 1, "ch_q": 11, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If \\(f : A \\to B\\) is a bijective function and if \\(n(B) = 7\\), then \\(n(A)\\) is equal to", "opt_em": ["\\(7\\)", "\\(49\\)", "\\(1\\)", "\\(14\\)"], "q_tm": "\\(f : A \\to B\\) ஆனது இருபுறச் சார்பு மற்றும் \\(n(B) = 7\\) எனில் \\(n(A)\\) ஆனது", "opt_tm": ["\\(7\\)", "\\(49\\)", "\\(1\\)", "\\(14\\)"]}, {"id": 12, "ch": 1, "ch_q": 12, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "Let \\(f\\) and \\(g\\) be two functions given by \\(f = \\{(0, 1), (2, 0), (3, -4), (4, 2), (5, 7)\\}\\), \\(g = \\{(0, 2), (1, 0), (2, 4), (-4, 2), (7, 0)\\}\\) then the range of \\(f \\circ g\\) is", "opt_em": ["\\(\\{0, 2, 3, 4, 5\\}\\)", "\\(\\{-4, 1, 0, 2, 7\\}\\)", "\\(\\{1, 2, 3, 4, 5\\}\\)", "\\(\\{0, 1, 2\\}\\)"], "q_tm": "\\(f\\) மற்றும் \\(g\\) என்ற இரண்டு சார்புகளும் \\(f = \\{(0, 1), (2, 0), (3, -4), (4, 2), (5, 7)\\}\\); \\(g = \\{(0, 2), (1, 0), (2, 4), (-4, 2), (7, 0)\\}\\) எனக் கொடுக்கப்பட்டால் \\(f \\circ g\\)-ன் வீச்சகமானது", "opt_tm": ["\\(\\{0, 2, 3, 4, 5\\}\\)", "\\(\\{-4, 1, 0, 2, 7\\}\\)", "\\(\\{1, 2, 3, 4, 5\\}\\)", "\\(\\{0, 1, 2\\}\\)"]}, {"id": 13, "ch": 1, "ch_q": 13, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "Let \\(f(x) = \\sqrt{1 + x^2}\\) then", "opt_em": ["\\(f(xy) = f(x) \\cdot f(y)\\)", "\\(f(xy) \\ge f(x) \\cdot f(y)\\)", "\\(f(xy) \\le f(x) \\cdot f(y)\\)", "None of these"], "q_tm": "\\(f(x) = \\sqrt{1 + x^2}\\) எனில்", "opt_tm": ["\\(f(xy) = f(x) \\cdot f(y)\\)", "\\(f(xy) \\ge f(x) \\cdot f(y)\\)", "\\(f(xy) \\le f(x) \\cdot f(y)\\)", "இவற்றில் ஒன்றுமில்லை"]}, {"id": 14, "ch": 1, "ch_q": 14, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "If \\(g = \\{(1, 1), (2, 3), (3, 5), (4, 7)\\}\\) is a function given by \\(g(x) = \\alpha x + \\beta\\) then the value of \\(\\alpha\\) and \\(\\beta\\) are", "opt_em": ["\\((-1, 2)\\)", "\\((2, -1)\\)", "\\((-1, -2)\\)", "\\((1, 2)\\)"], "q_tm": "\\(g = \\{(1, 1), (2, 3), (3, 5), (4, 7)\\}\\) என்ற சார்பானது \\(g(x) = \\alpha x + \\beta\\) எனக் கொடுக்கப்பட்டால் \\(\\alpha\\) மற்றும் \\(\\beta\\)-வின் மதிப்பானது", "opt_tm": ["\\((-1, 2)\\)", "\\((2, -1)\\)", "\\((-1, -2)\\)", "\\((1, 2)\\)"]}, {"id": 15, "ch": 1, "ch_q": 15, "ch_em": "Chapter 1: Relations and Functions", "ch_tm": "அலகு 1: உறவுகளும் சார்புகளும்", "q_em": "\\(f(x) = (x+1)^3 - (x-1)^3\\) represents a function which is", "opt_em": ["Linear", "Cubic", "Reciprocal", "Quadratic"], "q_tm": "\\(f(x) = (x+1)^3 - (x-1)^3\\) குறிப்பிடும் சார்பானது", "opt_tm": ["நேரிய சார்பு", "ஒரு கனச் சார்பு", "தலைகீழ்ச் சார்பு", "இருபடிச் சார்பு"]}, {"id": 16, "ch": 2, "ch_q": 1, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "Euclid's division lemma states that for positive integers \\(a\\) and \\(b\\), there exist unique integers \\(q\\) and \\(r\\) such that \\(a = bq + r\\), where \\(r\\) must satisfy.", "opt_em": ["\\(1 < r < b\\)", "\\(0 < r < b\\)", "\\(0 \\le r < b\\)", "\\(0 < r \\le b\\)"], "q_tm": "யூக்ளிடின் வகுத்தல் துணைத் தேற்றத்தின் படி, \\(a\\) மற்றும் \\(b\\) என்ற மிகை முழுக்களுக்கு, தனித்த மிகை முழுக்கள் \\(q\\) மற்றும் \\(r\\); \\(a = bq + r\\) என்றவாறு அமையுமானால், இங்கு \\(r\\) ஆனது,", "opt_tm": ["\\(1 < r < b\\)", "\\(0 < r < b\\)", "\\(0 \\le r < b\\)", "\\(0 < r \\le b\\)"]}, {"id": 17, "ch": 2, "ch_q": 2, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "Using Euclid's division lemma, if the cube of any positive integer is divided by \\(9\\) then the possible remainders are", "opt_em": ["\\(0, 1, 8\\)", "\\(1, 4, 8\\)", "\\(0, 1, 3\\)", "\\(1, 3, 5\\)"], "q_tm": "யூக்ளிடின் வகுத்தல் துணைத் தேற்றத்தைப் பயன்படுத்தி, எந்த மிகை முழுவின் கனத்தையும் \\(9\\)-ஆல் வகுக்கும் போது கிடைக்கும் மீதிகள்", "opt_tm": ["\\(0, 1, 8\\)", "\\(1, 4, 8\\)", "\\(0, 1, 3\\)", "\\(1, 3, 5\\)"]}, {"id": 18, "ch": 2, "ch_q": 3, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "If the HCF of \\(65\\) and \\(117\\) is expressible in the form of \\(65m - 117\\), then the value of \\(m\\) is", "opt_em": ["\\(4\\)", "\\(2\\)", "\\(1\\)", "\\(3\\)"], "q_tm": "\\(65\\) மற்றும் \\(117\\)-யின் மீ.பொ.வ-வை \\(65m - 117\\) என்ற வடிவில் எழுதும்போது, \\(m\\)-யின் மதிப்பு", "opt_tm": ["\\(4\\)", "\\(2\\)", "\\(1\\)", "\\(3\\)"]}, {"id": 19, "ch": 2, "ch_q": 4, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "The sum of the exponents of the prime factors in the prime factorization of \\(1729\\) is", "opt_em": ["\\(1\\)", "\\(2\\)", "\\(3\\)", "\\(4\\)"], "q_tm": "\\(1729\\)-ஐ பகாக் காரணிப்படுத்தும் போது, அந்தப் பகா எண்களின் அடுக்குகளின் கூடுதல்", "opt_tm": ["\\(1\\)", "\\(2\\)", "\\(3\\)", "\\(4\\)"]}, {"id": 20, "ch": 2, "ch_q": 5, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "The least number that is divisible by all the numbers from \\(1\\) to \\(10\\) (both inclusive) is", "opt_em": ["\\(2025\\)", "\\(5220\\)", "\\(5025\\)", "\\(2520\\)"], "q_tm": "\\(1\\) முதல் \\(10\\) வரையுள்ள (இரண்டு எண்களும் உட்பட) அனைத்து எண்களாலும் வகுபடும் மிகச்சிறிய எண்", "opt_tm": ["\\(2025\\)", "\\(5220\\)", "\\(5025\\)", "\\(2520\\)"]}, {"id": 21, "ch": 2, "ch_q": 6, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "\\(7^{4k} \\equiv \\underline{\\hspace{1.2cm}} \\pmod{100}\\)", "opt_em": ["\\(1\\)", "\\(2\\)", "\\(3\\)", "\\(4\\)"], "q_tm": "\\(7^{4k} \\equiv \\underline{\\hspace{1.2cm}}\\) (மட்டு \\(100\\))", "opt_tm": ["\\(1\\)", "\\(2\\)", "\\(3\\)", "\\(4\\)"]}, {"id": 22, "ch": 2, "ch_q": 7, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "Given \\(F_1 = 1\\), \\(F_2 = 3\\) and \\(F_n = F_{n-1} + F_{n-2}\\) then \\(F_5\\) is", "opt_em": ["\\(3\\)", "\\(5\\)", "\\(8\\)", "\\(11\\)"], "q_tm": "\\(F_1 = 1\\), \\(F_2 = 3\\) மற்றும் \\(F_n = F_{n-1} + F_{n-2}\\) எனக் கொடுக்கப்படின் \\(F_5\\) ஆனது", "opt_tm": ["\\(3\\)", "\\(5\\)", "\\(8\\)", "\\(11\\)"]}, {"id": 23, "ch": 2, "ch_q": 8, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "The first term of an arithmetic progression is unity and the common difference is \\(4\\). Which of the following will be a term of this A.P.?", "opt_em": ["\\(4551\\)", "\\(10091\\)", "\\(7881\\)", "\\(13531\\)"], "q_tm": "ஒரு கூட்டுத் தொடர்வரிசையின் முதல் உறுப்பு \\(1\\) மற்றும் பொது வித்தியாசம் \\(4\\) எனில், பின்வரும் எண்களில் எது இந்தக் கூட்டுத் தொடர்வரிசையில் அமையும்?", "opt_tm": ["\\(4551\\)", "\\(10091\\)", "\\(7881\\)", "\\(13531\\)"]}, {"id": 24, "ch": 2, "ch_q": 9, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "If \\(6\\) times of \\(6^{\\text{th}}\\) term of an A.P. is equal to \\(7\\) times the \\(7^{\\text{th}}\\) term, then the \\(13^{\\text{th}}\\) term of the A.P. is", "opt_em": ["\\(0\\)", "\\(6\\)", "\\(7\\)", "\\(13\\)"], "q_tm": "ஒரு கூட்டுத் தொடர்வரிசையின் \\(6\\)-வது உறுப்பின் \\(6\\) மடங்கும் \\(7\\)-வது உறுப்பின் \\(7\\) மடங்கும் சமம் எனில், அக்கூட்டுத் தொடர்வரிசையின் \\(13\\)-வது உறுப்பு", "opt_tm": ["\\(0\\)", "\\(6\\)", "\\(7\\)", "\\(13\\)"]}, {"id": 25, "ch": 2, "ch_q": 10, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "An A.P. consists of \\(31\\) terms. If its \\(16^{\\text{th}}\\) term is \\(m\\), then the sum of all the terms of this A.P. is", "opt_em": ["\\(16m\\)", "\\(62m\\)", "\\(31m\\)", "\\(\\dfrac{31}{2}m\\)"], "q_tm": "ஒரு கூட்டுத் தொடர்வரிசையில் \\(31\\) உறுப்புகள் உள்ளன. அதன் \\(16\\)-வது உறுப்பு \\(m\\) எனில், அந்தக் கூட்டுத் தொடர்வரிசையில் உள்ள எல்லா உறுப்புகளின் கூடுதல்", "opt_tm": ["\\(16m\\)", "\\(62m\\)", "\\(31m\\)", "\\(\\dfrac{31}{2}m\\)"]}, {"id": 26, "ch": 2, "ch_q": 11, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "In an A.P., the first term is \\(1\\) and the common difference is \\(4\\). How many terms of the A.P. must be taken for their sum to be equal to \\(120\\)?", "opt_em": ["\\(6\\)", "\\(7\\)", "\\(8\\)", "\\(9\\)"], "q_tm": "ஒரு கூட்டுத் தொடர்வரிசையில் முதல் உறுப்பு \\(1\\) மற்றும் பொது வித்தியாசம் \\(4\\). இந்தக் கூட்டுத் தொடர்வரிசையின் எத்தனை உறுப்புகளைக் கூட்டினால் அதன் கூடுதல் \\(120\\) கிடைக்கும்?", "opt_tm": ["\\(6\\)", "\\(7\\)", "\\(8\\)", "\\(9\\)"]}, {"id": 27, "ch": 2, "ch_q": 12, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "If \\(A = 2^{65}\\) and \\(B = 2^{64} + 2^{63} + 2^{62} + \\cdots + 2^0\\) which of the following is true?", "opt_em": ["\\(B\\) is \\(2^{64}\\) more than \\(A\\)", "\\(A\\) and \\(B\\) are equal", "\\(B\\) is larger than \\(A\\) by \\(1\\)", "\\(A\\) is larger than \\(B\\) by \\(1\\)"], "q_tm": "\\(A = 2^{65}\\) மற்றும் \\(B = 2^{64} + 2^{63} + 2^{62} + \\cdots + 2^0\\) எனக் கொடுக்கப்பட்டுள்ளது. பின்வருவனவற்றில் எது உண்மை?", "opt_tm": ["\\(B\\) ஆனது \\(A\\)-ஐ விட \\(2^{64}\\) அதிகம்", "\\(A\\) மற்றும் \\(B\\) சமம்", "\\(B\\) ஆனது \\(A\\)-ஐ விட \\(1\\) அதிகம்", "\\(A\\) ஆனது \\(B\\)-ஐ விட \\(1\\) அதிகம்"]}, {"id": 28, "ch": 2, "ch_q": 13, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "The next term of the sequence \\(\\dfrac{3}{16}, \\dfrac{1}{8}, \\dfrac{1}{12}, \\dfrac{1}{18}, \\ldots\\) is", "opt_em": ["\\(\\dfrac{1}{24}\\)", "\\(\\dfrac{1}{27}\\)", "\\(\\dfrac{2}{3}\\)", "\\(\\dfrac{1}{81}\\)"], "q_tm": "\\(\\dfrac{3}{16}, \\dfrac{1}{8}, \\dfrac{1}{12}, \\dfrac{1}{18}, \\cdots\\) என்ற தொடர்வரிசையின் அடுத்த உறுப்பு", "opt_tm": ["\\(\\dfrac{1}{24}\\)", "\\(\\dfrac{1}{27}\\)", "\\(\\dfrac{2}{3}\\)", "\\(\\dfrac{1}{81}\\)"]}, {"id": 29, "ch": 2, "ch_q": 14, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "If the sequence \\(t_1, t_2, t_3, \\ldots\\) are in A.P. then the sequence \\(t_6, t_{12}, t_{18}, \\ldots\\) is", "opt_em": ["A Geometric Progression", "An Arithmetic Progression", "Neither an Arithmetic Progression nor a Geometric Progression", "A constant sequence"], "q_tm": "\\(t_1, t_2, t_3, \\ldots\\) என்பது ஒரு கூட்டுத் தொடர்வரிசை எனில், \\(t_6, t_{12}, t_{18}, \\ldots\\) என்பது", "opt_tm": ["ஒரு பெருக்குத் தொடர்வரிசை", "ஒரு கூட்டுத் தொடர்வரிசை", "ஒரு கூட்டுத் தொடர்வரிசையுமல்ல, பெருக்குத் தொடர்வரிசையுமல்ல", "ஒரு மாறிலித் தொடர்வரிசை"]}, {"id": 30, "ch": 2, "ch_q": 15, "ch_em": "Chapter 2: Numbers and Sequences", "ch_tm": "அலகு 2: எண்களும் தொடர்வரிசைகளும்", "q_em": "The value of \\((1^3 + 2^3 + 3^3 + \\cdots + 15^3) - (1 + 2 + 3 + \\cdots + 15)\\) is", "opt_em": ["\\(14400\\)", "\\(14200\\)", "\\(14280\\)", "\\(14520\\)"], "q_tm": "\\((1^3 + 2^3 + 3^3 + \\cdots + 15^3) - (1 + 2 + 3 + \\cdots + 15)\\)-யின் மதிப்பு", "opt_tm": ["\\(14400\\)", "\\(14200\\)", "\\(14280\\)", "\\(14520\\)"]}, {"id": 31, "ch": 3, "ch_q": 1, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "A system of three linear equations in three variables is inconsistent if their planes", "opt_em": ["Intersect only at a point", "Intersect in a line", "Coincides with each other", "Do not intersect"], "q_tm": "மூன்று மாறிகளில் அமைத்த மூன்று நேரியல் சமன்பாடுகளின் தொகுப்பிற்கு தீர்வுகள் இல்லையெனில், அத்தொகுப்பில் உள்ள தளங்கள்", "opt_tm": ["ஒரே ஒரு புள்ளியில் வெட்டுகின்றன", "ஒரே ஒரு கோட்டில் வெட்டுகின்றன", "ஒன்றின் மீது ஒன்று பொருந்தும்", "ஒன்றையொன்று வெட்டாது"]}, {"id": 32, "ch": 3, "ch_q": 2, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "The solution of the system \\(x + y - 3z = -6\\), \\(-7y + 7z = 7\\), \\(3z = 9\\) is", "opt_em": ["\\(x = 1, y = 2, z = 3\\)", "\\(x = -1, y = 2, z = 3\\)", "\\(x = -1, y = -2, z = 3\\)", "\\(x = 1, y = -2, z = 3\\)"], "q_tm": "\\(x + y - 3z = -6;\\; -7y + 7z = 7;\\; 3z = 9\\) என்ற தொகுப்பின் தீர்வு", "opt_tm": ["\\(x = 1;\\; y = 2;\\; z = 3\\)", "\\(x = -1;\\; y = 2;\\; z = 3\\)", "\\(x = -1;\\; y = -2;\\; z = 3\\)", "\\(x = 1;\\; y = -2;\\; z = 3\\)"]}, {"id": 33, "ch": 3, "ch_q": 3, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "If \\((x - 6)\\) is the HCF of \\(x^2 - 2x - 24\\) and \\(x^2 - kx - 6\\) then the value of \\(k\\) is", "opt_em": ["\\(3\\)", "\\(5\\)", "\\(6\\)", "\\(8\\)"], "q_tm": "\\(x^2 - 2x - 24\\) மற்றும் \\(x^2 - kx - 6\\)-யின் மீ.பொ.வ. \\((x - 6)\\) எனில், \\(k\\)-யின் மதிப்பு", "opt_tm": ["\\(3\\)", "\\(5\\)", "\\(6\\)", "\\(8\\)"]}, {"id": 34, "ch": 3, "ch_q": 4, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "\\(\\dfrac{3y - 3}{y} \\div \\dfrac{7y - 7}{3y^2}\\) is", "opt_em": ["\\(\\dfrac{9y}{7}\\)", "\\(\\dfrac{9y^3}{(21y - 21)}\\)", "\\(\\dfrac{21y^2 - 42y + 21}{3y^3}\\)", "\\(\\dfrac{7(y^2 - 2y + 1)}{y^2}\\)"], "q_tm": "\\(\\dfrac{3y - 3}{y} \\div \\dfrac{7y - 7}{3y^2}\\) என்பது", "opt_tm": ["\\(\\dfrac{9y}{7}\\)", "\\(\\dfrac{9y^3}{(21y - 21)}\\)", "\\(\\dfrac{21y^2 - 42y + 21}{3y^3}\\)", "\\(\\dfrac{7(y^2 - 2y + 1)}{y^2}\\)"]}, {"id": 35, "ch": 3, "ch_q": 5, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "\\(y^2 + \\dfrac{1}{y^2}\\) is not equal to", "opt_em": ["\\(\\dfrac{y^4 + 1}{y^2}\\)", "\\(\\left(y + \\dfrac{1}{y}\\right)^2\\)", "\\(\\left(y - \\dfrac{1}{y}\\right)^2 + 2\\)", "\\(\\left(y + \\dfrac{1}{y}\\right)^2 - 2\\)"], "q_tm": "கீழ்க்கண்டவற்றுள் எது \\(y^2 + \\dfrac{1}{y^2}\\)-க்குச் சமம் இல்லை.", "opt_tm": ["\\(\\dfrac{y^4 + 1}{y^2}\\)", "\\(\\left(y + \\dfrac{1}{y}\\right)^2\\)", "\\(\\left(y - \\dfrac{1}{y}\\right)^2 + 2\\)", "\\(\\left(y + \\dfrac{1}{y}\\right)^2 - 2\\)"]}, {"id": 36, "ch": 3, "ch_q": 6, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "\\(\\dfrac{x}{x^2 - 25} - \\dfrac{8}{x^2 + 6x + 5}\\) gives", "opt_em": ["\\(\\dfrac{x^2 - 7x + 40}{(x - 5)(x + 5)}\\)", "\\(\\dfrac{x^2 + 7x + 40}{(x - 5)(x + 5)(x + 1)}\\)", "\\(\\dfrac{x^2 - 7x + 40}{(x^2 - 25)(x + 1)}\\)", "\\(\\dfrac{x^2 + 10}{(x^2 - 25)(x + 1)}\\)"], "q_tm": "\\(\\dfrac{x}{x^2 - 25} - \\dfrac{8}{x^2 + 6x + 5}\\)-யின் சுருங்கிய வடிவம்", "opt_tm": ["\\(\\dfrac{x^2 - 7x + 40}{(x - 5)(x + 5)}\\)", "\\(\\dfrac{x^2 + 7x + 40}{(x - 5)(x + 5)(x + 1)}\\)", "\\(\\dfrac{x^2 - 7x + 40}{(x^2 - 25)(x + 1)}\\)", "\\(\\dfrac{x^2 + 10}{(x^2 - 25)(x + 1)}\\)"]}, {"id": 37, "ch": 3, "ch_q": 7, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "The square root of \\(\\dfrac{256 x^8 y^4 z^{10}}{25 x^6 y^6 z^6}\\) is equal to", "opt_em": ["\\(\\dfrac{16}{5}\\left|\\dfrac{x^2 z^4}{y^2}\\right|\\)", "\\(16\\left|\\dfrac{y^2}{x^2 z^4}\\right|\\)", "\\(\\dfrac{16}{5}\\left|\\dfrac{y}{xz^2}\\right|\\)", "\\(\\dfrac{16}{5}\\left|\\dfrac{xz^2}{y}\\right|\\)"], "q_tm": "\\(\\dfrac{256 x^8 y^4 z^{10}}{25 x^6 y^6 z^6}\\)-யின் வர்க்கமூலம்", "opt_tm": ["\\(\\dfrac{16}{5}\\left|\\dfrac{x^2 z^4}{y^2}\\right|\\)", "\\(16\\left|\\dfrac{y^2}{x^2 z^4}\\right|\\)", "\\(\\dfrac{16}{5}\\left|\\dfrac{y}{xz^2}\\right|\\)", "\\(\\dfrac{16}{5}\\left|\\dfrac{xz^2}{y}\\right|\\)"]}, {"id": 38, "ch": 3, "ch_q": 8, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "Which of the following should be added to make \\(x^4 + 64\\) a perfect square?", "opt_em": ["\\(4x^2\\)", "\\(16x^2\\)", "\\(8x^2\\)", "\\(-8x^2\\)"], "q_tm": "\\(x^4 + 64\\) முழு வர்க்கமாக மாற்ற அதனுடன் பின்வருவனவற்றுள் எதைக் கூட்ட வேண்டும்?", "opt_tm": ["\\(4x^2\\)", "\\(16x^2\\)", "\\(8x^2\\)", "\\(-8x^2\\)"]}, {"id": 39, "ch": 3, "ch_q": 9, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "The solution of \\((2x - 1)^2 = 9\\) is equal to", "opt_em": ["\\(-1\\)", "\\(2\\)", "\\(-1, 2\\)", "None of these"], "q_tm": "\\((2x - 1)^2 = 9\\)-யின் தீர்வு", "opt_tm": ["\\(-1\\)", "\\(2\\)", "\\(-1, 2\\)", "இதில் எதுவும் இல்லை"]}, {"id": 40, "ch": 3, "ch_q": 10, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "The values of \\(a\\) and \\(b\\) if \\(4x^4 - 24x^3 + 76x^2 + ax + b\\) is a perfect square are", "opt_em": ["\\(100, 120\\)", "\\(10, 12\\)", "\\(-120, 100\\)", "\\(12, 10\\)"], "q_tm": "\\(4x^4 - 24x^3 + 76x^2 + ax + b\\) ஒரு முழு வர்க்கம் எனில், \\(a\\) மற்றும் \\(b\\)-யின் மதிப்பு", "opt_tm": ["\\(100, 120\\)", "\\(10, 12\\)", "\\(-120, 100\\)", "\\(12, 10\\)"]}, {"id": 41, "ch": 3, "ch_q": 11, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "If the roots of the equation \\(q^2 x^2 + p^2 x + r^2 = 0\\) are the squares of the roots of the equation \\(qx^2 + px + r = 0\\) then \\(q, p, r\\) are in _______.", "opt_em": ["A.P.", "G.P.", "Both A.P. and G.P.", "None of these"], "q_tm": "\\(q^2 x^2 + p^2 x + r^2 = 0\\) என்ற சமன்பாட்டின் மூலங்களின் வர்க்கங்கள், \\(qx^2 + px + r = 0\\) என்ற சமன்பாட்டின் மூலங்கள் எனில், \\(q, p, r\\) என்பன", "opt_tm": ["ஒரு கூட்டுத் தொடர்வரிசையில் உள்ளன", "ஒரு பெருக்குத் தொடர்வரிசையில் உள்ளன", "கூட்டுத் தொடர்வரிசை மற்றும் பெருக்குத்தொடர்வரிசை இரண்டிலும் உள்ளன.", "இதில் எதுவும் இல்லை."]}, {"id": 42, "ch": 3, "ch_q": 12, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "Graph of a linear equation is a ________.", "opt_em": ["Straight line", "Circle", "Parabola", "Hyperbola"], "q_tm": "ஒரு நேரிய சமன்பாட்டின் வரைபடம் ________ ஆகும்.", "opt_tm": ["நேர்க்கோடு", "வட்டம்", "பரவளையம்", "அதிபரவளையம்"]}, {"id": 43, "ch": 3, "ch_q": 13, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "The number of points of intersection of the quadratic polynomial \\(x^2 + 4x + 4\\) with the \\(X\\) axis is", "opt_em": ["\\(0\\)", "\\(1\\)", "\\(0 \\text{ or } 1\\)", "\\(2\\)"], "q_tm": "\\(x^2 + 4x + 4\\) என்ற இருபடி பல்லுறுப்புக் கோவை \\(X\\) அச்சோடு வெட்டும் புள்ளிகளின் எண்ணிக்கை", "opt_tm": ["\\(0\\)", "\\(1\\)", "\\(0\\) அல்லது \\(1\\)", "\\(2\\)"]}, {"id": 44, "ch": 3, "ch_q": 14, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "For the given matrix \\(A = \\begin{pmatrix} 1 & 3 & 5 & 7 \\\\ 2 & 4 & 6 & 8 \\\\ 9 & 11 & 13 & 15 \\end{pmatrix}\\) the order of the matrix \\(A^T\\) is", "opt_em": ["\\(2 \\times 3\\)", "\\(3 \\times 2\\)", "\\(3 \\times 4\\)", "\\(4 \\times 3\\)"], "q_tm": "கொடுக்கப்பட்ட அணி \\(A = \\begin{pmatrix} 1 & 3 & 5 & 7 \\\\ 2 & 4 & 6 & 8 \\\\ 9 & 11 & 13 & 15 \\end{pmatrix}\\)-க்கான நிரை நிரல் மாற்று அணியின் வரிசை", "opt_tm": ["\\(2 \\times 3\\)", "\\(3 \\times 2\\)", "\\(3 \\times 4\\)", "\\(4 \\times 3\\)"]}, {"id": 45, "ch": 3, "ch_q": 15, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "If \\(A\\) is a \\(2 \\times 3\\) matrix and \\(B\\) is a \\(3 \\times 4\\) matrix how many columns does \\(AB\\) have", "opt_em": ["\\(3\\)", "\\(4\\)", "\\(2\\)", "\\(5\\)"], "q_tm": "\\(A\\) என்ற அணியின் வரிசை \\(2 \\times 3\\); \\(B\\) என்ற அணியின் வரிசை \\(3 \\times 4\\) எனில், \\(AB\\) என்ற அணியின் நிரல்களின் எண்ணிக்கை", "opt_tm": ["\\(3\\)", "\\(4\\)", "\\(2\\)", "\\(5\\)"]}, {"id": 46, "ch": 3, "ch_q": 16, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "If number of columns and rows are not equal in a matrix then it is said to be a", "opt_em": ["Diagonal matrix", "Rectangular matrix", "Square matrix", "Identity matrix"], "q_tm": "நிரல்கள் மற்றும் நிரைகள் சம எண்ணிக்கையில் இல்லாத அணி", "opt_tm": ["மூலைவிட்ட அணி", "செவ்வக அணி", "சதுர அணி", "அலகு அணி"]}, {"id": 47, "ch": 3, "ch_q": 17, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "Transpose of a column matrix is", "opt_em": ["Unit matrix", "Diagonal matrix", "Column matrix", "Row matrix"], "q_tm": "ஒரு நிரல் அணியின், நிரை நிரல் மாற்று அணி", "opt_tm": ["அலகு அணி", "மூலைவிட்ட அணி", "நிரல் அணி", "நிரை அணி"]}, {"id": 48, "ch": 3, "ch_q": 18, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "Find the matrix \\(X\\) if \\(2X + \\begin{pmatrix} 1 & 3 \\\\ 5 & 7 \\end{pmatrix} = \\begin{pmatrix} 5 & 7 \\\\ 9 & 5 \\end{pmatrix}\\)", "opt_em": ["\\(\\begin{pmatrix} -2 & -2 \\\\ 2 & -1 \\end{pmatrix}\\)", "\\(\\begin{pmatrix} 2 & 2 \\\\ 2 & -1 \\end{pmatrix}\\)", "\\(\\begin{pmatrix} 1 & 2 \\\\ 2 & 2 \\end{pmatrix}\\)", "\\(\\begin{pmatrix} 2 & 1 \\\\ 2 & 2 \\end{pmatrix}\\)"], "q_tm": "\\(2X + \\begin{pmatrix} 1 & 3 \\\\ 5 & 7 \\end{pmatrix} = \\begin{pmatrix} 5 & 7 \\\\ 9 & 5 \\end{pmatrix}\\) எனில், \\(X\\) என்ற அணியைக் காண்க.", "opt_tm": ["\\(\\begin{pmatrix} -2 & -2 \\\\ 2 & -1 \\end{pmatrix}\\)", "\\(\\begin{pmatrix} 2 & 2 \\\\ 2 & -1 \\end{pmatrix}\\)", "\\(\\begin{pmatrix} 1 & 2 \\\\ 2 & 2 \\end{pmatrix}\\)", "\\(\\begin{pmatrix} 2 & 1 \\\\ 2 & 2 \\end{pmatrix}\\)"]}, {"id": 49, "ch": 3, "ch_q": 19, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "Which of the following can be calculated from the given matrices \\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\\\ 5 & 6 \\end{pmatrix}\\), \\(B = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}\\): (i) \\(A^2\\) (ii) \\(B^2\\) (iii) \\(AB\\) (iv) \\(BA\\)", "opt_em": ["(i) and (ii) only", "(ii) and (iii) only", "(ii) and (iv) only", "All of these"], "q_tm": "\\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\\\ 5 & 6 \\end{pmatrix}\\), \\(B = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}\\) ஆகிய அணிகளைக் கொண்டு எவ்வகை அணிகளைக் கணக்கிட முடியும்? (i) \\(A^2\\) (ii) \\(B^2\\) (iii) \\(AB\\) (iv) \\(BA\\)", "opt_tm": ["(i), (ii) மட்டும்", "(ii), (iii) மட்டும்", "(ii), (iv) மட்டும்", "அனைத்தும்"]}, {"id": 50, "ch": 3, "ch_q": 20, "ch_em": "Chapter 3: Algebra", "ch_tm": "அலகு 3: இயற்கணிதம்", "q_em": "If \\(A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 2 & 1 \\end{pmatrix}\\), \\(B = \\begin{pmatrix} 1 & 0 \\\\ 2 & -1 \\\\ 0 & 2 \\end{pmatrix}\\) and \\(C = \\begin{pmatrix} 0 & 1 \\\\ -2 & 5 \\end{pmatrix}\\) which of the following statements are correct? (i) \\(AB + C = \\begin{pmatrix} 5 & 5 \\\\ 5 & 5 \\end{pmatrix}\\) (ii) \\(BC = \\begin{pmatrix} 0 & 1 \\\\ 2 & -3 \\\\ -4 & 10 \\end{pmatrix}\\) (iii) \\(BA + C = \\begin{pmatrix} 2 & 5 \\\\ 3 & 0 \\end{pmatrix}\\) (iv) \\((AB)C = \\begin{pmatrix} -8 & 20 \\\\ -8 & 13 \\end{pmatrix}\\)", "opt_em": ["(i) and (ii) only", "(ii) and (iii) only", "(iii) and (iv) only", "All of these"], "q_tm": "\\(A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 2 & 1 \\end{pmatrix}\\), \\(B = \\begin{pmatrix} 1 & 0 \\\\ 2 & -1 \\\\ 0 & 2 \\end{pmatrix}\\) மற்றும் \\(C = \\begin{pmatrix} 0 & 1 \\\\ -2 & 5 \\end{pmatrix}\\) எனில், பின்வருவனவற்றுள் எவை சரி? (i) \\(AB + C = \\begin{pmatrix} 5 & 5 \\\\ 5 & 5 \\end{pmatrix}\\) (ii) \\(BC = \\begin{pmatrix} 0 & 1 \\\\ 2 & -3 \\\\ -4 & 10 \\end{pmatrix}\\) (iii) \\(BA + C = \\begin{pmatrix} 2 & 5 \\\\ 3 & 0 \\end{pmatrix}\\) (iv) \\((AB)C = \\begin{pmatrix} -8 & 20 \\\\ -8 & 13 \\end{pmatrix}\\)", "opt_tm": ["(i) மற்றும் (ii) மட்டும்", "(ii) மற்றும் (iii) மட்டும்", "(iii) மற்றும் (iv) மட்டும்", "அனைத்தும்"]}, {"id": 51, "ch": 4, "ch_q": 1, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "If in triangles \\(ABC\\) and \\(EDF\\), \\(\\dfrac{AB}{DE} = \\dfrac{BC}{FD}\\) then they will be similar, when", "opt_em": ["\\(\\angle B = \\angle E\\)", "\\(\\angle A = \\angle D\\)", "\\(\\angle B = \\angle D\\)", "\\(\\angle A = \\angle F\\)"], "q_tm": "\\(\\dfrac{AB}{DE} = \\dfrac{BC}{FD}\\) எனில், \\(ABC\\) மற்றும் \\(EDF\\) எப்பொழுது வடிவொத்தவையாக அமையும்.", "opt_tm": ["\\(\\angle B = \\angle E\\)", "\\(\\angle A = \\angle D\\)", "\\(\\angle B = \\angle D\\)", "\\(\\angle A = \\angle F\\)"]}, {"id": 52, "ch": 4, "ch_q": 2, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "In \\(\\triangle LMN\\), \\(\\angle L = 60^\\circ\\), \\(\\angle M = 50^\\circ\\). If \\(\\triangle LMN \\sim \\triangle PQR\\) then the value of \\(\\angle R\\) is", "opt_em": ["\\(40^\\circ\\)", "\\(70^\\circ\\)", "\\(30^\\circ\\)", "\\(110^\\circ\\)"], "q_tm": "\\(\\triangle LMN\\)-யில் \\(\\angle L = 60^\\circ\\), \\(\\angle M = 50^\\circ\\) மேலும், \\(\\triangle LMN \\sim \\triangle PQR\\) எனில், \\(\\angle R\\)-யின் மதிப்பு", "opt_tm": ["\\(40^\\circ\\)", "\\(70^\\circ\\)", "\\(30^\\circ\\)", "\\(110^\\circ\\)"]}, {"id": 53, "ch": 4, "ch_q": 3, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "If \\(\\triangle ABC\\) is an isosceles triangle with \\(\\angle C = 90^\\circ\\) and \\(AC = 5\\text{ cm}\\), then \\(AB\\) is", "opt_em": ["\\(2.5\\text{ cm}\\)", "\\(5\\text{ cm}\\)", "\\(10\\text{ cm}\\)", "\\(5\\sqrt{2}\\text{ cm}\\)"], "q_tm": "இருசமபக்க முக்கோணம் \\(\\triangle ABC\\)-யில் \\(\\angle C = 90^\\circ\\) மற்றும் \\(AC = 5\\) செ.மீ, எனில் \\(AB\\) ஆனது", "opt_tm": ["\\(2.5\\) செ.மீ", "\\(5\\) செ.மீ", "\\(10\\) செ.மீ", "\\(5\\sqrt{2}\\) செ.மீ"]}, {"id": 54, "ch": 4, "ch_q": 4, "svg": "ch4_q4", "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "In a given figure \\(ST \\parallel QR\\), \\(PS = 2\\text{ cm}\\) and \\(SQ = 3\\text{ cm}\\). Then the ratio of the area of \\(\\triangle PQR\\) to the area of \\(\\triangle PST\\) is", "opt_em": ["\\(25 : 4\\)", "\\(25 : 7\\)", "\\(25 : 11\\)", "\\(25 : 13\\)"], "q_tm": "கொடுக்கப்பட்ட படத்தில் \\(ST \\parallel QR\\), \\(PS = 2\\) செ.மீ மற்றும் \\(SQ = 3\\) செ.மீ. எனில், \\(\\triangle PQR\\)-யின் பரப்பளவுக்கும் \\(\\triangle PST\\)-யின் பரப்பளவுக்கும் உள்ள விகிதம்", "opt_tm": ["\\(25 : 4\\)", "\\(25 : 7\\)", "\\(25 : 11\\)", "\\(25 : 13\\)"]}, {"id": 55, "ch": 4, "ch_q": 5, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "The perimeters of two similar triangles \\(\\triangle ABC\\) and \\(\\triangle PQR\\) are \\(36\\text{ cm}\\) and \\(24\\text{ cm}\\) respectively. If \\(PQ = 10\\text{ cm}\\), then the length of \\(AB\\) is", "opt_em": ["\\(6\\dfrac{2}{3}\\text{ cm}\\)", "\\(\\dfrac{10\\sqrt{6}}{3}\\text{ cm}\\)", "\\(66\\dfrac{2}{3}\\text{ cm}\\)", "\\(15\\text{ cm}\\)"], "q_tm": "இரு வடிவொத்த முக்கோணங்கள் \\(\\triangle ABC\\) மற்றும் \\(\\triangle PQR\\)-யின் சுற்றளவுகள் முறையே \\(36\\) செ.மீ மற்றும் \\(24\\) செ.மீ ஆகும். \\(PQ = 10\\) செ.மீ எனில், \\(AB\\)-யின் நீளம்", "opt_tm": ["\\(6\\dfrac{2}{3}\\) செ.மீ", "\\(\\dfrac{10\\sqrt{6}}{3}\\) செ.மீ", "\\(66\\dfrac{2}{3}\\) செ.மீ", "\\(15\\) செ.மீ"]}, {"id": 56, "ch": 4, "ch_q": 6, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "If in \\(\\triangle ABC\\), \\(DE \\parallel BC\\). \\(AB = 3.6\\text{ cm}\\), \\(AC = 2.4\\text{ cm}\\) and \\(AD = 2.1\\text{ cm}\\) then the length of \\(AE\\) is", "opt_em": ["\\(1.4\\text{ cm}\\)", "\\(1.8\\text{ cm}\\)", "\\(1.2\\text{ cm}\\)", "\\(1.05\\text{ cm}\\)"], "q_tm": "\\(\\triangle ABC\\)-யில் \\(DE \\parallel BC\\). \\(AB = 3.6\\) செ.மீ, \\(AC = 2.4\\) செ.மீ மற்றும் \\(AD = 2.1\\) செ.மீ எனில், \\(AE\\)-யின் நீளம்", "opt_tm": ["\\(1.4\\) செ.மீ", "\\(1.8\\) செ.மீ", "\\(1.2\\) செ.மீ", "\\(1.05\\) செ.மீ"]}, {"id": 57, "ch": 4, "ch_q": 7, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "In a \\(\\triangle ABC\\), \\(AD\\) is the bisector of \\(\\angle BAC\\). If \\(AB = 8\\text{ cm}\\), \\(BD = 6\\text{ cm}\\) and \\(DC = 3\\text{ cm}\\). The length of the side \\(AC\\) is", "opt_em": ["\\(6\\text{ cm}\\)", "\\(4\\text{ cm}\\)", "\\(3\\text{ cm}\\)", "\\(8\\text{ cm}\\)"], "q_tm": "\\(\\triangle ABC\\)-யில் \\(AD\\) ஆனது, \\(\\angle BAC\\)-யின் இருசமவெட்டி. \\(AB = 8\\) செ.மீ, \\(BD = 6\\) செ.மீ மற்றும் \\(DC = 3\\) செ.மீ எனில், பக்கம் \\(AC\\)-யின் நீளம்", "opt_tm": ["\\(6\\) செ.மீ", "\\(4\\) செ.மீ", "\\(3\\) செ.மீ", "\\(8\\) செ.மீ"]}, {"id": 58, "ch": 4, "ch_q": 8, "svg": "ch4_q8", "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "In the adjacent figure \\(\\angle BAC = 90^\\circ\\) and \\(AD \\perp BC\\) then", "opt_em": ["\\(BD \\cdot CD = BC^2\\)", "\\(AB \\cdot AC = BC^2\\)", "\\(BD \\cdot CD = AD^2\\)", "\\(AB \\cdot AC = AD^2\\)"], "q_tm": "கொடுக்கப்பட்ட படத்தில் \\(\\angle BAC = 90^\\circ\\) மற்றும் \\(AD \\perp BC\\) எனில்,", "opt_tm": ["\\(BD \\cdot CD = BC^2\\)", "\\(AB \\cdot AC = BC^2\\)", "\\(BD \\cdot CD = AD^2\\)", "\\(AB \\cdot AC = AD^2\\)"]}, {"id": 59, "ch": 4, "ch_q": 9, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "Two poles of heights \\(6\\text{ m}\\) and \\(11\\text{ m}\\) stand vertically on a plane ground. If the distance between their feet is \\(12\\text{ m}\\), what is the distance between their tops?", "opt_em": ["\\(13\\text{ m}\\)", "\\(14\\text{ m}\\)", "\\(15\\text{ m}\\)", "\\(12.8\\text{ m}\\)"], "q_tm": "\\(6\\) மீ மற்றும் \\(11\\) மீ உயரமுள்ள இரு கம்பங்கள் சமதளத் தரையில் செங்குத்தாக உள்ளன. அவற்றின் அடிகளுக்கு இடையேயுள்ள தொலைவு \\(12\\) மீ எனில் அவற்றின் உச்சிகளுக்கு இடையே உள்ள தொலைவு என்ன?", "opt_tm": ["\\(13\\) மீ", "\\(14\\) மீ", "\\(15\\) மீ", "\\(12.8\\) மீ"]}, {"id": 60, "ch": 4, "ch_q": 10, "svg": "ch4_q10", "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "In the given figure, \\(PR = 26\\text{ cm}\\), \\(QR = 24\\text{ cm}\\), \\(\\angle PAQ = 90^\\circ\\), \\(PA = 6\\text{ cm}\\) and \\(QA = 8\\text{ cm}\\). Find \\(\\angle PQR\\)", "opt_em": ["\\(80^\\circ\\)", "\\(85^\\circ\\)", "\\(75^\\circ\\)", "\\(90^\\circ\\)"], "q_tm": "கொடுக்கப்பட்ட படத்தில் \\(PR = 26\\) செ.மீ, \\(QR = 24\\) செ.மீ, \\(\\angle PAQ = 90^\\circ\\), \\(PA = 6\\) செ.மீ மற்றும் \\(QA = 8\\) செ.மீ எனில் \\(\\angle PQR\\)-ஐக் காண்க.", "opt_tm": ["\\(80^\\circ\\)", "\\(85^\\circ\\)", "\\(75^\\circ\\)", "\\(90^\\circ\\)"]}, {"id": 61, "ch": 4, "ch_q": 11, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "A tangent is perpendicular to the radius at the", "opt_em": ["Centre", "Point of contact", "Infinity", "Chord"], "q_tm": "வட்டத்தின் தொடுகோடும் அதன் ஆரமும் செங்குத்தாக அமையும் இடம்", "opt_tm": ["மையம்", "தொடு புள்ளி", "முடிவிலி", "நாண்"]}, {"id": 62, "ch": 4, "ch_q": 12, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "How many tangents can be drawn to the circle from an exterior point?", "opt_em": ["One", "Two", "Infinite", "Zero"], "q_tm": "வட்டத்தின் வெளிப்புறப் புள்ளியிலிருந்து வட்டத்திற்கு எத்தனை தொடுகோடுகள் வரையலாம்?", "opt_tm": ["ஒன்று", "இரண்டு", "முடிவற்ற எண்ணிக்கை", "பூஜ்ஜியம்"]}, {"id": 63, "ch": 4, "ch_q": 13, "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "The two tangents from an external point \\(P\\) to a circle with centre at \\(O\\) are \\(PA\\) and \\(PB\\). If \\(\\angle APB = 70^\\circ\\) then the value of \\(\\angle AOB\\) is", "opt_em": ["\\(100^\\circ\\)", "\\(110^\\circ\\)", "\\(120^\\circ\\)", "\\(130^\\circ\\)"], "q_tm": "\\(O\\)-வை மையமாக உடைய வட்டத்திற்கு, வெளியேயுள்ள புள்ளி \\(P\\)-யிலிருந்து வரையப்பட்ட தொடுகோடுகள் \\(PA\\) மற்றும் \\(PB\\) ஆகும். \\(\\angle APB = 70^\\circ\\) எனில், \\(\\angle AOB\\)-யின் மதிப்பு", "opt_tm": ["\\(100^\\circ\\)", "\\(110^\\circ\\)", "\\(120^\\circ\\)", "\\(130^\\circ\\)"]}, {"id": 64, "ch": 4, "ch_q": 14, "svg": "ch4_q14", "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "In figure \\(CP\\) and \\(CQ\\) are tangents to a circle with centre at \\(O\\). \\(ARB\\) is another tangent touching the circle at \\(R\\). If \\(CP = 11\\text{ cm}\\) and \\(BC = 7\\text{ cm}\\), then the length of \\(BR\\) is", "opt_em": ["\\(6\\text{ cm}\\)", "\\(5\\text{ cm}\\)", "\\(8\\text{ cm}\\)", "\\(4\\text{ cm}\\)"], "q_tm": "படத்தில் \\(O\\)-வை மையமாக உடைய வட்டத்தின் தொடுகோடுகள் \\(CP\\) மற்றும் \\(CQ\\) ஆகும். \\(ARB\\) ஆனது வட்டத்தின் மீதுள்ள புள்ளி \\(R\\) வழியாகச் செல்லும் மற்றொரு தொடுகோடு ஆகும். \\(CP = 11\\) செ.மீ மற்றும் \\(BC = 7\\) செ.மீ, எனில் \\(BR\\)-யின் நீளம்", "opt_tm": ["\\(6\\) செ.மீ", "\\(5\\) செ.மீ", "\\(8\\) செ.மீ", "\\(4\\) செ.மீ"]}, {"id": 65, "ch": 4, "ch_q": 15, "svg": "ch4_q15", "ch_em": "Chapter 4: Geometry", "ch_tm": "அலகு 4: வடிவியல்", "q_em": "In figure if \\(PR\\) is tangent to the circle at \\(P\\) and \\(O\\) is the centre of the circle, then \\(\\angle POQ\\) is", "opt_em": ["\\(120^\\circ\\)", "\\(100^\\circ\\)", "\\(110^\\circ\\)", "\\(90^\\circ\\)"], "q_tm": "படத்தில் உள்ளவாறு \\(O\\)-வை மையமாகக் கொண்ட வட்டத்தின் தொடுகோடு \\(PR\\) எனில், \\(\\angle POQ\\) ஆனது", "opt_tm": ["\\(120^\\circ\\)", "\\(100^\\circ\\)", "\\(110^\\circ\\)", "\\(90^\\circ\\)"]}, {"id": 66, "ch": 5, "ch_q": 1, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "The area of triangle formed by the points \\((-5, 0)\\), \\((0, -5)\\) and \\((5, 0)\\) is", "opt_em": ["\\(0\\text{ sq. units}\\)", "\\(25\\text{ sq. units}\\)", "\\(5\\text{ sq. units}\\)", "None of these"], "q_tm": "\\((-5, 0)\\), \\((0, -5)\\) மற்றும் \\((5, 0)\\) ஆகிய புள்ளிகளால் அமைக்கப்படும் முக்கோணத்தின் பரப்பு", "opt_tm": ["\\(0\\) ச.அலகுகள்", "\\(25\\) ச.அலகுகள்", "\\(5\\) ச.அலகுகள்", "எதுவுமில்லை"]}, {"id": 67, "ch": 5, "ch_q": 2, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "A man walks near a wall, such that the distance between him and the wall is \\(10\\) units. Consider the wall to be the \\(Y\\) axis. The path travelled by the man is", "opt_em": ["\\(x = 10\\)", "\\(y = 10\\)", "\\(x = 0\\)", "\\(y = 0\\)"], "q_tm": "ஒரு சுவரின் அருகே நடந்து சென்று கொண்டிருக்கும் ஒரு நபருக்கும் சுவருக்கும் இடையே உள்ள தூரம் \\(10\\) அலகுகள். சுவரை \\(Y\\)-அச்சாகக் கருதினால், அந்த நபர் செல்லும் பாதை என்பது", "opt_tm": ["\\(x = 10\\)", "\\(y = 10\\)", "\\(x = 0\\)", "\\(y = 0\\)"]}, {"id": 68, "ch": 5, "ch_q": 3, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "The straight line given by the equation \\(x = 11\\) is", "opt_em": ["Parallel to \\(X\\) axis", "Parallel to \\(Y\\) axis", "Passing through the origin", "Passing through the point \\((0, 11)\\)"], "q_tm": "\\(x = 11\\) எனக் கொடுக்கப்பட்ட நேர்க்கோட்டின் சமன்பாடானது", "opt_tm": ["\\(X\\)-அச்சுக்கு இணை", "\\(Y\\)-அச்சுக்கு இணை", "ஆதிப் புள்ளி வழிச் செல்லும்", "\\((0, 11)\\) என்ற புள்ளி வழிச் செல்லும்"]}, {"id": 69, "ch": 5, "ch_q": 4, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "If \\((5, 7)\\), \\((3, p)\\) and \\((6, 6)\\) are collinear, then the value of \\(p\\) is", "opt_em": ["\\(3\\)", "\\(6\\)", "\\(9\\)", "\\(12\\)"], "q_tm": "\\((5, 7)\\), \\((3, p)\\) மற்றும் \\((6, 6)\\) என்பன ஒரு கோடமைந்தவை எனில், \\(p\\)-யின் மதிப்பு", "opt_tm": ["\\(3\\)", "\\(6\\)", "\\(9\\)", "\\(12\\)"]}, {"id": 70, "ch": 5, "ch_q": 5, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "The point of intersection of \\(3x - y = 4\\) and \\(x + y = 8\\) is", "opt_em": ["\\((5, 3)\\)", "\\((2, 4)\\)", "\\((3, 5)\\)", "\\((4, 4)\\)"], "q_tm": "\\(3x - y = 4\\) மற்றும் \\(x + y = 8\\) ஆகிய நேர்க்கோடுகள் சந்திக்கும் புள்ளி", "opt_tm": ["\\((5, 3)\\)", "\\((2, 4)\\)", "\\((3, 5)\\)", "\\((4, 4)\\)"]}, {"id": 71, "ch": 5, "ch_q": 6, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "The slope of the line joining \\((12, 3)\\), \\((4, a)\\) is \\(\\dfrac{1}{8}\\). The value of '\\(a\\)' is", "opt_em": ["\\(1\\)", "\\(4\\)", "\\(-5\\)", "\\(2\\)"], "q_tm": "\\((12, 3)\\), \\((4, a)\\) என்ற புள்ளிகளை இணைக்கும் கோட்டின் சாய்வு \\(\\dfrac{1}{8}\\) எனில், '\\(a\\)'-யின் மதிப்பு", "opt_tm": ["\\(1\\)", "\\(4\\)", "\\(-5\\)", "\\(2\\)"]}, {"id": 72, "ch": 5, "ch_q": 7, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "The slope of the line which is perpendicular to a line joining the points \\((0, 0)\\) and \\((-8, 8)\\) is", "opt_em": ["\\(-1\\)", "\\(1\\)", "\\(\\dfrac{1}{3}\\)", "\\(-8\\)"], "q_tm": "\\((0, 0)\\) மற்றும் \\((-8, 8)\\) என்ற புள்ளிகளை இணைக்கும் கோட்டிற்குச் செங்குத்தான கோட்டின் சாய்வு", "opt_tm": ["\\(-1\\)", "\\(1\\)", "\\(\\dfrac{1}{3}\\)", "\\(-8\\)"]}, {"id": 73, "ch": 5, "ch_q": 8, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "If slope of the line \\(PQ\\) is \\(\\dfrac{1}{\\sqrt{3}}\\) then slope of the perpendicular bisector of \\(PQ\\) is", "opt_em": ["\\(\\sqrt{3}\\)", "\\(-\\sqrt{3}\\)", "\\(\\dfrac{1}{\\sqrt{3}}\\)", "\\(0\\)"], "q_tm": "கோட்டுத்துண்டு \\(PQ\\)-யின் சாய்வு \\(\\dfrac{1}{\\sqrt{3}}\\) எனில், \\(PQ\\)-க்கு செங்குத்தான இரு சம வெட்டியின் சாய்வு", "opt_tm": ["\\(\\sqrt{3}\\)", "\\(-\\sqrt{3}\\)", "\\(\\dfrac{1}{\\sqrt{3}}\\)", "\\(0\\)"]}, {"id": 74, "ch": 5, "ch_q": 9, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "If \\(A\\) is a point on the \\(Y\\) axis whose ordinate is \\(8\\) and \\(B\\) is a point on the \\(X\\) axis whose abscissa is \\(5\\) then the equation of the line \\(AB\\) is", "opt_em": ["\\(8x + 5y = 40\\)", "\\(8x - 5y = 40\\)", "\\(x = 8\\)", "\\(y = 5\\)"], "q_tm": "\\(Y\\) அச்சில் அமையும் புள்ளி \\(A\\)-யின் செங்குத்துத் தொலைவு \\(8\\) மற்றும் \\(X\\) அச்சில் அமையும் புள்ளி \\(B\\)-யின் கிடைமட்டத் தொலைவு \\(5\\) எனில், \\(AB\\) என்ற நேர்க்கோட்டின் சமன்பாடு", "opt_tm": ["\\(8x + 5y = 40\\)", "\\(8x - 5y = 40\\)", "\\(x = 8\\)", "\\(y = 5\\)"]}, {"id": 75, "ch": 5, "ch_q": 10, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "The equation of a line passing through the origin and perpendicular to the line \\(7x - 3y + 4 = 0\\) is", "opt_em": ["\\(7x - 3y + 4 = 0\\)", "\\(3x - 7y + 4 = 0\\)", "\\(3x + 7y = 0\\)", "\\(7x - 3y = 0\\)"], "q_tm": "\\(7x - 3y + 4 = 0\\) என்ற நேர்க்கோட்டிற்குச் செங்குத்தாகவும், ஆதிப்புள்ளி வழிச் செல்லும் நேர்க்கோட்டின் சமன்பாடு", "opt_tm": ["\\(7x - 3y + 4 = 0\\)", "\\(3x - 7y + 4 = 0\\)", "\\(3x + 7y = 0\\)", "\\(7x - 3y = 0\\)"]}, {"id": 76, "ch": 5, "ch_q": 11, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "Consider four straight lines (i) \\(l_1 : 3y = 4x + 5\\) (ii) \\(l_2 : 4y = 3x - 1\\) (iii) \\(l_3 : 4y + 3x = 7\\) (iv) \\(l_4 : 4x + 3y = 2\\). Which of the following statement is true?", "opt_em": ["\\(l_1\\) and \\(l_2\\) are perpendicular", "\\(l_1\\) and \\(l_4\\) are parallel", "\\(l_2\\) and \\(l_4\\) are perpendicular", "\\(l_2\\) and \\(l_3\\) are parallel"], "q_tm": "(i) \\(l_1 : 3y = 4x + 5\\) (ii) \\(l_2 : 4y = 3x - 1\\) (iii) \\(l_3 : 4y + 3x = 7\\) (iv) \\(l_4 : 4x + 3y = 2\\) எனக் கொடுக்கப்பட்ட நான்கு நேர்க்கோடுகளுக்குக் கீழ்க்கண்ட கூற்றுகளில் எது உண்மை?", "opt_tm": ["\\(l_1\\) மற்றும் \\(l_2\\) செங்குத்தானவை", "\\(l_1\\) மற்றும் \\(l_4\\) இணையானவை", "\\(l_2\\) மற்றும் \\(l_4\\) செங்குத்தானவை", "\\(l_2\\) மற்றும் \\(l_3\\) இணையானவை"]}, {"id": 77, "ch": 5, "ch_q": 12, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "A straight line has equation \\(8y = 4x + 21\\). Which of the following is true?", "opt_em": ["The slope is \\(0.5\\) and the \\(y\\) intercept is \\(2.6\\)", "The slope is \\(5\\) and the \\(y\\) intercept is \\(1.6\\)", "The slope is \\(0.5\\) and the \\(y\\) intercept is \\(1.6\\)", "The slope is \\(5\\) and the \\(y\\) intercept is \\(2.6\\)"], "q_tm": "\\(8y = 4x + 21\\) என்ற நேர்க்கோட்டின் சமன்பாட்டிற்குக் கீழ்க்கண்டவற்றில் எது உண்மை?", "opt_tm": ["சாய்வு \\(0.5\\) மற்றும் \\(y\\) வெட்டுத்துண்டு \\(2.6\\)", "சாய்வு \\(5\\) மற்றும் \\(y\\) வெட்டுத்துண்டு \\(1.6\\)", "சாய்வு \\(0.5\\) மற்றும் \\(y\\) வெட்டுத்துண்டு \\(1.6\\)", "சாய்வு \\(5\\) மற்றும் \\(y\\) வெட்டுத்துண்டு \\(2.6\\)"]}, {"id": 78, "ch": 5, "ch_q": 13, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "When proving that a quadrilateral is a trapezium, it is necessary to show", "opt_em": ["Two sides are parallel", "Two parallel and two non-parallel sides", "Opposite sides are parallel", "All sides are of equal length"], "q_tm": "ஒரு நாற்கரமானது ஒரு சரிவகமாக அமையத் தேவையான நிபந்தனை", "opt_tm": ["இரு பக்கங்கள் இணை.", "இரு பக்கங்கள் இணை மற்றும் இரு பக்கங்கள் இணையற்றவை.", "எதிரெதிர் பக்கங்கள் இணை.", "அனைத்துப் பக்கங்களும் சமம்."]}, {"id": 79, "ch": 5, "ch_q": 14, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "When proving that a quadrilateral is a parallelogram by using slopes you must find", "opt_em": ["The slopes of two sides", "The slopes of two pair of opposite sides", "The lengths of all sides", "Both the lengths and slopes of two sides"], "q_tm": "சாய்வைப் பயன்படுத்தி நாற்கரமானது ஓர் இணைகரமாக உள்ளது எனக் கூற நாம் காண வேண்டியவை", "opt_tm": ["இரு பக்கங்களின் சாய்வுகள்", "இரு சோடி எதிர் பக்கங்களின் சாய்வுகள்", "அனைத்துப் பக்கங்களின் நீளங்கள்", "இரு பக்கங்களின் சாய்வுகள் மற்றும் நீளங்கள்"]}, {"id": 80, "ch": 5, "ch_q": 15, "ch_em": "Chapter 5: Coordinate Geometry", "ch_tm": "அலகு 5: ஆயத்தொலை வடிவியல்", "q_em": "\\((2, 1)\\) is the point of intersection of two lines", "opt_em": ["\\(x - y - 3 = 0;\\; 3x - y - 7 = 0\\)", "\\(x + y = 3;\\; 3x + y = 7\\)", "\\(3x + y = 3;\\; x + y = 7\\)", "\\(x + 3y - 3 = 0;\\; x - y - 7 = 0\\)"], "q_tm": "\\((2, 1)\\)-ஐ வெட்டுப் புள்ளியாகக் கொண்ட இரு நேர்க்கோடுகள்", "opt_tm": ["\\(x - y - 3 = 0;\\; 3x - y - 7 = 0\\)", "\\(x + y = 3;\\; 3x + y = 7\\)", "\\(3x + y = 3;\\; x + y = 7\\)", "\\(x + 3y - 3 = 0;\\; x - y - 7 = 0\\)"]}, {"id": 81, "ch": 6, "ch_q": 1, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "The value of \\(\\sin^2\\theta + \\dfrac{1}{1 + \\tan^2\\theta}\\) is equal to", "opt_em": ["\\(\\tan^2\\theta\\)", "\\(1\\)", "\\(\\cot^2\\theta\\)", "\\(0\\)"], "q_tm": "\\(\\sin^2\\theta + \\dfrac{1}{1 + \\tan^2\\theta}\\)-ன் மதிப்பு", "opt_tm": ["\\(\\tan^2\\theta\\)", "\\(1\\)", "\\(\\cot^2\\theta\\)", "\\(0\\)"]}, {"id": 82, "ch": 6, "ch_q": 2, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "\\(\\tan\\theta \\operatorname{cosec}^2\\theta - \\tan\\theta\\) is equal to", "opt_em": ["\\(\\sec\\theta\\)", "\\(\\cot^2\\theta\\)", "\\(\\sin\\theta\\)", "\\(\\cot\\theta\\)"], "q_tm": "\\(\\tan\\theta \\operatorname{cosec}^2\\theta - \\tan\\theta\\)-ன் மதிப்பு", "opt_tm": ["\\(\\sec\\theta\\)", "\\(\\cot^2\\theta\\)", "\\(\\sin\\theta\\)", "\\(\\cot\\theta\\)"]}, {"id": 83, "ch": 6, "ch_q": 3, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "If \\((\\sin\\alpha + \\operatorname{cosec}\\alpha)^2 + (\\cos\\alpha + \\sec\\alpha)^2 = k + \\tan^2\\alpha + \\cot^2\\alpha\\), then the value of \\(k\\) is equal to", "opt_em": ["\\(9\\)", "\\(7\\)", "\\(5\\)", "\\(3\\)"], "q_tm": "\\((\\sin\\alpha + \\operatorname{cosec}\\alpha)^2 + (\\cos\\alpha + \\sec\\alpha)^2 = k + \\tan^2\\alpha + \\cot^2\\alpha\\) எனில் \\(k\\)-ன் மதிப்பு", "opt_tm": ["\\(9\\)", "\\(7\\)", "\\(5\\)", "\\(3\\)"]}, {"id": 84, "ch": 6, "ch_q": 4, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "If \\(\\sin\\theta + \\cos\\theta = a\\) and \\(\\sec\\theta + \\operatorname{cosec}\\theta = b\\), then the value of \\(b(a^2 - 1)\\) is equal to", "opt_em": ["\\(2a\\)", "\\(3a\\)", "\\(0\\)", "\\(2ab\\)"], "q_tm": "\\(\\sin\\theta + \\cos\\theta = a\\) மற்றும் \\(\\sec\\theta + \\operatorname{cosec}\\theta = b\\) எனில் \\(b(a^2 - 1)\\)-ன் மதிப்பு", "opt_tm": ["\\(2a\\)", "\\(3a\\)", "\\(0\\)", "\\(2ab\\)"]}, {"id": 85, "ch": 6, "ch_q": 5, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "If \\(5x = \\sec\\theta\\) and \\(\\dfrac{5}{y} = \\tan\\theta\\), then \\(x^2 - \\dfrac{1}{y^2}\\) is equal to", "opt_em": ["\\(25\\)", "\\(\\dfrac{1}{25}\\)", "\\(5\\)", "\\(1\\)"], "q_tm": "\\(5x = \\sec\\theta\\) மற்றும் \\(\\dfrac{5}{y} = \\tan\\theta\\) எனில் \\(x^2 - \\dfrac{1}{y^2}\\)-ன் மதிப்பு", "opt_tm": ["\\(25\\)", "\\(\\dfrac{1}{25}\\)", "\\(5\\)", "\\(1\\)"]}, {"id": 86, "ch": 6, "ch_q": 6, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "If \\(\\sin\\theta = \\cos\\theta\\), then \\(2\\tan^2\\theta + \\sin^2\\theta - 1\\) is equal to", "opt_em": ["\\(\\dfrac{-3}{2}\\)", "\\(\\dfrac{3}{2}\\)", "\\(\\dfrac{2}{3}\\)", "\\(\\dfrac{-2}{3}\\)"], "q_tm": "\\(\\sin\\theta = \\cos\\theta\\) எனில் \\(2\\tan^2\\theta + \\sin^2\\theta - 1\\)-ன் மதிப்பு", "opt_tm": ["\\(\\dfrac{-3}{2}\\)", "\\(\\dfrac{3}{2}\\)", "\\(\\dfrac{2}{3}\\)", "\\(\\dfrac{-2}{3}\\)"]}, {"id": 87, "ch": 6, "ch_q": 7, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "If \\(x = a\\tan\\theta\\) and \\(y = b\\sec\\theta\\) then", "opt_em": ["\\(\\dfrac{y^2}{b^2} - \\dfrac{x^2}{a^2} = 1\\)", "\\(\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1\\)", "\\(\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1\\)", "\\(\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 0\\)"], "q_tm": "\\(x = a\\tan\\theta\\) மற்றும் \\(y = b\\sec\\theta\\) எனில்", "opt_tm": ["\\(\\dfrac{y^2}{b^2} - \\dfrac{x^2}{a^2} = 1\\)", "\\(\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1\\)", "\\(\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1\\)", "\\(\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 0\\)"]}, {"id": 88, "ch": 6, "ch_q": 8, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "\\((1 + \\tan\\theta + \\sec\\theta)(1 + \\cot\\theta - \\operatorname{cosec}\\theta)\\) is equal to", "opt_em": ["\\(0\\)", "\\(1\\)", "\\(2\\)", "\\(-1\\)"], "q_tm": "\\((1 + \\tan\\theta + \\sec\\theta)(1 + \\cot\\theta - \\operatorname{cosec}\\theta)\\)-ன் மதிப்பு", "opt_tm": ["\\(0\\)", "\\(1\\)", "\\(2\\)", "\\(-1\\)"]}, {"id": 89, "ch": 6, "ch_q": 9, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "\\(a\\cot\\theta + b\\operatorname{cosec}\\theta = p\\) and \\(b\\cot\\theta + a\\operatorname{cosec}\\theta = q\\) then \\(p^2 - q^2\\) is equal to", "opt_em": ["\\(a^2 - b^2\\)", "\\(b^2 - a^2\\)", "\\(a^2 + b^2\\)", "\\(b - a\\)"], "q_tm": "\\(a\\cot\\theta + b\\operatorname{cosec}\\theta = p\\) மற்றும் \\(b\\cot\\theta + a\\operatorname{cosec}\\theta = q\\) எனில் \\(p^2 - q^2\\)-ன் மதிப்பு", "opt_tm": ["\\(a^2 - b^2\\)", "\\(b^2 - a^2\\)", "\\(a^2 + b^2\\)", "\\(b - a\\)"]}, {"id": 90, "ch": 6, "ch_q": 10, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "If the ratio of the height of a tower and the length of its shadow is \\(\\sqrt{3} : 1\\), then the angle of elevation of the sun has measure", "opt_em": ["\\(45^\\circ\\)", "\\(30^\\circ\\)", "\\(90^\\circ\\)", "\\(60^\\circ\\)"], "q_tm": "ஒரு கோபுரத்தின் உயரத்திற்கும் அதன் நிழலின் நீளத்திற்கும் உள்ள விகிதம் \\(\\sqrt{3} : 1\\), எனில் சூரியனைக் காணும் ஏற்றக்கோண அளவானது", "opt_tm": ["\\(45^\\circ\\)", "\\(30^\\circ\\)", "\\(90^\\circ\\)", "\\(60^\\circ\\)"]}, {"id": 91, "ch": 6, "ch_q": 11, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "The electric pole subtends an angle of \\(30^\\circ\\) at a point on the same level as its foot. At a second point '\\(b\\)' metres above the first, the depression of the foot of the pole is \\(60^\\circ\\). The height of the pole (in metres) is equal to", "opt_em": ["\\(\\sqrt{3}b\\)", "\\(\\dfrac{b}{3}\\)", "\\(\\dfrac{b}{2}\\)", "\\(\\dfrac{b}{\\sqrt{3}}\\)"], "q_tm": "ஒரு மின் கம்பமானது அதன் அடியில் சமதளப் பரப்பில் உள்ள ஒரு புள்ளியில் \\(30^\\circ\\) கோணத்தை ஏற்படுத்துகிறது. முதல் புள்ளிக்கு '\\(b\\)' மீ உயரத்தில் உள்ள இரண்டாவது புள்ளியிலிருந்து மின்கம்பத்தின் அடிக்கு இறக்கக்கோணம் \\(60^\\circ\\) எனில் மின் கம்பத்தின் உயரமானது (மீட்டரில்)", "opt_tm": ["\\(\\sqrt{3}b\\)", "\\(\\dfrac{b}{3}\\)", "\\(\\dfrac{b}{2}\\)", "\\(\\dfrac{b}{\\sqrt{3}}\\)"]}, {"id": 92, "ch": 6, "ch_q": 12, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "A tower is \\(60\\text{ m}\\) high. Its shadow reduces by \\(x\\) metres when the angle of elevation of the sun increases from \\(30^\\circ\\) to \\(45^\\circ\\) then \\(x\\) is equal to", "opt_em": ["\\(41.92\\text{ m}\\)", "\\(43.92\\text{ m}\\)", "\\(43\\text{ m}\\)", "\\(45.6\\text{ m}\\)"], "q_tm": "ஒரு கோபுரத்தின் உயரம் \\(60\\) மீ ஆகும். சூரியனை காணும் ஏற்றக்கோணம் \\(30^\\circ\\)-லிருந்து \\(45^\\circ\\) ஆக உயரும்போது கோபுரத்தின் நிழலானது \\(x\\) மீ குறைகிறது எனில், \\(x\\)-ன் மதிப்பு", "opt_tm": ["\\(41.92\\) மீ", "\\(43.92\\) மீ", "\\(43\\) மீ", "\\(45.6\\) மீ"]}, {"id": 93, "ch": 6, "ch_q": 13, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "The angle of depression of the top and bottom of \\(20\\text{ m}\\) tall building from the top of a multistoried building are \\(30^\\circ\\) and \\(60^\\circ\\) respectively. The height of the multistoried building and the distance between two buildings (in metres) is", "opt_em": ["\\(20, 10\\sqrt{3}\\)", "\\(30, 5\\sqrt{3}\\)", "\\(20, 10\\)", "\\(30, 10\\sqrt{3}\\)"], "q_tm": "பல அடுக்குக் கட்டடத்தின் உச்சியிலிருந்து \\(20\\) மீ உயரமுள்ள கட்டடத்தின் உச்சி, அடி ஆகியவற்றின் இறக்கக்கோணங்கள் முறையே \\(30^\\circ\\) மற்றும் \\(60^\\circ\\) எனில் பல அடுக்குக் கட்டடத்தின் உயரம் மற்றும் இரு கட்டடங்களுக்கு இடையேயுள்ள தொலைவானது (மீட்டரில்)", "opt_tm": ["\\(20, 10\\sqrt{3}\\)", "\\(30, 5\\sqrt{3}\\)", "\\(20, 10\\)", "\\(30, 10\\sqrt{3}\\)"]}, {"id": 94, "ch": 6, "ch_q": 14, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "Two persons are standing '\\(x\\)' metres apart from each other and the height of the first person is double that of the other. If from the middle point of the line joining their feet an observer finds the angular elevations of their tops to be complementary, then the height of the shorter person (in metres) is", "opt_em": ["\\(\\sqrt{2}\\,x\\)", "\\(\\dfrac{x}{2\\sqrt{2}}\\)", "\\(\\dfrac{x}{\\sqrt{2}}\\)", "\\(2x\\)"], "q_tm": "இரண்டு நபர்களுக்கு இடைப்பட்ட தொலைவு \\(x\\) மீ ஆகும். முதல் நபரின் உயரமானது இரண்டாவது நபரின் உயரத்தைப் போல இரு மடங்காக உள்ளது. அவர்களுக்கு இடைப்பட்ட தொலைவு நேர்க்கோட்டின் மையப் புள்ளியிலிருந்து இரு நபர்களின் உச்சியின் ஏற்றக் கோணங்கள் நிரப்புக்கோணங்கள் எனில், குட்டையாக உள்ள நபரின் உயரம் (மீட்டரில்) காண்க.", "opt_tm": ["\\(\\sqrt{2}\\,x\\)", "\\(\\dfrac{x}{2\\sqrt{2}}\\)", "\\(\\dfrac{x}{\\sqrt{2}}\\)", "\\(2x\\)"]}, {"id": 95, "ch": 6, "ch_q": 15, "ch_em": "Chapter 6: Trigonometry", "ch_tm": "அலகு 6: முக்கோணவியல்", "q_em": "The angle of elevation of a cloud from a point \\(h\\) metres above a lake is \\(\\beta\\). The angle of depression of its reflection in the lake is \\(45^\\circ\\). The height of location of the cloud from the lake is", "opt_em": ["\\(\\dfrac{h(1 + \\tan\\beta)}{1 - \\tan\\beta}\\)", "\\(\\dfrac{h(1 - \\tan\\beta)}{1 + \\tan\\beta}\\)", "\\(h\\tan(45^\\circ - \\beta)\\)", "None of these"], "q_tm": "ஓர் ஏரியின் மேலே \\(h\\) மீ உயரத்தில் உள்ள ஒரு புள்ளியிலிருந்து மேகத்திற்கு உள்ள ஏற்றக்கோணம் \\(\\beta\\). மேக பிம்பத்தின் இறக்கக்கோணம் \\(45^\\circ\\) எனில், ஏரியில் இருந்து மேகத்திற்கு உள்ள உயரமானது (மீட்டரில்)", "opt_tm": ["\\(\\dfrac{h(1 + \\tan\\beta)}{1 - \\tan\\beta}\\)", "\\(\\dfrac{h(1 - \\tan\\beta)}{1 + \\tan\\beta}\\)", "\\(h\\tan(45^\\circ - \\beta)\\)", "இவை ஒன்றும் இல்லை"]}, {"id": 96, "ch": 7, "ch_q": 1, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "The curved surface area of a right circular cone of height \\(15\\text{ cm}\\) and base diameter \\(16\\text{ cm}\\) is", "opt_em": ["\\(60\\pi\\text{ cm}^2\\)", "\\(68\\pi\\text{ cm}^2\\)", "\\(120\\pi\\text{ cm}^2\\)", "\\(136\\pi\\text{ cm}^2\\)"], "q_tm": "\\(15\\) செ.மீ உயரமும் \\(16\\) செ.மீ விட்டமும் கொண்ட ஒரு நேர்வட்டக் கூம்பின் வளைபரப்பு", "opt_tm": ["\\(60\\pi\\) ச.செ.மீ", "\\(68\\pi\\) ச.செ.மீ", "\\(120\\pi\\) ச.செ.மீ", "\\(136\\pi\\) ச.செ.மீ"]}, {"id": 97, "ch": 7, "ch_q": 2, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "If two solid hemispheres of same base radius \\(r\\) units are joined together along their bases, then curved surface area of this new solid is", "opt_em": ["\\(4\\pi r^2\\text{ sq. units}\\)", "\\(6\\pi r^2\\text{ sq. units}\\)", "\\(3\\pi r^2\\text{ sq. units}\\)", "\\(8\\pi r^2\\text{ sq. units}\\)"], "q_tm": "\\(r\\) அலகுகள் ஆரம் உடைய இரு சம அரைக்கோளங்களின் அடிப்பகுதிகள் இணைக்கப்படும் போது உருவாகும் திண்மத்தின் புறப்பரப்பு", "opt_tm": ["\\(4\\pi r^2\\) ச. அ", "\\(6\\pi r^2\\) ச. அ", "\\(3\\pi r^2\\) ச. அ", "\\(8\\pi r^2\\) ச. அ"]}, {"id": 98, "ch": 7, "ch_q": 3, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "The height of a right circular cone whose radius is \\(5\\text{ cm}\\) and slant height is \\(13\\text{ cm}\\) will be", "opt_em": ["\\(12\\text{ cm}\\)", "\\(10\\text{ cm}\\)", "\\(13\\text{ cm}\\)", "\\(5\\text{ cm}\\)"], "q_tm": "ஆரம் \\(5\\) செ.மீ மற்றும் சாயுயரம் \\(13\\) செ.மீ உடைய நேர்வட்டக் கூம்பின் உயரம்", "opt_tm": ["\\(12\\) செ.மீ", "\\(10\\) செ.மீ", "\\(13\\) செ.மீ", "\\(5\\) செ.மீ"]}, {"id": 99, "ch": 7, "ch_q": 4, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "If the radius of the base of a right circular cylinder is halved keeping the same height, then the ratio of the volume of the cylinder thus obtained to the volume of original cylinder is", "opt_em": ["\\(1 : 2\\)", "\\(1 : 4\\)", "\\(1 : 6\\)", "\\(1 : 8\\)"], "q_tm": "ஓர் உருளையின் உயரத்தை மாற்றாமல் அதன் ஆரத்தைப் பாதியாகக் கொண்டு புதிய உருளை உருவாக்கப்படுகிறது. புதிய மற்றும் முந்தைய உருளைகளின் கன அளவுகளின் விகிதம்", "opt_tm": ["\\(1 : 2\\)", "\\(1 : 4\\)", "\\(1 : 6\\)", "\\(1 : 8\\)"]}, {"id": 100, "ch": 7, "ch_q": 5, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "The total surface area of a cylinder whose radius is \\(\\dfrac{1}{3}\\) of its height is", "opt_em": ["\\(\\dfrac{9\\pi h^2}{8}\\text{ sq. units}\\)", "\\(24\\pi h^2\\text{ sq. units}\\)", "\\(\\dfrac{8\\pi h^2}{9}\\text{ sq. units}\\)", "\\(\\dfrac{56\\pi h^2}{9}\\text{ sq. units}\\)"], "q_tm": "ஓர் உருளையின் ஆரம் அதன் உயரத்தில் மூன்றில் ஒரு பங்கு எனில், அதன் மொத்தப் புறப்பரப்பு", "opt_tm": ["\\(\\dfrac{9\\pi h^2}{8}\\) ச. அ", "\\(24\\pi h^2\\) ச. அ", "\\(\\dfrac{8\\pi h^2}{9}\\) ச. அ", "\\(\\dfrac{56\\pi h^2}{9}\\) ச. அ"]}, {"id": 101, "ch": 7, "ch_q": 6, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "In a hollow cylinder, the sum of the external and internal radii is \\(14\\text{ cm}\\) and the width is \\(4\\text{ cm}\\). If its height is \\(20\\text{ cm}\\), the volume of the material in it is", "opt_em": ["\\(5600\\pi\\text{ cm}^3\\)", "\\(1120\\pi\\text{ cm}^3\\)", "\\(56\\pi\\text{ cm}^3\\)", "\\(3600\\pi\\text{ cm}^3\\)"], "q_tm": "ஓர் உள்ளீடற்ற உருளையின் வெளிப்புற மற்றும் உட்புற ஆரங்களின் கூடுதல் \\(14\\) செ.மீ மற்றும் அதன் தடிமன் \\(4\\) செ.மீ ஆகும். உருளையின் உயரம் \\(20\\) செ.மீ எனில், அதனை உருவாக்கப் பயன்பட்ட பொருளின் கன அளவு", "opt_tm": ["\\(5600\\pi\\) க. செ.மீ", "\\(1120\\pi\\) க. செ.மீ", "\\(56\\pi\\) க. செ.மீ", "\\(3600\\pi\\) க. செ.மீ"]}, {"id": 102, "ch": 7, "ch_q": 7, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "If the radius of the base of a cone is tripled and the height is doubled then the volume is", "opt_em": ["Made 6 times", "Made 18 times", "Made 12 times", "Unchanged"], "q_tm": "ஒரு கூம்பின் அடிப்புற ஆரம் மும்மடங்காகவும் உயரம் இரு மடங்காகவும் மாறினால் கன அளவு எத்தனை மடங்காக மாறும்?", "opt_tm": ["6 மடங்கு", "18 மடங்கு", "12 மடங்கு", "மாற்றமில்லை"]}, {"id": 103, "ch": 7, "ch_q": 8, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "The total surface area of a hemisphere is how much times the square of its radius?", "opt_em": ["\\(\\pi\\)", "\\(4\\pi\\)", "\\(3\\pi\\)", "\\(2\\pi\\)"], "q_tm": "ஓர் அரைக்கோளத்தின் மொத்தப் பரப்பு அதன் ஆரத்தினுடைய வர்க்கத்தின் ________ மடங்காகும்.", "opt_tm": ["\\(\\pi\\)", "\\(4\\pi\\)", "\\(3\\pi\\)", "\\(2\\pi\\)"]}, {"id": 104, "ch": 7, "ch_q": 9, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "A solid sphere of radius \\(x\\text{ cm}\\) is melted and cast into a shape of a solid cone of same radius. The height of the cone is", "opt_em": ["\\(3x\\text{ cm}\\)", "\\(x\\text{ cm}\\)", "\\(4x\\text{ cm}\\)", "\\(2x\\text{ cm}\\)"], "q_tm": "\\(x\\) செ.மீ ஆரமுள்ள ஒரு திண்மக் கோளம் அதே ஆரமுள்ள ஒரு கூம்பாக மாற்றப்படுகிறது எனில், கூம்பின் உயரம்", "opt_tm": ["\\(3x\\) செ.மீ", "\\(x\\) செ.மீ", "\\(4x\\) செ.மீ", "\\(2x\\) செ.மீ"]}, {"id": 105, "ch": 7, "ch_q": 10, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "A frustum of a right circular cone is of height \\(16\\text{ cm}\\) with radii of its ends as \\(8\\text{ cm}\\) and \\(20\\text{ cm}\\). Then, the volume of the frustum is", "opt_em": ["\\(3328\\pi\\text{ cm}^3\\)", "\\(3228\\pi\\text{ cm}^3\\)", "\\(3240\\pi\\text{ cm}^3\\)", "\\(3340\\pi\\text{ cm}^3\\)"], "q_tm": "\\(16\\) செ.மீ உயரமுள்ள ஒரு நேர்வட்டக் கூம்பின் இடைக்கண்ட ஆரங்கள் \\(8\\) செ.மீ மற்றும் \\(20\\) செ.மீ எனில், அதன் கன அளவு", "opt_tm": ["\\(3328\\pi\\) க. செ.மீ", "\\(3228\\pi\\) க. செ.மீ", "\\(3240\\pi\\) க. செ.மீ", "\\(3340\\pi\\) க. செ.மீ"]}, {"id": 106, "ch": 7, "ch_q": 11, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "A shuttle cock used for playing badminton has the shape of the combination of", "opt_em": ["A cylinder and a sphere", "A hemisphere and a cone", "A sphere and a cone", "Frustum of a cone and a hemisphere"], "q_tm": "கீழ்க்காணும் எந்த இரு உருவங்களை இணைத்தால் ஓர் இறகுபந்தின் வடிவம் கிடைக்கும்?", "opt_tm": ["உருளை மற்றும் கோளம்", "அரைக்கோளம் மற்றும் கூம்பு", "கோளம் மற்றும் கூம்பு", "கூம்பின் இடைக்கண்டம் மற்றும் அரைக்கோளம்"]}, {"id": 107, "ch": 7, "ch_q": 12, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "A spherical ball of radius \\(r_1\\) units is melted to make \\(8\\) new identical balls each of radius \\(r_2\\) units. Then \\(r_1 : r_2\\) is", "opt_em": ["\\(2 : 1\\)", "\\(1 : 2\\)", "\\(4 : 1\\)", "\\(1 : 4\\)"], "q_tm": "\\(r_1\\) அலகுகள் ஆரமுள்ள ஒரு கோளப்பந்து உருக்கப்பட்டு \\(r_2\\) அலகுகள் ஆரமுடைய \\(8\\) சமகோள பந்துகளாக ஆக்கப்படுகிறது எனில், \\(r_1 : r_2\\)", "opt_tm": ["\\(2 : 1\\)", "\\(1 : 2\\)", "\\(4 : 1\\)", "\\(1 : 4\\)"]}, {"id": 108, "ch": 7, "ch_q": 13, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "The volume (in \\(\\text{cm}^3\\)) of the greatest sphere that can be cut off from a cylindrical log of wood of base radius \\(1\\text{ cm}\\) and height \\(5\\text{ cm}\\) is", "opt_em": ["\\(\\dfrac{4}{3}\\pi\\)", "\\(\\dfrac{10}{3}\\pi\\)", "\\(5\\pi\\)", "\\(\\dfrac{20}{3}\\pi\\)"], "q_tm": "\\(1\\) செ.மீ ஆரமும் \\(5\\) செ.மீ உயரமும் கொண்ட ஒரு மர உருளையிலிருந்து அதிகபட்சக் கன அளவு கொண்ட கோளம் வெட்டி எடுக்கப்படுகிறது எனில், அதன் கன அளவு (க. செ.மீ-ல்)", "opt_tm": ["\\(\\dfrac{4}{3}\\pi\\)", "\\(\\dfrac{10}{3}\\pi\\)", "\\(5\\pi\\)", "\\(\\dfrac{20}{3}\\pi\\)"]}, {"id": 109, "ch": 7, "ch_q": 14, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "The height and radius of the cone of which the frustum is a part are \\(h_1\\) units and \\(r_1\\) units respectively. Height of the frustum is \\(h_2\\) units and radius of the smaller base is \\(r_2\\) units. If \\(h_2 : h_1 = 1 : 2\\) then \\(r_2 : r_1\\) is", "opt_em": ["\\(1 : 3\\)", "\\(1 : 2\\)", "\\(2 : 1\\)", "\\(3 : 1\\)"], "q_tm": "இடைக்கண்டத்தை ஒரு பகுதியாகக் கொண்ட ஒரு கூம்பின் உயரம் மற்றும் ஆரம் முறையே \\(h_1\\) அலகுகள் மற்றும் \\(r_1\\) அலகுகள் ஆகும். இடைக்கண்டத்தின் உயரம் மற்றும் சிறிய பக்க ஆரம் முறையே \\(h_2\\) அலகுகள் மற்றும் \\(r_2\\) அலகுகள் மற்றும் \\(h_2 : h_1 = 1 : 2\\) எனில், \\(r_2 : r_1\\)-ன் மதிப்பு", "opt_tm": ["\\(1 : 3\\)", "\\(1 : 2\\)", "\\(2 : 1\\)", "\\(3 : 1\\)"]}, {"id": 110, "ch": 7, "ch_q": 15, "ch_em": "Chapter 7: Mensuration", "ch_tm": "அலகு 7: அளவியல்", "q_em": "The ratio of the volumes of a cylinder, a cone and a sphere, if each has the same diameter and same height is", "opt_em": ["\\(1 : 2 : 3\\)", "\\(2 : 1 : 3\\)", "\\(1 : 3 : 2\\)", "\\(3 : 1 : 2\\)"], "q_tm": "சமமான விட்டம் மற்றும் உயரம் உடைய ஓர் உருளை, ஒரு கூம்பு மற்றும் ஒரு கோளத்தின் கன அளவுகளின் விகிதம்", "opt_tm": ["\\(1 : 2 : 3\\)", "\\(2 : 1 : 3\\)", "\\(1 : 3 : 2\\)", "\\(3 : 1 : 2\\)"]}, {"id": 111, "ch": 8, "ch_q": 1, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "Which of the following is not a measure of dispersion?", "opt_em": ["Range", "Standard deviation", "Arithmetic Mean", "Variance"], "q_tm": "கீழே கொடுக்கப்பட்டவைகளில் எது பரவல் அளவை இல்லை?", "opt_tm": ["வீச்சு", "திட்டவிலக்கம்", "கூட்டுச் சராசரி", "விலக்க வர்க்கச் சராசரி"]}, {"id": 112, "ch": 8, "ch_q": 2, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "The range of the data \\(8, 8, 8, 8, 8, \\ldots, 8\\) is", "opt_em": ["\\(0\\)", "\\(1\\)", "\\(8\\)", "\\(3\\)"], "q_tm": "\\(8, 8, 8, 8, 8, \\ldots, 8\\) ஆகிய தரவின் வீச்சு", "opt_tm": ["\\(0\\)", "\\(1\\)", "\\(8\\)", "\\(3\\)"]}, {"id": 113, "ch": 8, "ch_q": 3, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "The sum of all deviations of the data from its mean is", "opt_em": ["Always positive", "Always negative", "Zero", "Non-zero integer"], "q_tm": "சராசரியிலிருந்து கிடைக்கப் பெற்ற தரவுப் புள்ளிகளுடைய விலக்கங்களின் கூடுதலானது", "opt_tm": ["எப்பொழுதும் மிகை எண்", "எப்பொழுதும் குறை எண்", "பூச்சியம்", "பூச்சியமற்ற முழுக்கள்"]}, {"id": 114, "ch": 8, "ch_q": 4, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "The mean of \\(100\\) observations is \\(40\\) and their standard deviation is \\(3\\). The sum of squares of all observations is", "opt_em": ["\\(40000\\)", "\\(160900\\)", "\\(160000\\)", "\\(30000\\)"], "q_tm": "\\(100\\) தரவுப் புள்ளிகளின் சராசரி \\(40\\) மற்றும் திட்டவிலக்கம் \\(3\\) எனில், தரவுகளின் வர்க்கங்களின் கூடுதலானது", "opt_tm": ["\\(40000\\)", "\\(160900\\)", "\\(160000\\)", "\\(30000\\)"]}, {"id": 115, "ch": 8, "ch_q": 5, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "Variance of first \\(20\\) natural numbers is", "opt_em": ["\\(32.25\\)", "\\(44.25\\)", "\\(33.25\\)", "\\(30\\)"], "q_tm": "முதல் \\(20\\) இயல் எண்களின் விலக்க வர்க்கச் சராசரியானது", "opt_tm": ["\\(32.25\\)", "\\(44.25\\)", "\\(33.25\\)", "\\(30\\)"]}, {"id": 116, "ch": 8, "ch_q": 6, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "The standard deviation of a data is \\(3\\). If each value is multiplied by \\(5\\) then the new variance is", "opt_em": ["\\(3\\)", "\\(15\\)", "\\(5\\)", "\\(225\\)"], "q_tm": "ஒரு தரவின் திட்டவிலக்கமானது \\(3\\). ஒவ்வொரு மதிப்பையும் \\(5\\)-ஆல் பெருக்கினால் கிடைக்கும் புதிய தரவின் விலக்க வர்க்கச் சராசரியானது", "opt_tm": ["\\(3\\)", "\\(15\\)", "\\(5\\)", "\\(225\\)"]}, {"id": 117, "ch": 8, "ch_q": 7, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "If the standard deviation of \\(x, y, z\\) is \\(p\\) then the standard deviation of \\(3x + 5, 3y + 5, 3z + 5\\) is", "opt_em": ["\\(3p + 5\\)", "\\(3p\\)", "\\(p + 5\\)", "\\(9p + 15\\)"], "q_tm": "\\(x, y, z\\) ஆகியவற்றின் திட்டவிலக்கம் \\(p\\)-எனில், \\(3x + 5, 3y + 5, 3z + 5\\) ஆகியவற்றின் திட்டவிலக்கமானது", "opt_tm": ["\\(3p + 5\\)", "\\(3p\\)", "\\(p + 5\\)", "\\(9p + 15\\)"]}, {"id": 118, "ch": 8, "ch_q": 8, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "If the mean and coefficient of variation of a data are \\(4\\) and \\(87.5\\%\\) then the standard deviation is", "opt_em": ["\\(3.5\\)", "\\(3\\)", "\\(4.5\\)", "\\(2.5\\)"], "q_tm": "ஒரு தரவின் சராசரி மற்றும் மாறுபாட்டுக் கெழு முறையே \\(4\\) மற்றும் \\(87.5\\%\\) எனில் திட்டவிலக்கமானது", "opt_tm": ["\\(3.5\\)", "\\(3\\)", "\\(4.5\\)", "\\(2.5\\)"]}, {"id": 119, "ch": 8, "ch_q": 9, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "Which of the following is incorrect?", "opt_em": ["\\(P(A) > 1\\)", "\\(0 \\le P(A) \\le 1\\)", "\\(P(\\phi) = 0\\)", "\\(P(A) + P(\\bar{A}) = 1\\)"], "q_tm": "கொடுக்கப்பட்டவைகளில் எது தவறானது?", "opt_tm": ["\\(P(A) > 1\\)", "\\(0 \\le P(A) \\le 1\\)", "\\(P(\\phi) = 0\\)", "\\(P(A) + P(\\bar{A}) = 1\\)"]}, {"id": 120, "ch": 8, "ch_q": 10, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "The probability a red marble selected at random from a jar containing \\(p\\) red, \\(q\\) blue and \\(r\\) green marbles is", "opt_em": ["\\(\\dfrac{q}{p+q+r}\\)", "\\(\\dfrac{p}{p+q+r}\\)", "\\(\\dfrac{p+q}{p+q+r}\\)", "\\(\\dfrac{p+r}{p+q+r}\\)"], "q_tm": "\\(p\\) சிவப்பு, \\(q\\) நீல, \\(r\\) பச்சை நிறக் கூழாங்கற்கள் உள்ள ஒரு குடுவையில் இருந்து ஒரு சிவப்பு கூழாங்கல் எடுப்பதற்கான நிகழ்தகவானது", "opt_tm": ["\\(\\dfrac{q}{p+q+r}\\)", "\\(\\dfrac{p}{p+q+r}\\)", "\\(\\dfrac{p+q}{p+q+r}\\)", "\\(\\dfrac{p+r}{p+q+r}\\)"]}, {"id": 121, "ch": 8, "ch_q": 11, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "A page is selected at random from a book. The probability that the digit at units place of the page number chosen is less than \\(7\\) is", "opt_em": ["\\(\\dfrac{3}{10}\\)", "\\(\\dfrac{7}{10}\\)", "\\(\\dfrac{3}{9}\\)", "\\(\\dfrac{7}{9}\\)"], "q_tm": "ஒரு புத்தகத்திலிருந்து சமவாய்ப்பு முறையில் ஒரு பக்கம் தேர்ந்தெடுக்கப்படுகிறது. அந்தப் பக்க எண்ணின் ஒன்றாம் இட மதிப்பானது \\(7\\)-ஐ விடக் குறைவாக இருப்பதற்கான நிகழ்தகவானது", "opt_tm": ["\\(\\dfrac{3}{10}\\)", "\\(\\dfrac{7}{10}\\)", "\\(\\dfrac{3}{9}\\)", "\\(\\dfrac{7}{9}\\)"]}, {"id": 122, "ch": 8, "ch_q": 12, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "The probability of getting a job for a person is \\(\\dfrac{x}{3}\\). If the probability of not getting the job is \\(\\dfrac{2}{3}\\) then the value of \\(x\\) is", "opt_em": ["\\(2\\)", "\\(1\\)", "\\(3\\)", "\\(1.5\\)"], "q_tm": "ஒரு நபருக்கு வேலை கிடைப்பதற்கான நிகழ்தகவானது \\(\\dfrac{x}{3}\\). வேலை கிடைக்காமல் இருப்பதற்கான நிகழ்தகவு \\(\\dfrac{2}{3}\\) எனில் \\(x\\)-யின் மதிப்பானது", "opt_tm": ["\\(2\\)", "\\(1\\)", "\\(3\\)", "\\(1.5\\)"]}, {"id": 123, "ch": 8, "ch_q": 13, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "Kamalam went to play a lucky draw contest. \\(135\\) tickets of the lucky draw were sold. If the probability of Kamalam winning is \\(\\dfrac{1}{9}\\), then the number of tickets bought by Kamalam is", "opt_em": ["\\(5\\)", "\\(10\\)", "\\(15\\)", "\\(20\\)"], "q_tm": "கமலம், குலுக்கல் போட்டியில் கலந்துகொண்டாள். அங்கு மொத்தம் \\(135\\) சீட்டுகள் விற்கப்பட்டன. கமலம் வெற்றி பெறுவதற்கான வாய்ப்பு \\(\\dfrac{1}{9}\\) எனில், கமலம் வாங்கிய சீட்டுகளின் எண்ணிக்கை,", "opt_tm": ["\\(5\\)", "\\(10\\)", "\\(15\\)", "\\(20\\)"]}, {"id": 124, "ch": 8, "ch_q": 14, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "If a letter is chosen at random from the English alphabets \\(\\{a, b, \\ldots, z\\}\\), then the probability that the letter chosen precedes \\(x\\) is", "opt_em": ["\\(\\dfrac{12}{13}\\)", "\\(\\dfrac{1}{13}\\)", "\\(\\dfrac{23}{26}\\)", "\\(\\dfrac{3}{26}\\)"], "q_tm": "ஆங்கில எழுத்துகள் \\(\\{a, b, \\ldots, z\\}\\)-யிலிருந்து ஓர் எழுத்து சமவாய்ப்பு முறையில் தேர்வு செய்யப்படுகிறது. அந்த எழுத்து \\(x\\)-க்கு முந்தைய எழுத்துகளில் ஒன்றாக இருப்பதற்கான நிகழ்தகவு", "opt_tm": ["\\(\\dfrac{12}{13}\\)", "\\(\\dfrac{1}{13}\\)", "\\(\\dfrac{23}{26}\\)", "\\(\\dfrac{3}{26}\\)"]}, {"id": 125, "ch": 8, "ch_q": 15, "ch_em": "Chapter 8: Statistics and Probability", "ch_tm": "அலகு 8: புள்ளியியலும் நிகழ்தகவும்", "q_em": "A purse contains \\(10\\) notes of ₹ \\(2000\\), \\(15\\) notes of ₹ \\(500\\), and \\(25\\) notes of ₹ \\(200\\). One note is drawn at random. What is the probability that the note is either a ₹ \\(500\\) note or ₹ \\(200\\) note?", "opt_em": ["\\(\\dfrac{1}{5}\\)", "\\(\\dfrac{3}{10}\\)", "\\(\\dfrac{2}{3}\\)", "\\(\\dfrac{4}{5}\\)"], "q_tm": "ஒரு பணப்பையில் ₹ \\(2000\\) நோட்டுகள் \\(10\\)-ம், ₹ \\(500\\) நோட்டுகள் \\(15\\)-ம், ₹ \\(200\\) நோட்டுகள் \\(25\\)-ம் உள்ளன. ஒரு நோட்டு சமவாய்ப்பு முறையில் எடுக்கப்படுகிறது எனில், அந்த நோட்டு ₹ \\(500\\) நோட்டாகவோ அல்லது ₹ \\(200\\) நோட்டாகவோ இருப்பதற்கான நிகழ்தகவு என்ன?", "opt_tm": ["\\(\\dfrac{1}{5}\\)", "\\(\\dfrac{3}{10}\\)", "\\(\\dfrac{2}{3}\\)", "\\(\\dfrac{4}{5}\\)"]}], "geometry": [{"id": 1, "cat": "similar_lt1", "cat_em": "Similar Triangle (Scale Factor < 1)", "cat_tm": "வடிவொத்த முக்கோணம் (அளவுக்காரணி < 1)", "q_em": "Construct a triangle similar to a given triangle \\(PQR\\) with its sides equal to \\(\\dfrac{3}{5}\\) of the corresponding sides of the triangle \\(PQR\\) (Scale Factor \\(\\dfrac{3}{5} < 1\\)).", "q_tm": "கொடுக்கப்பட்ட முக்கோணம் \\(PQR\\)-க்கு ஒத்த பக்கங்களின் விகிதம் \\(\\dfrac{3}{5}\\) என அமையுமாறு ஒரு வடிவொத்த முக்கோணம் வரைக. (அளவு காரணி \\(\\dfrac{3}{5} < 1\\)).", "year": "JUL-23"}, {"id": 2, "cat": "similar_lt1", "cat_em": "Similar Triangle (Scale Factor < 1)", "cat_tm": "வடிவொத்த முக்கோணம் (அளவுக்காரணி < 1)", "q_em": "Construct a triangle similar to a given triangle \\(PQR\\) with its sides equal to \\(\\dfrac{2}{3}\\) of the corresponding sides of the triangle \\(PQR\\) (Scale Factor \\(\\dfrac{2}{3} < 1\\)).", "q_tm": "கொடுக்கப்பட்ட முக்கோணம் \\(PQR\\)-யின் ஒத்த பக்கங்களின் விகிதம் \\(\\dfrac{2}{3}\\) என அமையுமாறு ஒரு வடிவொத்த முக்கோணம் வரைக. (அளவு காரணி \\(\\dfrac{2}{3} < 1\\)).", "year": ""}, {"id": 3, "cat": "similar_lt1", "cat_em": "Similar Triangle (Scale Factor < 1)", "cat_tm": "வடிவொத்த முக்கோணம் (அளவுக்காரணி < 1)", "q_em": "Construct a triangle similar to a given triangle \\(LMN\\) with its sides equal to \\(\\dfrac{4}{5}\\) of the corresponding sides of the triangle \\(LMN\\) (Scale Factor \\(\\dfrac{4}{5} < 1\\)).", "q_tm": "கொடுக்கப்பட்ட முக்கோணம் \\(LMN\\)-ன் ஒத்த பக்கங்களின் விகிதம் \\(\\dfrac{4}{5}\\) என அமையுமாறு ஒரு வடிவொத்த முக்கோணம் வரைக. (அளவு காரணி \\(\\dfrac{4}{5} < 1\\)).", "year": ""}, {"id": 4, "cat": "similar_gt1", "cat_em": "Similar Triangle (Scale Factor > 1)", "cat_tm": "வடிவொத்த முக்கோணம் (அளவுக்காரணி > 1)", "q_em": "Construct a triangle similar to a given triangle \\(PQR\\) with its sides equal to \\(\\dfrac{7}{4}\\) of the corresponding sides of the triangle \\(PQR\\) (Scale Factor \\(\\dfrac{7}{4} > 1\\)).", "q_tm": "கொடுக்கப்பட்ட முக்கோணம் \\(PQR\\)-க்கு ஒத்த பக்கங்களின் விகிதம் \\(\\dfrac{7}{4}\\) என அமையுமாறு ஒரு வடிவொத்த முக்கோணம் வரைக. (அளவு காரணி \\(\\dfrac{7}{4} > 1\\)).", "year": "JUL-25"}, {"id": 5, "cat": "similar_gt1", "cat_em": "Similar Triangle (Scale Factor > 1)", "cat_tm": "வடிவொத்த முக்கோணம் (அளவுக்காரணி > 1)", "q_em": "Construct a triangle similar to a given triangle \\(ABC\\) with its sides equal to \\(\\dfrac{6}{5}\\) of the corresponding sides of the triangle \\(ABC\\) (Scale Factor \\(\\dfrac{6}{5} > 1\\)).", "q_tm": "கொடுக்கப்பட்ட முக்கோணம் \\(ABC\\)-யின் ஒத்த பக்கங்களின் விகிதம் \\(\\dfrac{6}{5}\\) என அமையுமாறு ஒரு வடிவொத்த முக்கோணம் வரைக. (அளவு காரணி \\(\\dfrac{6}{5} > 1\\)).", "year": "JUL-20"}, {"id": 6, "cat": "similar_gt1", "cat_em": "Similar Triangle (Scale Factor > 1)", "cat_tm": "வடிவொத்த முக்கோணம் (அளவுக்காரணி > 1)", "q_em": "Construct a triangle similar to a given triangle \\(PQR\\) with its sides equal to \\(\\dfrac{7}{3}\\) of the corresponding sides of the triangle \\(PQR\\) (Scale Factor \\(\\dfrac{7}{3} > 1\\)).", "q_tm": "கொடுக்கப்பட்ட முக்கோணம் \\(PQR\\)-ன் ஒத்த பக்கங்களின் விகிதம் \\(\\dfrac{7}{3}\\) என்றவாறு ஒரு வடிவொத்த முக்கோணம் வரைக. (அளவு காரணி \\(\\dfrac{7}{3} > 1\\)).", "year": "JUL-22"}, {"id": 7, "cat": "tangent_one", "cat_em": "Single Tangent", "cat_tm": "ஒரு தொடுகோடு வரைதல்", "q_em": "Draw a circle of radius \\(3\\text{ cm}\\). Take a point \\(P\\) on this circle and draw a tangent at \\(P\\).", "q_tm": "\\(3\\) செ.மீ ஆரமுள்ள வட்டம் வரைக. வட்டத்தின் மேல் \\(P\\) என்ற புள்ளியைக் குறித்து அப்புள்ளி வழியே தொடுகோடு வரைக.", "year": ""}, {"id": 8, "cat": "tangent_one", "cat_em": "Single Tangent", "cat_tm": "ஒரு தொடுகோடு வரைதல்", "q_em": "Draw a tangent at any point \\(R\\) on the circle of radius \\(3.4\\text{ cm}\\) and centre at \\(P\\).", "q_tm": "\\(P\\)-ஐ மையமாகக் கொண்ட \\(3.4\\) செ.மீ ஆரமுள்ள ஒரு வட்டத்திற்கு \\(R\\) என்ற புள்ளியில் தொடுகோடு வரைக.", "year": ""}, {"id": 9, "cat": "tangent_alt", "cat_em": "Alternate Segment Theorem", "cat_tm": "மாற்று வட்டத்துண்டு தேற்றம்", "q_em": "Draw a circle of radius \\(4\\text{ cm}\\). At a point \\(L\\) on it draw a tangent to the circle using the alternate segment theorem.", "q_tm": "\\(4\\) செ.மீ ஆரமுள்ள வட்டம் வரைக. வட்டத்தின் மீதுள்ள \\(L\\) என்ற புள்ளி வழியாக மாற்று வட்டத்துண்டு தேற்றத்தைப் பயன்படுத்தி வட்டத்திற்குத் தொடுகோடு வரைக.", "year": ""}, {"id": 10, "cat": "tangent_alt", "cat_em": "Alternate Segment Theorem", "cat_tm": "மாற்று வட்டத்துண்டு தேற்றம்", "q_em": "Draw a circle of radius \\(4.5\\text{ cm}\\). Take a point on the circle. Draw the tangent at that point using the Alternate Segment Theorem.", "q_tm": "\\(4.5\\) செ.மீ ஆரமுள்ள வட்டம் வரைக. வட்டத்தின் மீது ஏதேனும் ஒரு புள்ளிக்கு மாற்று வட்டத்துண்டு தேற்றத்தினைப் பயன்படுத்தித் தொடுகோடு வரைக.", "year": ""}, {"id": 11, "cat": "tangent_two", "cat_em": "Two Tangents", "cat_tm": "இரு தொடுகோடுகள் வரைதல்", "q_em": "Draw a circle of diameter \\(6\\text{ cm}\\) from a point \\(P\\), which is \\(8\\text{ cm}\\) away from its centre. Draw the two tangents \\(PA\\) and \\(PB\\) to the circle and measure their lengths.", "q_tm": "\\(6\\) செ.மீ விட்டமுள்ள வட்டம் வரைந்து வட்டத்தின் மையத்திலிருந்து \\(8\\) செ.மீ தொலைவில் \\(P\\) என்ற புள்ளியைக் குறிக்கவும். அப்புள்ளியிலிருந்து \\(PA\\) மற்றும் \\(PB\\) என்ற இரு தொடுகோடுகள் வரைந்து அவற்றின் நீளங்களை அளவிடுக.", "year": "JUL-21, 22, PTA-6, APR-24"}, {"id": 12, "cat": "tangent_two", "cat_em": "Two Tangents", "cat_tm": "இரு தொடுகோடுகள் வரைதல்", "q_em": "Draw the two tangents from a point which is \\(10\\text{ cm}\\) away from the centre of a circle of radius \\(5\\text{ cm}\\). Also, measure the lengths of the tangents.", "q_tm": "\\(5\\) செ.மீ ஆரமுள்ள வட்டத்தின் மையத்திலிருந்து \\(10\\) செ.மீ தொலைவிலுள்ள புள்ளியிலிருந்து வட்டத்திற்குத் தொடுகோடுகள் வரையவும். மேலும் தொடுகோட்டின் நீளங்களைக் கணக்கிடுக.", "year": "JUL-20, 23, 24"}, {"id": 13, "cat": "tangent_two", "cat_em": "Two Tangents", "cat_tm": "இரு தொடுகோடுகள் வரைதல்", "q_em": "Take a point which is \\(11\\text{ cm}\\) away from the centre of a circle of radius \\(4\\text{ cm}\\) and draw the two tangents to the circle from that point.", "q_tm": "\\(4\\) செ.மீ ஆரமுள்ள வட்டம் வரைந்து அதன் மையத்திலிருந்து \\(11\\) செ.மீ தொலைவிலுள்ள ஒரு புள்ளியைக் குறித்து, அப்புள்ளியிலிருந்து வட்டத்திற்கு இரண்டு தொடுகோடுகள் வரைக.", "year": "APR-23, 25, PTA-2"}, {"id": 14, "cat": "tangent_two", "cat_em": "Two Tangents", "cat_tm": "இரு தொடுகோடுகள் வரைதல்", "q_em": "Draw the two tangents from a point which is \\(5\\text{ cm}\\) away from the centre of a circle of diameter \\(6\\text{ cm}\\). Also, measure the lengths of the tangents.", "q_tm": "\\(6\\) செ.மீ விட்டமுள்ள வட்டம் வரைந்து வட்டத்தின் மையத்திலிருந்து \\(5\\) செ.மீ தொலைவிலுள்ள ஒரு புள்ளியைக் குறிக்கவும். அப்புள்ளியிலிருந்து வட்டத்திற்குத் தொடுகோடுகள் வரைந்து, தொடுகோட்டின் நீளங்களைக் கணக்கிடுக.", "year": "APR-22, JUL-25"}, {"id": 15, "cat": "tangent_two", "cat_em": "Two Tangents", "cat_tm": "இரு தொடுகோடுகள் வரைதல்", "q_em": "Draw a tangent to the circle from the point \\(P\\) having radius \\(3.6\\text{ cm}\\) and centre \\(O\\). Point \\(P\\) is at a distance \\(7.2\\text{ cm}\\) from the centre.", "q_tm": "\\(O\\)-வை மையமாகக் கொண்ட \\(3.6\\) செ.மீ ஆரமுள்ள வட்டம் வரைக. வட்டத்தின் மையத்திலிருந்து \\(7.2\\) செ.மீ தொலைவிலுள்ள \\(P\\) என்ற புள்ளியைக் குறித்து அப்புள்ளியிலிருந்து வட்டத்திற்குத் தொடுகோடுகள் வரைக.", "year": ""}, {"id": 16, "cat": "tri_median", "cat_em": "Triangle Construction (Median)", "cat_tm": "முக்கோணம் வரைதல் (நடுக்கோட்டு மாதிரி)", "q_em": "Construct a \\(\\triangle PQR\\) in which \\(PQ = 8\\text{ cm}\\), \\(\\angle R = 60^\\circ\\) and the Median \\(RG\\) from \\(R\\) to \\(PQ\\) is \\(5.8\\text{ cm}\\). Find the length of the altitude from \\(R\\) to \\(PQ\\).", "q_tm": "\\(PQ = 8\\) செ.மீ, \\(\\angle R = 60^\\circ\\), உச்சி \\(R\\)-லிருந்து \\(PQ\\)-க்கு வரையப்பட்ட நடுக்கோட்டின் நீளம் \\(RG = 5.8\\) செ.மீ என இருக்குமாறு \\(\\triangle PQR\\) வரைக. \\(R\\)-லிருந்து \\(PQ\\)-க்கு வரையப்பட்ட குத்துக்கோட்டின் நீளம் காண்க.", "year": "PTA-3, APR-24, JUL-21"}, {"id": 17, "cat": "tri_median", "cat_em": "Triangle Construction (Median)", "cat_tm": "முக்கோணம் வரைதல் (நடுக்கோட்டு மாதிரி)", "q_em": "Construct a \\(\\triangle PQR\\) in which base \\(PQ = 4.5\\text{ cm}\\), \\(\\angle R = 35^\\circ\\) and the Median \\(RG\\) from \\(R\\) to \\(PQ\\) is \\(6\\text{ cm}\\).", "q_tm": "\\(PQ = 4.5\\) செ.மீ, \\(\\angle R = 35^\\circ\\) மற்றும் உச்சி \\(R\\)-யிலிருந்து வரையப்பட்ட நடுக்கோட்டின் நீளம் \\(RG = 6\\) செ.மீ என அமையுமாறு \\(\\triangle PQR\\) வரைக.", "year": ""}, {"id": 18, "cat": "tri_median", "cat_em": "Triangle Construction (Median)", "cat_tm": "முக்கோணம் வரைதல் (நடுக்கோட்டு மாதிரி)", "q_em": "Construct a \\(\\triangle PQR\\) in which \\(QR = 5\\text{ cm}\\), \\(\\angle P = 40^\\circ\\) and the Median \\(PG\\) from \\(P\\) to \\(QR\\) is \\(4.4\\text{ cm}\\). Find the length of the Altitude from \\(P\\) to \\(QR\\).", "q_tm": "\\(QR = 5\\) செ.மீ, \\(\\angle P = 40^\\circ\\) மற்றும் உச்சி \\(P\\)-யிலிருந்து \\(QR\\)-க்கு வரையப்பட்ட நடுக்கோட்டின் நீளம் \\(PG = 4.4\\) செ.மீ என இருக்கும்படி \\(\\triangle PQR\\) வரைக. மேலும் \\(P\\)-லிருந்து \\(QR\\)-க்கு வரையப்பட்ட குத்துக்கோட்டின் நீளம் காண்க.", "year": "JUL-24"}, {"id": 19, "cat": "tri_altitude", "cat_em": "Triangle Construction (Altitude)", "cat_tm": "முக்கோணம் வரைதல் (குத்துக்கோட்டு மாதிரி)", "q_em": "Construct a \\(\\triangle PQR\\) such that \\(QR = 5\\text{ cm}\\), \\(\\angle P = 30^\\circ\\) and the Altitude from \\(P\\) to \\(QR\\) is of length \\(4.2\\text{ cm}\\).", "q_tm": "\\(QR = 5\\) செ.மீ, \\(\\angle P = 30^\\circ\\) மற்றும் \\(P\\)-யிலிருந்து \\(QR\\)-க்கு வரையப்பட்ட குத்துக்கோட்டின் நீளம் \\(4.2\\) செ.மீ கொண்ட \\(\\triangle PQR\\) வரைக.", "year": "PTA-5"}, {"id": 20, "cat": "tri_altitude", "cat_em": "Triangle Construction (Altitude)", "cat_tm": "முக்கோணம் வரைதல் (குத்துக்கோட்டு மாதிரி)", "q_em": "Construct a \\(\\triangle PQR\\) such that \\(QR = 6.5\\text{ cm}\\), \\(\\angle P = 60^\\circ\\) and the Altitude from \\(P\\) to \\(QR\\) is of length \\(4.5\\text{ cm}\\).", "q_tm": "\\(QR = 6.5\\) செ.மீ, \\(\\angle P = 60^\\circ\\) மற்றும் உச்சி \\(P\\)-யிலிருந்து \\(QR\\)-க்கு வரையப்பட்ட குத்துக்கோட்டின் நீளம் \\(4.5\\) செ.மீ உடைய \\(\\triangle PQR\\) வரைக.", "year": ""}, {"id": 21, "cat": "tri_altitude", "cat_em": "Triangle Construction (Altitude)", "cat_tm": "முக்கோணம் வரைதல் (குத்துக்கோட்டு மாதிரி)", "q_em": "Construct a \\(\\triangle PQR\\) such that \\(QR = 5.5\\text{ cm}\\), \\(\\angle P = 25^\\circ\\) and the Altitude from \\(P\\) to \\(QR\\) is of length \\(4\\text{ cm}\\).", "q_tm": "\\(AB = 5.5\\) செ.மீ, \\(\\angle C = 25^\\circ\\) மற்றும் உச்சி \\(C\\)-யிலிருந்து \\(AB\\)-க்கு வரையப்பட்ட குத்துக்கோட்டின் நீளம் \\(4\\) செ.மீ உடைய \\(\\triangle ABC\\) வரைக.", "year": "APR-22"}, {"id": 22, "cat": "tri_bisector", "cat_em": "Triangle Construction (Angle Bisector)", "cat_tm": "முக்கோணம் வரைதல் (இருசமவெட்டி மாதிரி)", "q_em": "Draw a triangle \\(\\triangle ABC\\) of base \\(BC = 8\\text{ cm}\\), \\(\\angle A = 60^\\circ\\) and the Bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\) such that \\(BD = 6\\text{ cm}\\).", "q_tm": "அடிப்பக்கம் \\(BC = 8\\) செ.மீ, \\(\\angle A = 60^\\circ\\) மற்றும் \\(\\angle A\\)-யின் இருசமவெட்டியானது \\(BC\\)-ஐ \\(D\\) என்ற புள்ளியில் \\(BD = 6\\) செ.மீ என்றவாறு சந்திக்கிறது எனில், முக்கோணம் \\(ABC\\) வரைக.", "year": "APR-23, 25, MDL-19"}, {"id": 23, "cat": "tri_bisector", "cat_em": "Triangle Construction (Angle Bisector)", "cat_tm": "முக்கோணம் வரைதல் (இருசமவெட்டி மாதிரி)", "q_em": "Draw a triangle \\(\\triangle ABC\\) of base \\(BC = 5.6\\text{ cm}\\), \\(\\angle A = 40^\\circ\\) and the Bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\) such that \\(BD = 4\\text{ cm}\\).", "q_tm": "அடிப்பக்கம் \\(BC = 5.6\\) செ.மீ, \\(\\angle A = 40^\\circ\\) மற்றும் \\(\\angle A\\)-யின் இருசமவெட்டியானது அடிப்பக்கம் \\(BC\\)-ஐ \\(CD = 4\\) செ.மீ என \\(D\\)-யில் சந்திக்குமாறு அமையும் முக்கோணம் \\(ABC\\) வரைக.", "year": ""}, {"id": 24, "cat": "tri_bisector", "cat_em": "Triangle Construction (Angle Bisector)", "cat_tm": "முக்கோணம் வரைதல் (இருசமவெட்டி மாதிரி)", "q_em": "Draw a triangle \\(\\triangle PQR\\) such that \\(PQ = 6.8\\text{ cm}\\), vertical angle is \\(50^\\circ\\) and the Bisector of vertical angle meets the base at \\(D\\) where \\(PD = 5.8\\text{ cm}\\).", "q_tm": "\\(PQ = 6.8\\) செ.மீ, உச்சிக்கோணம் \\(50^\\circ\\) மற்றும் உச்சிக்கோணத்தின் இருசம வெட்டியானது அடிப்பக்கத்தை \\(PD = 5.2\\) செ.மீ என \\(D\\)-யில் சந்திக்குமாறு அமையும் \\(\\triangle PQR\\) வரைக.", "year": "PTA-4"}], "graph": [{"id": 1, "cat": "direct", "cat_em": "Graph of Variation — Direct Variation", "cat_tm": "நேர்மாறுபாடு வரைபடம் (நேர்க்கோடு)", "q_em": "Varshika drew \\(6\\) circles with different sizes. Draw a graph for the relationship between the diameter and circumference (approximately related) of each circle as shown in the table and use it to find the circumference of a circle when its diameter is \\(6\\text{ cm}\\).", "q_tm": "வர்ஷிகா வெவ்வேறு அளவுகளில் \\(6\\) வட்டங்களை வரைந்தாள். அட்டவணையில் உள்ளவாறு, ஒவ்வொரு வட்டத்தின் விட்டத்திற்கும் அதன் சுற்றளவிற்கும் உள்ள தோராயத் தொடர்புக்கு ஒரு வரைபடம் வரையவும். அதனைப் பயன்படுத்தி, விட்டமானது \\(6\\) செ.மீ ஆக இருக்கும்போது வட்டத்தின் சுற்றளவைக் காண்க.", "table_em": [["Diameter (x) cm", "1", "2", "3", "4", "5"], ["Circumference (y) cm", "3.1", "6.2", "9.3", "12.4", "15.5"]], "table_tm": [["விட்டம் (x) செ.மீ", "1", "2", "3", "4", "5"], ["சுற்றளவு (y) செ.மீ", "3.1", "6.2", "9.3", "12.4", "15.5"]], "year": "APR-23"}, {"id": 2, "cat": "direct", "cat_em": "Graph of Variation — Direct Variation", "cat_tm": "நேர்மாறுபாடு வரைபடம் (நேர்க்கோடு)", "q_em": "A bus is travelling at a uniform speed of \\(50\\text{ km/hr}\\). Draw the distance-time graph and hence find: (i) The constant of variation. (ii) How far will it travel in \\(90\\) minutes or \\(1\\frac{1}{2}\\) hrs? (iii) The time required to cover a distance of \\(300\\text{ km}\\) from the graph.", "q_tm": "ஒரு பேருந்து \\(50\\) கி.மீ/மணி என்ற சீரான வேகத்தில் பயணிக்கிறது. இத்தொடர்புக்கான தூரம் – நேரம் வரைபடம் வரைந்து, பின்வருவனவற்றைக் காண்க: (i) விகிதசம மாறிலியைக் காண்க (ii) \\(90\\) நிமிடங்களில் (அ) \\(1\\frac{1}{2}\\) மணி நேரம் பயணிக்கும் தூரம் எவ்வளவு? (iii) \\(300\\) கி.மீ. தூரத்தை பயணிக்க எவ்வளவு நேரம் ஆகும்?", "year": "APR-25"}, {"id": 3, "cat": "direct", "cat_em": "Graph of Variation — Direct Variation", "cat_tm": "நேர்மாறுபாடு வரைபடம் (நேர்க்கோடு)", "q_em": "A garment shop announces a flat \\(50\\%\\) discount on every purchase of items for their customers. Draw the graph for the relation between the Marked Price and the Discount. Hence find: (i) The marked price when a customer gets a discount of ₹ \\(3250\\) (from graph). (ii) The discount when the marked price is ₹ \\(2500\\).", "q_tm": "ஒரு துணிக்கடையானது தனது வாடிக்கையாளர்களுக்கு வாங்கும் ஒவ்வொரு பொருளின் மீதும் \\(50\\%\\) தள்ளுபடியை அறிவிக்கிறது. குறித்த விலைக்கும் தள்ளுபடிக்குமான வரைபடம் வரைக. மேலும், (i) வரைபடத்திலிருந்து, ஒரு வாடிக்கையாளர் ₹ \\(3250\\)-ஐ தள்ளுபடியாகப் பெற்றால், குறித்த விலையைக் காண்க. (ii) குறித்த விலையானது ₹ \\(2500\\) எனில், தள்ளுபடியைக் காண்க.", "year": ""}, {"id": 4, "cat": "direct", "cat_em": "Graph of Variation — Direct Variation", "cat_tm": "நேர்மாறுபாடு வரைபடம் (நேர்க்கோடு)", "q_em": "Graph the following linear function \\(y = \\dfrac{1}{2}x\\). Identify the constant of variation and verify it with the graph. Also find: (i) \\(y\\) when \\(x = 9\\) and (ii) \\(x\\) when \\(y = 7.5\\).", "q_tm": "\\(y = \\dfrac{1}{2}x\\) என்ற நேரிய சமன்பாட்டின் / சார்பின் வரைபடம் வரைக. விகிதசம மாறிலியை அடையாளம் கண்டு, அதனை வரைபடத்துடன் சரிபார்க்க. மேலும், (i) \\(x = 9\\) எனில் \\(y\\)-ஐக் காண்க. (ii) \\(y = 7.5\\) எனில் \\(x\\)-ஐக் காண்க.", "year": "JUL-23"}, {"id": 5, "cat": "direct", "cat_em": "Graph of Variation — Direct Variation", "cat_tm": "நேர்மாறுபாடு வரைபடம் (நேர்க்கோடு)", "q_em": "A two wheeler parking zone near bus stand charges as below. Check if the amount charged are in direct variation or in inverse variation to the parking time. Graph the data. Also: (i) Find the amount to be paid when parking time is \\(6\\) hrs. (ii) Find the parking duration when the amount paid is ₹ \\(150\\).", "q_tm": "பேருந்து நிலையம் அருகே உள்ள இரு சக்கர வாகனம் நிறுத்துமிடத்தில் பெறப்படும் கட்டணத் தொகை பின்வருமாறு. பெறப்படும் கட்டணத் தொகையானது வாகனம் நிறுத்தப்படும் நேரத்திற்கு நேர் மாறுபாட்டில் உள்ளதா அல்லது எதிர் மாறுபாட்டில் உள்ளதா என ஆராய்க. கொடுக்கப்பட்ட தரவுகளை வரைபடத்தில் குறிக்கவும். மேலும், (i) நிறுத்தப்படும் நேரம் \\(6\\) மணி எனில், கட்டணத் தொகையைக் காண்க. (ii) ₹ \\(150\\)-ஐ கட்டணத் தொகையாகச் செலுத்தி இருந்தால், நிறுத்தப்பட்ட நேரத்தின் அளவைக் காண்க.", "table_em": [["Time x (in hours)", "4", "8", "12", "24"], ["Amount y (in ₹)", "60", "120", "180", "360"]], "table_tm": [["நேரம் (மணியில்) (x)", "4", "8", "12", "24"], ["கட்டணத் தொகை ₹ (y)", "60", "120", "180", "360"]], "year": ""}, {"id": 6, "cat": "inverse", "cat_em": "Graph of Variation — Inverse Variation", "cat_tm": "எதிர்மாறுபாடு வரைபடம் (வளைவரை)", "q_em": "A Company initially started with \\(40\\) workers to complete the work by \\(150\\) days. Later it decided to fasten up the work increasing the number of workers as shown below. (i) Graph the above data and identify the type of variation. (ii) From the graph, find the number of days required to complete the work if the company decides to opt for \\(120\\) workers? (iii) If the work has to be completed by \\(200\\) days, how many workers are required?", "q_tm": "ஒரு நிறுவனமானது தொடக்கத்தில் \\(40\\) வேலையாட்களுடன் \\(150\\) நாள்களில் ஒரு வேலையை முடிக்க தொடங்கியது. பிறகு, வேலையை விரைவாக முடித்திட பின்வருமாறு வேலையாட்களை அதிகரித்தது. (i) மேலேக் கொடுக்கப்பட்டுள்ள தரவுகளுக்கு வரைபடம் வரைந்து மாறுபாட்டின் வகையை அடையாளம் காண்க. (ii) வரைபடத்திலிருந்து, நிறுவனமானது \\(120\\) வேலையாட்களை வேலைக்கு அமர்த்த விரும்பினால், வேலை முடிய எத்தனை நாள்கள் ஆகும் எனக் காண்க. (iii) வேலையானது \\(200\\) நாள்களில் முடிய வேண்டும் எனில், எத்தனை வேலையாட்கள் தேவை?", "table_em": [["Number of workers (x)", "40", "50", "60", "75"], ["Number of days (y)", "150", "120", "100", "80"]], "table_tm": [["வேலையாட்களின் எண்ணிக்கை (x)", "40", "50", "60", "75"], ["நாள்களின் எண்ணிக்கை (y)", "150", "120", "100", "80"]], "year": ""}, {"id": 7, "cat": "inverse", "cat_em": "Graph of Variation — Inverse Variation", "cat_tm": "எதிர்மாறுபாடு வரைபடம் (வளைவரை)", "q_em": "Nishanth is the winner in a Marathon race \\(12\\text{ km}\\) distance. He ran at the uniform speed of \\(12\\text{ km/hr}\\) and reached the destination in \\(1\\) hour. He was followed by Aradhana, Jeyanth, Sathya and Swetha with their respective speed of \\(6\\text{ km/hr}\\), \\(4\\text{ km/hr}\\), \\(3\\text{ km/hr}\\) and \\(2\\text{ km/hr}\\). And, they covered the distance in \\(2\\text{ hrs}\\), \\(3\\text{ hrs}\\), \\(4\\text{ hrs}\\) and \\(6\\text{ hrs}\\) respectively. Draw the Speed–Time graph and use it to find time taken to Kaushik with his speed \\(2.4\\text{ km/hr}\\).", "q_tm": "நிஷாந்த், \\(12\\) கி.மீ தூரத்திற்கான மாரத்தான் ஓட்டத்தின் வெற்றியாளர் ஆவார். அவர் மணிக்கு \\(12\\) கி.மீ என்ற சீரான வேகத்தில் ஓடி, இலக்கினை \\(1\\) மணி நேரத்தில் அடைந்தார். அவரைத் தொடர்ந்து ஆராதனா, ஜெயந்த், சத்யா மற்றும் சுவேதா ஆகியோர் முறையே \\(6\\) கி.மீ/மணி, \\(4\\) கி.மீ/மணி, \\(3\\) கி.மீ/மணி மற்றும் \\(2\\) கி.மீ/மணி என்ற வேகத்தில் ஓடி வந்தனர். அவர்கள் அந்த தூரத்தை முறையே \\(2\\) மணி, \\(3\\) மணி, \\(4\\) மணி மற்றும் \\(6\\) மணி நேரத்தில் அடைந்தனர். வேகம் – நேரம், வரைபடம் வரைந்து அதனைப் பயன்படுத்தி, மணிக்கு \\(2.4\\) கி.மீ/மணி வேகத்தில் சென்ற கௌசிக் எடுத்துக் கொண்ட நேரத்தைக் காண்க.", "year": ""}, {"id": 8, "cat": "inverse", "cat_em": "Graph of Variation — Inverse Variation", "cat_tm": "எதிர்மாறுபாடு வரைபடம் (வளைவரை)", "q_em": "Draw the graph of \\(xy = 24\\), \\(x, y > 0\\). Using the graph find: (i) \\(y\\) when \\(x = 3\\) and (ii) \\(x\\) when \\(y = 6\\).", "q_tm": "\\(xy = 24\\), \\(x, y > 0\\) என்ற வரைபடத்தை வரைக. வரைபடத்தைப் பயன்படுத்தி, (i) \\(x = 3\\) எனில் \\(y\\)-ஐக் காண்க மற்றும் (ii) \\(y = 6\\) எனில் \\(x\\)-ஐக் காண்க.", "year": "APR-24"}, {"id": 9, "cat": "inverse", "cat_em": "Graph of Variation — Inverse Variation", "cat_tm": "எதிர்மாறுபாடு வரைபடம் (வளைவரை)", "q_em": "The following table shows the data about the number of pipes and the time taken to fill the same tank. Draw the graph for the above data and hence: (i) Find the time taken to fill the tank when five pipes are used. (ii) Find the number of pipes when the time is \\(9\\) minutes.", "q_tm": "ஒரு தொட்டியை நிரப்பத் தேவையான குழாய்களின் எண்ணிக்கையும் அவை எடுத்துக் கொள்ளும் நேரமும் பின்வரும் அட்டவணையில் கொடுக்கப்பட்டுள்ளது. மேற்காணும் தரவுகளுக்கு வரைபடம் வரைந்து, (i) \\(5\\) குழாய்களை பயன்படுத்தினால், தொட்டி நிரம்ப எடுத்துக் கொள்ளப்பட்ட நேரத்தைக் காண்க. (ii) \\(9\\) நிமிடங்களில் தொட்டி நிரம்பினால், பயன்படுத்தப்பட்ட குழாய்களின் எண்ணிக்கையைக் காண்க.", "table_em": [["No. of pipes (x)", "2", "3", "6", "9"], ["Time Taken y (in mins)", "45", "30", "15", "10"]], "table_tm": [["குழாய்களின் எண்ணிக்கை (x)", "2", "3", "6", "9"], ["எடுத்துக்கொள்ளும் நேரம் (y) நிமிடங்களில்", "45", "30", "15", "10"]], "year": "JUL-24"}, {"id": 10, "cat": "inverse", "cat_em": "Graph of Variation — Inverse Variation", "cat_tm": "எதிர்மாறுபாடு வரைபடம் (வளைவரை)", "q_em": "A School announces that for a certain competition, the cash prize will be distributed for all the participants equally as shown below. (i) Find the constant of variation. (ii) Graph the above data and hence, find how much will each participant get if the number of participants are \\(12\\).", "q_tm": "ஒரு பள்ளியானது, குறிப்பிட்ட சில போட்டிகளுக்கு, பரிசுத் தொகையினை எல்லா பங்கேற்பாளர்களுக்கும் பின்வருமாறு சமமாக பிரித்து வழங்குவதாக அறிவிக்கிறது. (i) விகிதசம மாறிலியைக் காண்க. (ii) மேற்காணும் தரவுகளுக்கு வரைபடம் வரைந்து, \\(12\\) பங்கேற்பாளர்கள் பங்கெடுத்துக் கொண்டால் ஒவ்வொரு பங்கேற்பாளரும் பெறும் பரிசுத் தொகை எவ்வளவு என்பதைக் காண்க.", "table_em": [["No. of Participants (x)", "2", "4", "6", "8", "10"], ["Amount for each Participant y (in ₹)", "180", "90", "60", "45", "36"]], "table_tm": [["பங்கேற்பாளர்களின் எண்ணிக்கை (x)", "2", "4", "6", "8", "10"], ["ஒவ்வொரு பங்கேற்பாளரின் தொகை ₹ (y)", "180", "90", "60", "45", "36"]], "year": "JUL-25"}, {"id": 11, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Discuss the nature of solutions of the quadratic equation: \\(x^2 + x - 12 = 0\\)", "q_tm": "பின்வரும் இருபடிச் சமன்பாட்டின் தீர்வுகளின் தன்மையை வரைபடம் மூலம் ஆராய்க: \\(x^2 + x - 12 = 0\\)", "year": "JUL-25"}, {"id": 12, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Discuss the nature of solutions of the quadratic equation: \\(x^2 - 8x + 16 = 0\\)", "q_tm": "பின்வரும் இருபடிச் சமன்பாட்டின் தீர்வுகளின் தன்மையை வரைபடம் மூலம் ஆராய்க: \\(x^2 - 8x + 16 = 0\\)", "year": ""}, {"id": 13, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Discuss the nature of solutions of the quadratic equation: \\(x^2 + 2x + 5 = 0\\)", "q_tm": "பின்வரும் இருபடிச் சமன்பாட்டின் தீர்வுகளின் தன்மையை வரைபடம் மூலம் ஆராய்க: \\(x^2 + 2x + 5 = 0\\)", "year": ""}, {"id": 14, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Graph the quadratic equation and state the nature of solutions: \\(x^2 - 9x + 20 = 0\\)", "q_tm": "கொடுக்கப்பட்ட இருபடிச் சமன்பாட்டின் வரைபடம் வரைக. அதன் தீர்வுகளின் தன்மையைக் கூறுக: \\(x^2 - 9x + 20 = 0\\)", "year": "APR-25, JUL-22"}, {"id": 15, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Graph the quadratic equation and state the nature of solutions: \\(x^2 - 4x + 4 = 0\\)", "q_tm": "கொடுக்கப்பட்ட இருபடிச் சமன்பாட்டின் வரைபடம் வரைக. அதன் தீர்வுகளின் தன்மையைக் கூறுக: \\(x^2 - 4x + 4 = 0\\)", "year": "APR-22"}, {"id": 16, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Graph the quadratic equation and state the nature of solutions: \\(x^2 + x + 7 = 0\\)", "q_tm": "கொடுக்கப்பட்ட இருபடிச் சமன்பாட்டின் வரைபடம் வரைக. அதன் தீர்வுகளின் தன்மையைக் கூறுக: \\(x^2 + x + 7 = 0\\)", "year": ""}, {"id": 17, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Graph the quadratic equation and state the nature of solutions: \\(x^2 - 9 = 0\\)", "q_tm": "கொடுக்கப்பட்ட இருபடிச் சமன்பாட்டின் வரைபடம் வரைக. அதன் தீர்வுகளின் தன்மையைக் கூறுக: \\(x^2 - 9 = 0\\)", "year": ""}, {"id": 18, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Graph the quadratic equation and state the nature of solutions: \\(x^2 - 6x + 9 = 0\\)", "q_tm": "கொடுக்கப்பட்ட இருபடிச் சமன்பாட்டின் வரைபடம் வரைக. அதன் தீர்வுகளின் தன்மையைக் கூறுக: \\(x^2 - 6x + 9 = 0\\)", "year": ""}, {"id": 19, "cat": "quad_nature", "cat_em": "Quadratic Graph — Nature of Solutions", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் — தீர்வுகளின் தன்மை", "q_em": "Graph the quadratic equation and state the nature of solutions: \\((2x - 3)(x + 2) = 0\\)", "q_tm": "கொடுக்கப்பட்ட இருபடிச் சமன்பாட்டின் வரைபடம் வரைக. அதன் தீர்வுகளின் தன்மையைக் கூறுக: \\((2x - 3)(x + 2) = 0\\)", "year": ""}, {"id": 20, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = 2x^2\\) and hence solve \\(2x^2 - x - 6 = 0\\).", "q_tm": "\\(y = 2x^2\\) என்ற வரைபடம் வரைந்து அதன் மூலம் \\(2x^2 - x - 6 = 0\\) என்ற சமன்பாட்டைத் தீர்க்க.", "year": "APR-24, JUL-20, PTA-3, PTA-4"}, {"id": 21, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 + 4x + 3\\) and hence solve \\(x^2 + x + 1 = 0\\).", "q_tm": "\\(y = x^2 + 4x + 3\\)-ன் வரைபடம் வரைந்து அதனைப் பயன்படுத்தி \\(x^2 + x + 1 = 0\\) என்ற சமன்பாட்டின் தீர்வைக் காண்க.", "year": ""}, {"id": 22, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 + x - 2\\) and hence solve \\(x^2 + x - 2 = 0\\).", "q_tm": "\\(y = x^2 + x - 2\\)-ன் வரைபடம் வரைந்து அதன் மூலம் \\(x^2 + x - 2 = 0\\) என்ற சமன்பாட்டினைத் தீர்க்கவும்.", "year": "JUL-24, PTA-1"}, {"id": 23, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 - 4x + 3\\) and hence solve \\(x^2 - 6x + 9 = 0\\).", "q_tm": "\\(y = x^2 - 4x + 3\\)-ன் வரைபடம் வரைந்து அதன் மூலம் \\(x^2 - 6x + 9 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": "JUL-22, APR-22"}, {"id": 24, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 - 4\\) and hence solve \\(x^2 - x - 12 = 0\\).", "q_tm": "\\(y = x^2 - 4\\) வரைபடம் வரைந்து, அதனைப் பயன்படுத்தி \\(x^2 - x - 12 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": "JUL-23"}, {"id": 25, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 + x\\) and hence solve \\(x^2 + 1 = 0\\).", "q_tm": "\\(y = x^2 + x\\)-யின் வரைபடம் வரைந்து, \\(x^2 + 1 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": ""}, {"id": 26, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 + 3x + 2\\) and hence solve \\(x^2 + 2x + 1 = 0\\).", "q_tm": "\\(y = x^2 + 3x + 2\\)-யின் வரைபடம் வரைந்து, அதனைப் பயன்படுத்தி \\(x^2 + 2x + 1 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": "PTA-5"}, {"id": 27, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 + 3x - 4\\) and hence solve \\(x^2 + 3x - 4 = 0\\).", "q_tm": "\\(y = x^2 + 3x - 4\\)-யின் வரைபடம் வரைந்து, அதனைப் பயன்படுத்தி \\(x^2 + 3x - 4 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": "JUL-21"}, {"id": 28, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = x^2 - 5x - 6\\) and hence solve \\(x^2 - 5x - 14 = 0\\).", "q_tm": "\\(y = x^2 - 5x - 6\\)-யின் வரைபடம் வரைந்து, அதனைப் பயன்படுத்தி \\(x^2 - 5x - 14 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": "APR-23, PTA-2, 6"}, {"id": 29, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = 2x^2 - 3x - 5\\) and hence solve \\(2x^2 - 4x - 6 = 0\\).", "q_tm": "\\(y = 2x^2 - 3x - 5\\)-யின் வரைபடம் வரைந்து, அதனைப் பயன்படுத்தி \\(2x^2 - 4x - 6 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": "APR-24, JUL-20, PTA-3"}, {"id": 30, "cat": "quad_solve", "cat_em": "Quadratic Graph — Graphically Solve", "cat_tm": "இருபடிச் சமன்பாடு வரைபடம் மூலம் தீர்வுகாணுதல்", "q_em": "Draw the graph of \\(y = (x - 1)(x + 3)\\) and hence solve \\(x^2 - x - 6 = 0\\).", "q_tm": "\\(y = (x - 1)(x + 3)\\)-யின் வரைபடம் வரைந்து, அதனைப் பயன்படுத்தி \\(x^2 - x - 6 = 0\\) என்ற சமன்பாட்டைத் தீர்க்கவும்.", "year": ""}]};
+
+    // ================= SVG DIAGRAMS FOR CHAPTER 4 ONE-MARK QUESTIONS =================
+    const DIAGRAM_SVGS = {
+      ch4_q4: `
+        <svg viewBox="0 0 180 115" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="18,98 112,20 162,98" fill="#38bdf8" fill-opacity="0.22" stroke="#000000" stroke-width="1.8" stroke-linejoin="round"/>
+          <line x1="65" y1="59" x2="90" y2="98" stroke="#000000" stroke-width="1.8"/>
+          <text x="8" y="106" font-size="12" font-weight="700" font-style="italic" fill="#000000">P</text>
+          <text x="108" y="14" font-size="12" font-weight="700" font-style="italic" fill="#000000">Q</text>
+          <text x="165" y="106" font-size="12" font-weight="700" font-style="italic" fill="#000000">R</text>
+          <text x="53" y="53" font-size="12" font-weight="700" font-style="italic" fill="#000000">S</text>
+          <text x="86" y="111" font-size="12" font-weight="700" font-style="italic" fill="#000000">T</text>
+        </svg>`,
+      ch4_q8: `
+        <svg viewBox="0 0 180 115" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="20,96 68,24 68,96" fill="#ec4899" fill-opacity="0.22" stroke="#000000" stroke-width="1.6"/>
+          <polygon points="68,96 68,24 162,96" fill="#facc15" fill-opacity="0.26" stroke="#000000" stroke-width="1.6"/>
+          <polyline points="68,86 78,86 78,96" fill="none" stroke="#000000" stroke-width="1.3"/>
+          <polyline points="61,34 69,40 76,30" fill="none" stroke="#000000" stroke-width="1.2"/>
+          <text x="64" y="17" font-size="12" font-weight="700" font-style="italic" fill="#000000">A</text>
+          <text x="8" y="106" font-size="12" font-weight="700" font-style="italic" fill="#000000">B</text>
+          <text x="63" y="110" font-size="12" font-weight="700" font-style="italic" fill="#000000">D</text>
+          <text x="164" y="106" font-size="12" font-weight="700" font-style="italic" fill="#000000">C</text>
+        </svg>`,
+      ch4_q10: `
+        <svg viewBox="0 0 180 118" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="18,100 156,16 156,100" fill="#84cc16" fill-opacity="0.22" stroke="#000000" stroke-width="1.8" stroke-linejoin="round"/>
+          <polygon points="122,52 156,16 156,100" fill="#facc15" fill-opacity="0.32" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"/>
+          <polyline points="129,44 137,51 130,59" fill="none" stroke="#000000" stroke-width="1.2"/>
+          <text x="159" y="18" font-size="12" font-weight="700" font-style="italic" fill="#000000">P</text>
+          <text x="154" y="113" font-size="12" font-weight="700" font-style="italic" fill="#000000">Q</text>
+          <text x="8" y="110" font-size="12" font-weight="700" font-style="italic" fill="#000000">R</text>
+          <text x="110" y="54" font-size="12" font-weight="700" font-style="italic" fill="#000000">A</text>
+          <text x="134" y="61" font-size="9.5" font-weight="700" fill="#000000">90&deg;</text>
+        </svg>`,
+      ch4_q14: `
+        <svg viewBox="0 0 180 120" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="62" cy="60" r="36" fill="none" stroke="#0284c7" stroke-width="1.8"/>
+          <circle cx="62" cy="60" r="2.2" fill="#000000"/>
+          <line x1="25" y1="9" x2="165" y2="60" stroke="#b91c1c" stroke-width="1.5"/>
+          <line x1="25" y1="111" x2="165" y2="60" stroke="#b91c1c" stroke-width="1.5"/>
+          <line x1="98" y1="22" x2="98" y2="98" stroke="#000000" stroke-width="1.5"/>
+          <circle cx="74" cy="26" r="2.2" fill="#000000"/>
+          <circle cx="74" cy="94" r="2.2" fill="#000000"/>
+          <circle cx="98" cy="60" r="2.2" fill="#000000"/>
+          <circle cx="98" cy="36" r="2.2" fill="#000000"/>
+          <circle cx="98" cy="84" r="2.2" fill="#000000"/>
+          <text x="56" y="72" font-size="11" font-weight="700" font-style="italic" fill="#000000">O</text>
+          <text x="72" y="19" font-size="11" font-weight="700" font-style="italic" fill="#000000">P</text>
+          <text x="72" y="109" font-size="11" font-weight="700" font-style="italic" fill="#000000">Q</text>
+          <text x="102" y="34" font-size="11" font-weight="700" font-style="italic" fill="#000000">A</text>
+          <text x="103" y="64" font-size="11" font-weight="700" font-style="italic" fill="#000000">R</text>
+          <text x="102" y="95" font-size="11" font-weight="700" font-style="italic" fill="#000000">B</text>
+          <text x="165" y="64" font-size="11" font-weight="700" font-style="italic" fill="#000000">C</text>
+        </svg>`,
+      ch4_q15: `
+        <svg viewBox="0 0 180 120" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="80" cy="66" r="44" fill="none" stroke="#15803d" stroke-width="1.8"/>
+          <line x1="80" y1="22" x2="162" y2="22" stroke="#0284c7" stroke-width="1.6"/>
+          <polygon points="164,22 157,18.5 157,25.5" fill="#0284c7"/>
+          <line x1="80" y1="22" x2="80" y2="66" stroke="#b91c1c" stroke-width="1.5"/>
+          <line x1="80" y1="66" x2="118" y2="88" stroke="#b91c1c" stroke-width="1.5"/>
+          <line x1="80" y1="22" x2="118" y2="88" stroke="#b91c1c" stroke-width="1.5"/>
+          <path d="M 102,22 A 22,22 0 0 1 91,41" fill="none" stroke="#000000" stroke-width="1.2"/>
+          <circle cx="80" cy="66" r="2.2" fill="#000000"/>
+          <circle cx="80" cy="22" r="2.2" fill="#000000"/>
+          <circle cx="118" cy="88" r="2.2" fill="#000000"/>
+          <text x="75" y="15" font-size="11" font-weight="700" font-style="italic" fill="#000000">P</text>
+          <text x="148" y="15" font-size="11" font-weight="700" font-style="italic" fill="#000000">R</text>
+          <text x="67" y="71" font-size="11" font-weight="700" font-style="italic" fill="#000000">O</text>
+          <text x="122" y="96" font-size="11" font-weight="700" font-style="italic" fill="#000000">Q</text>
+          <text x="95" y="38" font-size="10" font-weight="700" fill="#000000">60&deg;</text>
+        </svg>`
+    };
+
+    // ================= EXACT PRINT-READY MILLIMETER GRAPH PAPER SVG WITH SCALE BOX =================
+    // True 1 SVG unit = 1 mm physical coordinates with crisp PDF-safe stroke weights:
+    // 1mm minor grid (0.18mm), 5mm half-cm mid-line (0.32mm), 1cm major grid (0.54mm), outer frame (0.72mm)
+    const GRAPH_PALETTES = {
+      red: {
+        minor: '#d96b6b',
+        mid: '#c02626',
+        major: '#881313',
+        border: '#450a0a',
+        boxStroke: '#881313',
+        text: '#7f1d1d',
+        label: 'Exact Red Millimeter Graph Paper'
+      },
+      green: {
+        minor: '#5ea882',
+        mid: '#15803d',
+        major: '#064e3b',
+        border: '#022c22',
+        boxStroke: '#064e3b',
+        text: '#064e3b',
+        label: 'Exact Green Millimeter Graph Paper'
+      },
+      bw: {
+        minor: '#94a3b8',
+        mid: '#475569',
+        major: '#0f172a',
+        border: '#000000',
+        boxStroke: '#0f172a',
+        text: '#0f172a',
+        label: 'Exact High-Contrast B&W Millimeter Graph Paper'
+      }
+    };
+
+    function createExactGraphSheetSVG(colsCm, rowsCm, isTamil, styleKey = 'red') {
+      const pal = GRAPH_PALETTES[styleKey] || GRAPH_PALETTES.red;
+      const mmCols = colsCm * 10;
+      const mmRows = rowsCm * 10;
+      const W = mmCols; // 1 SVG unit = 1 mm exactly
+      const H = mmRows;
+      const pad = 0.8;
+      const totalW = +(W + pad * 2).toFixed(2);
+      const totalH = +(H + pad * 2).toFixed(2);
+
+      let path1mm = '';
+      let path5mm = '';
+      let path10mm = '';
+
+      for (let xMm = 0; xMm <= mmCols; xMm++) {
+        const x = +(pad + xMm).toFixed(2);
+        const seg = `M${x},${pad}V${+(pad + H).toFixed(2)}`;
+        if (xMm % 10 === 0) path10mm += seg;
+        else if (xMm % 5 === 0) path5mm += seg;
+        else path1mm += seg;
+      }
+
+      for (let yMm = 0; yMm <= mmRows; yMm++) {
+        const y = +(pad + yMm).toFixed(2);
+        const seg = `M${pad},${y}H${+(pad + W).toFixed(2)}`;
+        if (yMm % 10 === 0) path10mm += seg;
+        else if (yMm % 5 === 0) path5mm += seg;
+        else path1mm += seg;
+      }
+
+      // Scale box neatly aligned inside top-right corner of the graph sheet (in mm)
+      const boxW = Math.min(48, W * 0.44);
+      const boxH = 16.5;
+      const boxX = +(pad + W - boxW - 2.5).toFixed(2);
+      const boxY = +(pad + 2.5).toFixed(2);
+      const scaleTitle = isTamil ? 'அளவுத் திட்டம்' : 'Scale';
+      const xTxt = isTamil ? 'x-அச்சு 1 செ.மீ = ________' : 'x-axis 1 cm = ________';
+      const yTxt = isTamil ? 'y-அச்சு 1 செ.மீ = ________' : 'y-axis 1 cm = ________';
+      const fontFam = isTamil ? "'Noto Serif Tamil', sans-serif" : "'Inter', Arial, sans-serif";
+
+      return `
+        <svg width="${totalW}mm" height="${totalH}mm" viewBox="0 0 ${totalW} ${totalH}" preserveAspectRatio="xMidYMid meet" class="exact-graph-svg" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" role="img" aria-label="${pal.label} (${colsCm} cm x ${rowsCm} cm)">
+          <rect x="${pad}" y="${pad}" width="${W}" height="${H}" fill="#ffffff"/>
+          <path d="${path1mm}" fill="none" stroke="${pal.minor}" stroke-width="0.18" stroke-linecap="square"/>
+          <path d="${path5mm}" fill="none" stroke="${pal.mid}" stroke-width="0.32" stroke-linecap="square"/>
+          <path d="${path10mm}" fill="none" stroke="${pal.major}" stroke-width="0.54" stroke-linecap="square"/>
+          <rect x="${pad}" y="${pad}" width="${W}" height="${H}" fill="none" stroke="${pal.border}" stroke-width="0.72"/>
+          <g>
+            <rect x="${boxX}" y="${boxY}" width="${boxW}" height="${boxH}" fill="#ffffff" fill-opacity="1" stroke="${pal.boxStroke}" stroke-width="0.42"/>
+            <text x="${+(boxX + boxW / 2).toFixed(2)}" y="${+(boxY + 4.3).toFixed(2)}" text-anchor="middle" font-family="${fontFam}" font-size="2.9" font-weight="700" fill="${pal.text}">${scaleTitle}</text>
+            <text x="${+(boxX + 2.2).toFixed(2)}" y="${+(boxY + 9.4).toFixed(2)}" font-family="${fontFam}" font-size="2.65" font-weight="600" fill="${pal.text}">${xTxt}</text>
+            <text x="${+(boxX + 2.2).toFixed(2)}" y="${+(boxY + 13.8).toFixed(2)}" font-family="${fontFam}" font-size="2.65" font-weight="600" fill="${pal.text}">${yTxt}</text>
+          </g>
+        </svg>`;
+    }
+
+    // ================= APP STATE =================
+    const state = {
+      medium: 'em',
+      school: 'GOVERNMENT HIGHER SECONDARY SCHOOL',
+      title: '10th MATHS EVALUATION WORKSHEET',
+      omCount: 125,
+      omChapter: 'all',
+      showChapterHeadings: true,
+      shuffleOptions: false,
+      optionShuffleSeed: 101,
+      geoCount: 24,
+      geoCat: 'all',
+      geoPerPage: 2,
+      graphCount: 30,
+      graphCat: 'all',
+      graphPerPage: 2,
+      graphStyle: 'red',
+      showYearTags: false,
+      shuffleSeed: 0
+    };
+
+    function seededShuffle(arr, seed) {
+      const copy = arr.slice();
+      let s = seed >>> 0;
+      for (let i = copy.length - 1; i > 0; i--) {
+        s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+        const j = s % (i + 1);
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getOptionPermutation(qId) {
+      const base = [0, 1, 2, 3];
+      if (!state.shuffleOptions) return base;
+      return seededShuffle(base, (state.optionShuffleSeed * 31 + qId * 97) >>> 0);
+    }
+
+    function selectItems(pool, count) {
+      const clamped = Math.max(0, Math.min(count, pool.length));
+      if (clamped === 0) return [];
+      const ordered = state.shuffleSeed > 0 ? seededShuffle(pool, state.shuffleSeed) : pool;
+      return ordered.slice(0, clamped);
+    }
+
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function getLabels() {
+      if (state.medium === 'tm') {
+        return {
+          studentName: 'மாணவர் பெயர்',
+          rollNo: 'பதிவு எண்',
+          date: 'தேதி',
+          classSec: 'வகுப்பு & பிரிவு',
+          marks: 'மதிப்பெண்',
+          part1: 'பகுதி – I : ஒரு மதிப்பெண் வினாக்கள் (1 Mark Each)',
+          part2: 'பகுதி – II : வடிவியல் (Geometry — 8 Marks Each)',
+          part3: 'பகுதி – III : வரைபடம் (Graph — 8 Marks Each)',
+          colSno: 'வ.எண்',
+          colQ: 'ஒரு மதிப்பெண் வினா',
+          colCode: 'விருப்பக் குறியீடு',
+          colAns: 'விடை',
+          fairDiag: 'உண்மைப் படம் / வரைதல் பகுதி (Fair Diagram)',
+          roughDiag: 'உதவிப் படம் (Rough Diagram)',
+          givenSteps: 'கொடுக்கப்பட்டவை / அளவுகள் (Given & Result)',
+          step1Table: '1. அட்டவணை:',
+          step2Var: '2. மாறுபாடு / விகிதசம மாறிலி:',
+          step3Eq: '3. சமன்பாடு:',
+          step4Pts: '4. குறிக்க வேண்டிய புள்ளிகள்:',
+          step5Sol: '5. தீர்வு:',
+          quadTable: '1. அட்டவணை:',
+          quadSolveSteps: '2. தீர்வுப் படிகள் (Solve Steps):',
+          quadSol: '3. தீர்வு (Solution):',
+          graphSheetTitle: 'வரைபடத் தாள் (1 cm = 10 mm)'
+        };
+      }
+      return {
+        studentName: 'Student Name',
+        rollNo: 'Roll / Reg. No',
+        date: 'Date',
+        classSec: 'Class & Sec',
+        marks: 'Marks',
+        part1: 'PART – I : ONE MARK QUESTIONS (1 Mark Each)',
+        part2: 'PART – II : GEOMETRY (8 Marks Each)',
+        part3: 'PART – III : GRAPH (8 Marks Each)',
+        colSno: 'S.No',
+        colQ: 'One Mark Question',
+        colCode: 'Option Code',
+        colAns: 'Answer',
+        fairDiag: 'Fair Diagram / Construction Space',
+        roughDiag: 'Rough Diagram',
+        givenSteps: 'Given / Measurement / Result',
+        step1Table: '1. Table:',
+        step2Var: '2. Variation / Constant of Variation:',
+        step3Eq: '3. Equation:',
+        step4Pts: '4. Points to plot:',
+        step5Sol: '5. Solution:',
+        quadTable: '1. Table:',
+        quadSolveSteps: '2. Solve Steps:',
+        quadSol: '3. Solution:',
+        graphSheetTitle: 'Exact Graph Sheet (1 cm = 10 mm)'
+      };
+    }
+
+    function renderOptionsHtml(opts, codes, perm) {
+      const ordered = perm.map(idx => opts[idx]);
+      const maxLen = Math.max(...ordered.map(o => o.length));
+      const hasComplexMath = ordered.some(o => o.includes('\\begin{') || o.includes('\\dfrac'));
+      const cls = (!hasComplexMath && maxLen <= 14) ? 'opt-grid-4' : 'opt-grid';
+      return `<div class="${cls}">` +
+        ordered.map((o, i) => `<div><strong>${codes[i]}</strong> ${o}</div>`).join('') +
+        `</div>`;
+    }
+
+    function renderGivenDataTable(tbl) {
+      if (!tbl || tbl.length < 2) return '';
+      return `<table class="given-data-table">
+        ${tbl.map(row => `<tr><th>${row[0]}</th>${row.slice(1).map(v => `<td>${v}</td>`).join('')}</tr>`).join('')}
+      </table>`;
+    }
+
+    function renderWorksheet() {
+      const L = getLabels();
+
+      const omPool = state.omChapter === 'all'
+        ? QUESTION_BANK.onemark
+        : QUESTION_BANK.onemark.filter(q => String(q.ch) === state.omChapter);
+      const geoPool = (() => {
+        if (state.geoCat === 'all') return QUESTION_BANK.geometry;
+        if (state.geoCat === 'similar_all') return QUESTION_BANK.geometry.filter(q => q.cat === 'similar_lt1' || q.cat === 'similar_gt1');
+        if (state.geoCat === 'tangent_all') return QUESTION_BANK.geometry.filter(q => q.cat === 'tangent_one' || q.cat === 'tangent_alt' || q.cat === 'tangent_two');
+        if (state.geoCat === 'similar_tangent') return QUESTION_BANK.geometry.filter(q => q.cat.startsWith('similar_') || q.cat.startsWith('tangent_'));
+        if (state.geoCat === 'similar_tri') return QUESTION_BANK.geometry.filter(q => q.cat.startsWith('similar_') || q.cat.startsWith('tri_'));
+        if (state.geoCat === 'tangent_tri') return QUESTION_BANK.geometry.filter(q => q.cat.startsWith('tangent_') || q.cat.startsWith('tri_'));
+        if (state.geoCat === 'tri_all') return QUESTION_BANK.geometry.filter(q => q.cat === 'tri_median' || q.cat === 'tri_altitude' || q.cat === 'tri_bisector');
+        return QUESTION_BANK.geometry.filter(q => q.cat === state.geoCat);
+      })();
+      const graphPool = (() => {
+        if (state.graphCat === 'all') return QUESTION_BANK.graph;
+        if (state.graphCat === 'variation_all') return QUESTION_BANK.graph.filter(q => q.cat === 'direct' || q.cat === 'inverse');
+        if (state.graphCat === 'quad_all') return QUESTION_BANK.graph.filter(q => q.cat === 'quad_nature' || q.cat === 'quad_solve');
+        return QUESTION_BANK.graph.filter(q => q.cat === state.graphCat);
+      })();
+
+      const omList = selectItems(omPool, state.omCount);
+      const geoList = selectItems(geoPool, state.geoCount);
+      const graphList = selectItems(graphPool, state.graphCount);
+
+      document.getElementById('sumOm').textContent = omList.length;
+      document.getElementById('sumGeo').textContent = geoList.length;
+      document.getElementById('sumGraph').textContent = graphList.length;
+      const totalMarks = omList.length * 1 + geoList.length * 8 + graphList.length * 8;
+      document.getElementById('sumMarks').textContent = totalMarks;
+
+      const rootFontCls = state.medium === 'tm' ? 'tamil-font' : '';
+      let html = `<div class="${rootFontCls}">`;
+
+      // ================= HEADER BLOCK =================
+      const headerBlockHtml = `
+        <section class="mb-3">
+          <div class="border-2 border-black rounded-xs overflow-hidden">
+            <div class="bg-slate-900 text-white text-center py-2 px-3" style="-webkit-print-color-adjust:exact;print-color-adjust:exact;">
+              <div class="text-sm sm:text-base font-bold tracking-wide uppercase">${escHtml(state.school || '10TH STANDARD MATHEMATICS')}</div>
+              <div class="text-xs sm:text-sm font-semibold text-slate-200 mt-0.5">${escHtml(state.title || 'STUDENT EVALUATION WORKSHEET')}</div>
+            </div>
+            <div class="student-info-grid ${state.medium === 'em' ? '' : 'two-col'} border-t border-black text-[12px] divide-x divide-black">
+              <div class="p-1.5 flex items-end gap-1.5"><strong>${L.studentName}:</strong><span class="flex-1 border-b border-black inline-block mb-0.5"></span></div>
+              <div class="p-1.5 flex items-end gap-1.5"><strong>${L.rollNo}:</strong><span class="flex-1 border-b border-black inline-block mb-0.5"></span></div>
+              <div class="p-1.5 flex items-end gap-1.5"><strong>${L.classSec}:</strong><span>10 -</span><span class="flex-1 border-b border-black inline-block mb-0.5"></span></div>
+              <div class="p-1.5 flex items-end gap-1.5"><strong>${L.date}:</strong><span class="flex-1 border-b border-black inline-block mb-0.5"></span></div>
+            </div>
+            <div class="grid grid-cols-4 border-t border-black text-[11.5px] bg-slate-50 divide-x divide-black text-center" style="-webkit-print-color-adjust:exact;print-color-adjust:exact;">
+              <div class="py-1 px-1"><strong>One Mark:</strong> ____ / ${omList.length}</div>
+              <div class="py-1 px-1"><strong>Geometry:</strong> ____ / ${geoList.length * 8}</div>
+              <div class="py-1 px-1"><strong>Graph:</strong> ____ / ${graphList.length * 8}</div>
+              <div class="py-1 px-1"><strong>Total ${L.marks}:</strong> ____ / ${totalMarks}</div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      // ================= PART I: ONE MARK TABLE (WRAPPED IN 1CM MARGIN A4 FRAME) =================
+      if (omList.length > 0) {
+        html += `
+          <table class="print-a4-frame">
+            <thead class="print-margin-thead"><tr><td></td></tr></thead>
+            <tbody><tr><td class="print-a4-body">
+            ${headerBlockHtml}
+          <section id="secOneMark">
+            <div class="bg-slate-900 text-white px-3 py-1.5 text-xs font-bold tracking-wide uppercase flex justify-between items-center mb-1.5" style="-webkit-print-color-adjust:exact;print-color-adjust:exact;">
+              <span>${L.part1}</span>
+              <span>${omList.length} &times; 1 = ${omList.length} Marks</span>
+            </div>
+            <div class="table-scroll-wrap">
+              <table class="ws-table">
+                <thead>
+                  <tr>
+                    <th style="width:7%;">${L.colSno}</th>
+                    <th style="width:63%;">${L.colQ}</th>
+                    <th style="width:11%;">${L.colCode}</th>
+                    <th style="width:19%;">${L.colAns}</th>
+                  </tr>
+                </thead>
+                <tbody>
+        `;
+
+        let lastCh = null;
+        omList.forEach((q, idx) => {
+          if (state.showChapterHeadings && state.shuffleSeed === 0 && q.ch !== lastCh) {
+            lastCh = q.ch;
+            const chTitle = state.medium === 'tm'
+              ? `<span class="tamil-font">${q.ch_tm}</span>`
+              : (state.medium === 'both' ? `${q.ch_em} / <span class="tamil-font">${q.ch_tm}</span>` : q.ch_em);
+            html += `<tr class="chapter-banner"><td colspan="4">${chTitle}</td></tr>`;
+          }
+
+          const perm = getOptionPermutation(q.id);
+          let qInner = '';
+          if (state.medium === 'em') {
+            qInner = `<div>${q.q_em}</div>${renderOptionsHtml(q.opt_em, ['(a)', '(b)', '(c)', '(d)'], perm)}`;
+          } else if (state.medium === 'tm') {
+            qInner = `<div class="tamil-font">${q.q_tm}</div><div class="tamil-font">${renderOptionsHtml(q.opt_tm, ['(அ)', '(ஆ)', '(இ)', '(ஈ)'], perm)}</div>`;
+          } else {
+            qInner = `
+              <div>${q.q_em}</div>
+              ${renderOptionsHtml(q.opt_em, ['(a)', '(b)', '(c)', '(d)'], perm)}
+              <div class="tamil-font mt-1.5 pt-1 border-t border-dashed border-slate-400">${q.q_tm}</div>
+              <div class="tamil-font">${renderOptionsHtml(q.opt_tm, ['(அ)', '(ஆ)', '(இ)', '(ஈ)'], perm)}</div>
+            `;
+          }
+
+          if (q.svg && DIAGRAM_SVGS[q.svg]) {
+            qInner = `
+              <div class="q-with-svg">
+                <div class="q-body">${qInner}</div>
+                <div class="q-svg-box">${DIAGRAM_SVGS[q.svg]}</div>
+              </div>
+            `;
+          }
+
+          html += `
+            <tr>
+              <td class="text-center font-bold">${idx + 1}</td>
+              <td>${qInner}</td>
+              <td></td>
+              <td></td>
+            </tr>
+          `;
+        });
+
+        html += `</tbody></table></div></section></td></tr></tbody><tfoot class="print-margin-tfoot"><tr><td></td></tr></tfoot></table>`;
+      }
+
+      // ================= PART II: GEOMETRY WORKOUTS (2 PER PAGE OR 1 PER PAGE) =================
+      if (geoList.length > 0) {
+        const perPage = state.geoPerPage;
+        html += `<section id="secGeometry" class="${omList.length > 0 ? 'section-page-break' : ''}">`;
+
+        for (let p = 0; p < geoList.length; p += perPage) {
+          const chunk = geoList.slice(p, p + perPage);
+          const includeTopHeader = (omList.length === 0 && p === 0);
+          const pairCls = includeTopHeader ? 'print-pair-page has-top-header' : 'print-pair-page';
+          html += `<div class="${pairCls}">`;
+          if (includeTopHeader) {
+            html += headerBlockHtml;
+          }
+
+          if (p === 0) {
+            html += `
+              <div class="section-banner bg-slate-900 text-white px-3 py-1 text-xs font-bold tracking-wide uppercase flex justify-between items-center" style="-webkit-print-color-adjust:exact;print-color-adjust:exact;">
+                <span>${L.part2}</span>
+                <span>${geoList.length} &times; 8 = ${geoList.length * 8} Marks</span>
+              </div>
+            `;
+          }
+
+          chunk.forEach((g, cIdx) => {
+            const qNum = p + cIdx + 1;
+            const yrBadge = (state.showYearTags && g.year) ? `<span class="year-pill">${g.year}</span>` : '';
+            let qText = '';
+            if (state.medium === 'em') {
+              qText = `<div>${g.q_em}${yrBadge}</div>`;
+            } else if (state.medium === 'tm') {
+              qText = `<div class="tamil-font">${g.q_tm}${yrBadge}</div>`;
+            } else {
+              qText = `
+                <div>${g.q_em}${yrBadge}</div>
+                <div class="tamil-font mt-1 pt-1 border-t border-dashed border-slate-400 text-[12.5px]">${g.q_tm}</div>
+              `;
+            }
+
+            html += `
+              <div class="geo-card ${perPage === 1 ? 'single-mode' : ''}">
+                <table class="geo-q-table">
+                  <tr>
+                    <td class="geo-q-num">G-${qNum}</td>
+                    <td>${qText}</td>
+                  </tr>
+                </table>
+                <div class="geo-work-grid">
+                  <div class="geo-fair-box">
+                    <div class="ws-sublabel">${L.fairDiag}</div>
+                    <div class="flex-1"></div>
+                    <div class="text-[10.5px] text-black border-t border-dashed border-slate-400 pt-1 flex justify-between">
+                      <span>Construction / Verification:</span>
+                      <span>Marks: _____ / 8</span>
+                    </div>
+                  </div>
+                  <div class="geo-side-col">
+                    <div class="geo-rough-box">
+                      <div class="ws-sublabel">${L.roughDiag}</div>
+                    </div>
+                    <div class="geo-steps-box">
+                      <div class="ws-sublabel">${L.givenSteps}</div>
+                      <div class="space-y-0.5 mt-1">
+                        <div class="ruled-line"></div>
+                        <div class="ruled-line"></div>
+                        <div class="ruled-line"></div>
+                        <div class="ruled-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+
+          html += `</div>`;
+        }
+        html += `</section>`;
+      }
+
+      // ================= PART III: GRAPH WORKOUTS + EXACT RED SVG GRAPH SHEET =================
+      // Note: Direct / Inverse Variation category labels are intentionally removed from Graph questions!
+      if (graphList.length > 0) {
+        const perPage = state.graphPerPage;
+        const hasPrior = omList.length > 0 || geoList.length > 0;
+        html += `<section id="secGraph" class="${hasPrior ? 'section-page-break' : ''}">`;
+
+        for (let p = 0; p < graphList.length; p += perPage) {
+          const chunk = graphList.slice(p, p + perPage);
+          const includeTopHeader = (!hasPrior && p === 0);
+          const pairCls = includeTopHeader ? 'print-pair-page has-top-header' : 'print-pair-page';
+          html += `<div class="${pairCls}">`;
+          if (includeTopHeader) {
+            html += headerBlockHtml;
+          }
+
+          if (p === 0) {
+            html += `
+              <div class="section-banner bg-slate-900 text-white px-3 py-1 text-xs font-bold tracking-wide uppercase flex justify-between items-center" style="-webkit-print-color-adjust:exact;print-color-adjust:exact;">
+                <span>${L.part3}</span>
+                <span>${graphList.length} &times; 8 = ${graphList.length * 8} Marks</span>
+              </div>
+            `;
+          }
+
+          chunk.forEach((gr, cIdx) => {
+            const qNum = p + cIdx + 1;
+            const yrBadge = (state.showYearTags && gr.year) ? `<span class="year-pill">${gr.year}</span>` : '';
+            let qText = '';
+            if (state.medium === 'em') {
+              qText = `<div>${gr.q_em}${yrBadge}</div>${renderGivenDataTable(gr.table_em)}`;
+            } else if (state.medium === 'tm') {
+              qText = `<div class="tamil-font">${gr.q_tm}${yrBadge}</div><div class="tamil-font">${renderGivenDataTable(gr.table_tm)}</div>`;
+            } else {
+              qText = `
+                <div>${gr.q_em}${yrBadge}</div>
+                ${renderGivenDataTable(gr.table_em)}
+                <div class="tamil-font mt-1 pt-1 border-t border-dashed border-slate-400 text-[12px]">${gr.q_tm}</div>
+              `;
+            }
+
+            const colsCm = perPage === 1 ? 17 : 12;
+            const rowsCm = perPage === 1 ? 14 : 9;
+            const graphSvg = createExactGraphSheetSVG(colsCm, rowsCm, state.medium === 'tm', state.graphStyle);
+            const isQuadratic = gr.cat === 'quad_nature' || gr.cat === 'quad_solve';
+
+            const solColHtml = isQuadratic ? `
+                    <div>
+                      <div class="ws-sublabel">${L.quadTable}</div>
+                      <table class="mini-val-table">
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                      </table>
+                    </div>
+                    <div class="mt-1">
+                      <div class="ws-sublabel">${L.quadSolveSteps}</div>
+                      <div class="ruled-line"></div>
+                      <div class="ruled-line"></div>
+                      <div class="ruled-line"></div>
+                    </div>
+                    <div class="mt-auto">
+                      <div class="ws-sublabel">${L.quadSol}</div>
+                      <div class="ruled-line"></div>
+                      <div class="ruled-line"></div>
+                      <div class="text-[10.5px] text-black text-right pt-1">Marks: _____ / 8</div>
+                    </div>
+            ` : `
+                    <div>
+                      <div class="ws-sublabel">${L.step1Table}</div>
+                      <table class="mini-val-table">
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                      </table>
+                    </div>
+                    <div>
+                      <div class="ws-sublabel">${L.step2Var}</div>
+                      <div class="ruled-line"></div>
+                      <div class="ruled-line"></div>
+                      <div class="ruled-line"></div>
+                    </div>
+                    <div>
+                      <div class="ws-sublabel">${L.step3Eq}</div>
+                      <div class="ruled-line"></div>
+                    </div>
+                    <div>
+                      <div class="ws-sublabel">${L.step4Pts}</div>
+                      <div class="ruled-line"></div>
+                    </div>
+                    <div class="mt-auto">
+                      <div class="ws-sublabel">${L.step5Sol}</div>
+                      <div class="ruled-line"></div>
+                      <div class="ruled-line"></div>
+                      <div class="text-[10.5px] text-black text-right pt-1">Marks: _____ / 8</div>
+                    </div>
+            `;
+
+            html += `
+              <div class="graph-card ${perPage === 1 ? 'single-mode' : ''}">
+                <table class="geo-q-table">
+                  <tr>
+                    <td class="geo-q-num">GR-${qNum}</td>
+                    <td>${qText}</td>
+                  </tr>
+                </table>
+                <div class="graph-work-grid">
+                  <div class="graph-sol-col">
+                    ${solColHtml}
+                  </div>
+                  <div class="graph-sheet-col">
+                    <div class="w-full flex justify-between items-center px-1 mb-0.5" style="flex: 0 0 auto;">
+                      <span class="ws-sublabel" style="margin:0;">${L.graphSheetTitle}</span>
+                      <span class="text-[9.5px] text-red-800 font-bold">${colsCm} cm &times; ${rowsCm} cm</span>
+                    </div>
+                    <div class="graph-svg-wrap">${graphSvg}</div>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+
+          html += `</div>`;
+        }
+        html += `</section>`;
+      }
+
+      if (omList.length === 0 && geoList.length === 0 && graphList.length === 0) {
+        html += headerBlockHtml + `
+          <div class="text-center py-12 text-slate-600 border-2 border-dashed border-slate-300 rounded-lg">
+            <p class="font-bold text-base text-black">No questions selected.</p>
+            <p class="text-xs mt-1">Click <strong>Change Header &amp; Settings</strong> above to add One Mark, Geometry, or Graph questions.</p>
+          </div>
+        `;
+      }
+
+      html += `</div>`;
+
+      const root = document.getElementById('worksheetRoot');
+      root.innerHTML = html;
+      window._triggerMathTypeset();
+    }
+
+    let typesetQueue = Promise.resolve();
+    window._triggerMathTypeset = function() {
+      const root = document.getElementById('worksheetRoot');
+      const statusEl = document.getElementById('mathStatus');
+      if (!root) return;
+      if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+        statusEl.textContent = 'Typesetting...';
+        statusEl.className = 'ml-1 px-2 py-0.5 rounded-full bg-amber-500/30 text-amber-200 border border-amber-400/40 font-medium text-[10px]';
+        const startupReady = (window.MathJax.startup && window.MathJax.startup.promise) ? window.MathJax.startup.promise : Promise.resolve();
+        typesetQueue = typesetQueue.then(() => startupReady).then(() => {
+          if (window.MathJax.typesetClear) window.MathJax.typesetClear([root]);
+          return window.MathJax.typesetPromise([root]);
+        }).then(() => {
+          statusEl.textContent = 'MathJax Ready';
+          statusEl.className = 'ml-1 px-2 py-0.5 rounded-full bg-emerald-600/30 text-emerald-200 border border-emerald-500/40 font-medium text-[10px]';
+        }).catch(() => {
+          statusEl.textContent = 'Ready';
+        });
+      }
+    };
+
+    // ================= SETTINGS MODAL & CONTROLS =================
+    function openSettings() {
+      document.getElementById('settingsModal').classList.remove('hidden');
+    }
+
+    function closeSettings() {
+      document.getElementById('settingsModal').classList.add('hidden');
+    }
+
+    function syncAndRender() {
+      state.medium = document.getElementById('selMedium').value;
+      state.school = document.getElementById('inpSchool').value;
+      state.title = document.getElementById('inpTitle').value;
+      state.omCount = Math.max(0, Math.min(125, parseInt(document.getElementById('inpOneMarkCount').value, 10) || 0));
+      state.omChapter = document.getElementById('selOmChapter').value;
+      state.showChapterHeadings = document.getElementById('chkChapterHeadings').checked;
+      state.shuffleOptions = document.getElementById('chkShuffleOptions').checked;
+      state.geoCount = Math.max(0, Math.min(24, parseInt(document.getElementById('inpGeoCount').value, 10) || 0));
+      state.geoCat = document.getElementById('selGeoCat').value;
+      state.geoPerPage = parseInt(document.getElementById('selGeoPerPage').value, 10) || 2;
+      state.graphCount = Math.max(0, Math.min(30, parseInt(document.getElementById('inpGraphCount').value, 10) || 0));
+      state.graphCat = document.getElementById('selGraphCat').value;
+      state.graphPerPage = parseInt(document.getElementById('selGraphPerPage').value, 10) || 2;
+      state.graphStyle = document.getElementById('selGraphStyle').value || 'red';
+      state.showYearTags = document.getElementById('chkYearTags').checked;
+      renderWorksheet();
+    }
+
+    document.getElementById('btnOpenSettings').addEventListener('click', openSettings);
+    document.getElementById('btnCloseSettings').addEventListener('click', closeSettings);
+    document.getElementById('btnApplyClose').addEventListener('click', () => {
+      syncAndRender();
+      closeSettings();
+    });
+    document.getElementById('settingsBackdrop').addEventListener('click', closeSettings);
+
+    ['selMedium', 'selOmChapter', 'chkChapterHeadings', 'chkShuffleOptions', 'selGeoCat', 'selGeoPerPage', 'selGraphCat', 'selGraphPerPage', 'selGraphStyle', 'chkYearTags'].forEach(id => {
+      document.getElementById(id).addEventListener('change', syncAndRender);
+    });
+
+    ['inpOneMarkCount', 'inpGeoCount', 'inpGraphCount', 'inpSchool', 'inpTitle'].forEach(id => {
+      document.getElementById(id).addEventListener('input', syncAndRender);
+    });
+
+    document.querySelectorAll('.om-preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('inpOneMarkCount').value = btn.getAttribute('data-om-preset');
+        syncAndRender();
+      });
+    });
+
+    document.querySelectorAll('.geo-preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('inpGeoCount').value = btn.getAttribute('data-geo-preset');
+        syncAndRender();
+      });
+    });
+
+    document.querySelectorAll('.gr-preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('inpGraphCount').value = btn.getAttribute('data-gr-preset');
+        syncAndRender();
+      });
+    });
+
+    document.getElementById('btnLoadAll').addEventListener('click', () => {
+      state.shuffleSeed = 0;
+      document.getElementById('selOmChapter').value = 'all';
+      document.getElementById('selGeoCat').value = 'all';
+      document.getElementById('selGraphCat').value = 'all';
+      document.getElementById('inpOneMarkCount').value = 125;
+      document.getElementById('inpGeoCount').value = 24;
+      document.getElementById('inpGraphCount').value = 30;
+      syncAndRender();
+    });
+
+    document.getElementById('btnShuffle').addEventListener('click', () => {
+      state.shuffleSeed = Math.floor(Math.random() * 1000000) + 1;
+      if (state.shuffleOptions) {
+        state.optionShuffleSeed = Math.floor(Math.random() * 1000000) + 1;
+      }
+      syncAndRender();
+    });
+
+    document.getElementById('btnShuffleOptsNow').addEventListener('click', () => {
+      document.getElementById('chkShuffleOptions').checked = true;
+      state.shuffleOptions = true;
+      state.optionShuffleSeed = Math.floor(Math.random() * 1000000) + 1;
+      syncAndRender();
+    });
+
+    document.getElementById('btnPrint').addEventListener('click', async () => {
+      try {
+        await typesetQueue;
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+      } catch (e) {}
+      setTimeout(() => window.print(), 60);
+    });
+
+    // ================= PWA INSTALL PROMPT (ADDRESS BAR + BUTTON) =================
+    let deferredInstallPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+    });
+
+    document.getElementById('btnInstallPwa').addEventListener('click', async () => {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+      } else {
+        document.getElementById('pwaModal').classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('btnClosePwa').addEventListener('click', () => {
+      document.getElementById('pwaModal').classList.add('hidden');
+    });
+    document.getElementById('pwaBackdrop').addEventListener('click', () => {
+      document.getElementById('pwaModal').classList.add('hidden');
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderWorksheet();
+    });
+    window.addEventListener('load', () => {
+      window._triggerMathTypeset();
+    });
+  </script>
+</body>
+</html>
